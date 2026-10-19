@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Metodología</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --ok: #10b981;
+    --bad: #ef4444;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --bg-gradient: linear-gradient(160deg, #eef2ff 0%, #f8fafc 40%, #f1f5f9 100%);
+    --card-bg: #ffffff;
+    --card-shadow: 0 3px 12px rgba(30, 41, 59, .07);
+    --card-shadow-hover: 0 12px 28px rgba(30, 41, 59, .15);
+    --option-hover-bg: #f8faff;
+    --option-hover-border: #c7d2fe;
+    --option-selected-bg: #eef2ff;
+    --justify-bg: #f8fafc;
+    --letter-bg: #f1f5f9;
+    --correct-bg: #ecfdf5;
+    --wrong-bg: #fef2f2;
+    --header-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+    --header-shadow: 0 8px 24px rgba(99, 102, 241, .3);
+    --progress-bg: rgba(255,255,255,.92);
+    --theme-title-bg: #eef2ff;
+    --theme-title-color: #4f46e5;
+    --filter-bg: #f1f5f9;
+    --filter-active-bg: #6366f1;
+    --overlay-bg: rgba(15, 23, 42, .65);
+  }
+
+  html[data-theme="dark"] {
+    --primary: #818cf8;
+    --primary-dark: #a5b4fc;
+    --ok: #34d399;
+    --bad: #f87171;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --border: #334155;
+    --bg-gradient: linear-gradient(160deg, #0f172a 0%, #1e1b4b 40%, #0f172a 100%);
+    --card-bg: #1e293b;
+    --card-shadow: 0 3px 12px rgba(0, 0, 0, .3);
+    --card-shadow-hover: 0 12px 28px rgba(0, 0, 0, .5);
+    --option-hover-bg: #1e293b;
+    --option-hover-border: #6366f1;
+    --option-selected-bg: #312e81;
+    --justify-bg: #0f172a;
+    --letter-bg: #334155;
+    --correct-bg: #064e3b;
+    --wrong-bg: #7f1d1d;
+    --header-gradient: linear-gradient(135deg, #4338ca 0%, #6d28d9 50%, #7e22ce 100%);
+    --header-shadow: 0 8px 24px rgba(0, 0, 0, .5);
+    --progress-bg: rgba(15, 23, 42, .92);
+    --theme-title-bg: #312e81;
+    --theme-title-color: #a5b4fc;
+    --filter-bg: #1e293b;
+    --filter-active-bg: #6366f1;
+    --overlay-bg: rgba(0, 0, 0, .75);
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding-bottom: 60px;
+    transition: background .3s, color .3s;
+  }
+
+  header {
+    background: var(--header-gradient);
+    color: #fff;
+    padding: 38px 20px 30px;
+    text-align: center;
+    box-shadow: var(--header-shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  header::after {
+    content: "";
+    position: absolute;
+    width: 320px; height: 320px;
+    background: rgba(255,255,255,.12);
+    border-radius: 50%;
+    top: -160px; right: -80px;
+    pointer-events: none;
+  }
+  header h1 {
+    font-size: clamp(1.6rem, 4vw, 2.3rem);
+    letter-spacing: .5px;
+    position: relative; z-index: 1;
+  }
+  header p {
+    margin-top: 8px; opacity: .92; font-size: .98rem;
+    position: relative; z-index: 1;
+  }
+
+  .theme-toggle {
+    position: absolute; top: 16px; right: 16px;
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,.35);
+    background: rgba(255,255,255,.15);
+    color: #fff; font-size: 1.2rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0; z-index: 10; transition: all .2s;
+    backdrop-filter: blur(4px);
+  }
+  .theme-toggle:hover {
+    background: rgba(255,255,255,.3);
+    transform: scale(1.08) rotate(15deg);
+  }
+
+  main { max-width: 860px; margin: 0 auto; padding: 26px 16px 0; }
+
+  /* ============ START ============ */
+  .start-title {
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    text-align: center; margin-top: 10px; margin-bottom: 8px;
+  }
+  .start-sub {
+    text-align: center; color: var(--muted);
+    margin-bottom: 26px; font-size: .95rem;
+  }
+
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .topic-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--text);
+    transition: all .22s ease;
+    box-shadow: var(--card-shadow);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .topic-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-hover);
+  }
+  .topic-card:active { transform: translateY(-1px); }
+
+  .topic-card.complete {
+    background: var(--header-gradient);
+    border-color: transparent;
+    color: #fff;
+    grid-column: 1 / -1;
+    padding: 24px;
+  }
+  .topic-card.complete:hover {
+    border-color: transparent;
+    box-shadow: 0 14px 32px rgba(99, 102, 241, .45);
+  }
+  .topic-card.complete .tc-num,
+  .topic-card.complete .tc-count { color: rgba(255,255,255,.85); }
+  .topic-card.complete .tc-title { font-size: 1.15rem; }
+
+  .topic-card.balotario {
+    background: var(--card-bg);
+    border: 2px dashed var(--primary);
+    grid-column: 1 / -1;
+    padding: 22px;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+  .topic-card.balotario:hover {
+    background: var(--option-selected-bg);
+  }
+  .topic-card.balotario .bal-icon {
+    font-size: 2rem;
+    flex: 0 0 auto;
+  }
+  .topic-card.balotario .bal-body { flex: 1; }
+  .topic-card.balotario .tc-title { font-size: 1.1rem; margin-bottom: 2px; }
+
+  .tc-num {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 2px;
+  }
+  .tc-title {
+    font-size: 1rem; font-weight: 700;
+    margin-bottom: 4px; line-height: 1.3;
+  }
+  .tc-count {
+    font-size: .85rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ============ HEADER DE PANTALLA ============ */
+  .screen-header {
+    display: flex; align-items: center;
+    gap: 14px; margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .btn-back {
+    background: var(--card-bg);
+    color: var(--primary-dark);
+    border: 2px solid var(--border);
+    padding: 9px 16px;
+    font-size: .88rem;
+    font-weight: 700;
+    border-radius: 9px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all .2s;
+  }
+  .btn-back:hover {
+    border-color: var(--primary);
+    background: var(--option-selected-bg);
+  }
+  .screen-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+  }
+
+  /* ============ PROGRESO ============ */
+  .progress-wrap {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--progress-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px;
+    margin: 0 -16px 18px;
+    transition: background .3s, border-color .3s;
+  }
+  .progress-info {
+    max-width: 860px;
+    margin: 0 auto 6px;
+    display: flex; justify-content: space-between;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .progress-bar {
+    max-width: 860px;
+    margin: 0 auto;
+    height: 9px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, #6366f1, #a855f7);
+    border-radius: 99px;
+    transition: width .3s ease;
+  }
+
+  /* ============ QUESTION CARD ============ */
+  .question {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 22px 22px 18px;
+    margin-bottom: 16px;
+    box-shadow: var(--card-shadow);
+    border: 2px solid transparent;
+    transition: border-color .25s, box-shadow .25s, background .3s;
+  }
+  .question.correct { border-color: var(--ok); }
+  .question.wrong   { border-color: var(--bad); }
+
+  .q-head {
+    display: flex; gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  .q-num {
+    flex: 0 0 auto;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #fff;
+    font-weight: 800; font-size: .9rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .q-text { font-weight: 600; font-size: 1.02rem; padding-top: 3px; }
+
+  /* ============ OPTIONS ============ */
+  .option {
+    display: flex; align-items: center; gap: 12px;
+    padding: 11px 14px;
+    border: 2px solid var(--border);
+    border-radius: 11px;
+    margin-bottom: 9px;
+    cursor: pointer;
+    transition: all .18s ease;
+    user-select: none;
+    font-size: .96rem;
+    background: var(--card-bg);
+    color: var(--text);
+  }
+  .option:hover {
+    border-color: var(--option-hover-border);
+    background: var(--option-hover-bg);
+  }
+  .option.selected {
+    border-color: var(--primary);
+    background: var(--option-selected-bg);
+  }
+  .option .letter {
+    flex: 0 0 auto;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--letter-bg);
+    color: var(--muted);
+    font-weight: 700; font-size: .82rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .18s ease;
+  }
+  .option.selected .letter { background: var(--primary); color: #fff; }
+  .option input { display: none; }
+
+  .option.is-correct {
+    border-color: var(--ok);
+    background: var(--correct-bg);
+  }
+  .option.is-correct .letter { background: var(--ok); color: #fff; }
+  .option.is-wrong {
+    border-color: var(--bad);
+    background: var(--wrong-bg);
+  }
+  .option.is-wrong .letter { background: var(--bad); color: #fff; }
+
+  .bal-option { cursor: default; }
+  .bal-option:hover {
+    border-color: var(--border);
+    background: var(--card-bg);
+  }
+  .bal-option.is-correct:hover {
+    border-color: var(--ok);
+    background: var(--correct-bg);
+  }
+
+  /* ============ JUSTIFY ============ */
+  .justify {
+    display: none;
+    margin-top: 14px;
+    padding: 13px 16px;
+    background: var(--justify-bg);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 10px 10px 0;
+    font-size: .89rem;
+    color: var(--text);
+    transition: background .3s;
+    animation: fadeIn .3s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .justify b { color: var(--primary-dark); }
+  .justify.show { display: block; }
+  .justify .fb-ok  { color: var(--ok); }
+  .justify .fb-bad { color: var(--bad); }
+
+  /* ============ NEXT BUTTON ============ */
+  .quiz-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin: 12px 0 20px;
+    flex-wrap: wrap;
+  }
+  .btn-next {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 13px 34px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(99, 102, 241, .38);
+    transition: all .2s;
+  }
+  .btn-next:hover:not(:disabled) {
+    box-shadow: 0 9px 24px rgba(99, 102, 241, .5);
+  }
+  .btn-next:active:not(:disabled) { transform: scale(.97); }
+  .btn-next:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  /* ============ TECLAS ============ */
+  .kbd-hint {
+    text-align: center;
+    font-size: .8rem;
+    color: var(--muted);
+    margin: 4px 0 6px;
+    line-height: 1.9;
+  }
+  .kbd-hint kbd {
+    display: inline-block;
+    padding: 1px 7px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .75rem;
+    font-weight: 700;
+    border: 1px solid var(--border);
+    border-bottom-width: 2px;
+    border-radius: 5px;
+    background: var(--filter-bg);
+    color: var(--text);
+    margin: 0 1px;
+  }
+
+  /* ============ RESULT CARD ============ */
+  #resultsScreen { display: none; }
+  .score-card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 34px 24px;
+    text-align: center;
+    box-shadow: var(--card-shadow-hover);
+    margin-bottom: 22px;
+    border-top: 6px solid var(--primary);
+    animation: pop .45s ease;
+  }
+  @keyframes pop {
+    from { transform: scale(.94); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+  .score-card .big {
+    font-size: 3.4rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .score-card .sub { color: var(--muted); font-size: 1rem; margin-top: 4px; }
+  .score-card .msg { margin-top: 16px; font-weight: 700; font-size: 1.1rem; }
+  .score-card .detail {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: .9rem;
+    color: var(--muted);
+    flex-wrap: wrap;
+  }
+  .score-card .detail b {
+    color: var(--text);
+    font-size: 1.2rem;
+    display: block;
+  }
+
+  .results-actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin: 8px 0 30px;
+  }
+  .results-actions button {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 14px 34px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .2s, background .2s;
+  }
+  .results-actions button:active { transform: scale(.97); }
+  .btn-primary {
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(99, 102, 241, .38);
+  }
+  .btn-primary:hover { box-shadow: 0 9px 24px rgba(99, 102, 241, .5); }
+  .btn-secondary {
+    background: var(--card-bg);
+    color: var(--primary-dark);
+    border: 2px solid var(--primary) !important;
+  }
+  .btn-secondary:hover { background: var(--option-selected-bg); }
+
+  /* ============ BALOTARIO ============ */
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .filter-btn {
+    padding: 9px 18px;
+    font-family: inherit;
+    font-size: .85rem;
+    font-weight: 700;
+    border-radius: 99px;
+    border: 2px solid var(--border);
+    background: var(--filter-bg);
+    color: var(--text);
+    cursor: pointer;
+    transition: all .18s;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+    max-width: 100%;
+  }
+  .filter-btn:hover { border-color: var(--primary); }
+  .filter-btn.active {
+    background: var(--filter-active-bg);
+    color: #fff;
+    border-color: var(--filter-active-bg);
+  }
+
+  .bal-counter {
+    font-size: .85rem;
+    color: var(--muted);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+
+  /* ============ TEMA TITLE ============ */
+  .theme-title {
+    font-size: .95rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    color: var(--theme-title-color);
+    background: var(--theme-title-bg);
+    border-left: 5px solid var(--primary);
+    padding: 12px 16px;
+    border-radius: 0 12px 12px 0;
+    margin: 28px 0 16px;
+    transition: background .3s, color .3s;
+  }
+  .theme-title:first-child { margin-top: 0; }
+
+  /* ============ MODAL DE CONFIRMACIÓN ============ */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--overlay-bg);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: overlayIn .2s ease;
+  }
+  @keyframes overlayIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  .modal-overlay.show { display: flex; }
+
+  .modal-box {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 32px 26px 22px;
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
+    border: 1px solid var(--border);
+    animation: modalPop .28s cubic-bezier(.34, 1.56, .64, 1);
+  }
+  @keyframes modalPop {
+    from { transform: scale(.88); opacity: 0; }
+    to   { transform: scale(1);  opacity: 1; }
+  }
+
+  .modal-icon {
+    font-size: 2.8rem;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+  .modal-box h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  .modal-box p {
+    font-size: .93rem;
+    color: var(--muted);
+    margin-bottom: 24px;
+    line-height: 1.65;
+  }
+  .modal-box p strong {
+    color: var(--bad);
+    font-weight: 700;
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .modal-actions button {
+    flex: 1;
+    min-width: 140px;
+    padding: 13px 20px;
+    font-family: inherit;
+    font-size: .92rem;
+    font-weight: 700;
+    border-radius: 11px;
+    cursor: pointer;
+    transition: all .18s;
+  }
+  .modal-actions .modal-cancel {
+    background: var(--filter-bg);
+    color: var(--text);
+    border: 2px solid var(--border);
+  }
+  .modal-actions .modal-cancel:hover,
+  .modal-actions .modal-cancel:focus-visible {
+    border-color: var(--primary);
+    background: var(--option-selected-bg);
+    outline: none;
+  }
+  .modal-actions .modal-confirm {
+    background: var(--bad);
+    color: #fff;
+    border: 2px solid var(--bad);
+  }
+  .modal-actions .modal-confirm:hover,
+  .modal-actions .modal-confirm:focus-visible {
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, .4);
+    outline: none;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 600px) {
+    .question { padding: 18px 15px 14px; }
+    .q-text { font-size: .97rem; }
+    .option { font-size: .9rem; padding: 10px 12px; }
+    .quiz-actions { flex-direction: column; }
+    .btn-next { width: 100%; }
+    .theme-toggle { top: 10px; right: 10px; width: 40px; height: 40px; }
+    .results-actions button { width: 100%; }
+    .topic-card.balotario { flex-direction: column; text-align: center; }
+    .filter-btn { font-size: .8rem; padding: 8px 14px; }
+    .kbd-hint { display: none; }
+    .modal-actions button { width: 100%; min-width: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">🌙</button>
+  <h1>📊 Quiz Metodología</h1>
+  <p>125 preguntas · Respuesta inmediata · Balotario incluido</p>
+</header>
+
+<main>
+
+  <!-- ============================================================
+       START SCREEN
+  ============================================================ -->
+  <div id="startScreen">
+    <h2 class="start-title">¿Qué quieres hacer hoy?</h2>
+    <p class="start-sub">Practica con respuesta inmediata o revisa el balotario completo con todas las respuestas.</p>
+    <div class="topic-grid" id="topicGrid"></div>
+  </div>
+
+  <!-- ============================================================
+       QUIZ SCREEN
+  ============================================================ -->
+  <div id="quizScreen" style="display:none;">
+    <div class="screen-header">
+      <button id="quizBackBtn" class="btn-back">← Volver al menú</button>
+      <div id="quizTitle" class="screen-title"></div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span id="progressLabel">Pregunta 1 / 25</span>
+        <span id="progressPct">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+
+    <div id="questionContainer"></div>
+
+    <div class="kbd-hint">
+      ⌨️ <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd> <kbd>D</kbd> responder ·
+      <kbd>Enter</kbd> siguiente ·
+      <kbd>Esc</kbd> volver al menú
+    </div>
+
+    <div class="quiz-actions">
+      <button id="nextBtn" class="btn-next" disabled>Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       RESULTS SCREEN
+  ============================================================ -->
+  <div id="resultsScreen">
+    <div class="score-card">
+      <div class="big" id="scoreBig">0 / 0</div>
+      <div class="sub" id="scorePct">0% de aciertos</div>
+      <div class="msg" id="scoreMsg"></div>
+      <div class="detail">
+        <div><b id="cntOk">0</b>Correctas</div>
+        <div><b id="cntBad">0</b>Incorrectas</div>
+        <div><b id="cntBlank">0</b>Sin responder</div>
+      </div>
+    </div>
+    <div class="results-actions">
+      <button class="btn-secondary" id="backToMenuBtn">← Volver al menú</button>
+      <button class="btn-primary" id="retryBtn">🔄 Intentar de nuevo</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       BALOTARIO SCREEN
+  ============================================================ -->
+  <div id="balotarioScreen" style="display:none;">
+    <div class="screen-header">
+      <button id="balotarioBackBtn" class="btn-back">← Volver al menú</button>
+      <div class="screen-title">📖 Balotario · preguntas y respuestas</div>
+    </div>
+
+    <div class="filter-bar" id="filterBar"></div>
+    <div class="bal-counter" id="balCounter"></div>
+    <div id="balotarioContent"></div>
+  </div>
+
+</main>
+
+<!-- ============================================================
+     MODAL DE CONFIRMACIÓN
+============================================================ -->
+<div id="confirmModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+  <div class="modal-box">
+    <div class="modal-icon">⚠️</div>
+    <h3 id="confirmTitle">¿Salir del quiz?</h3>
+    <p>Si regresas al menú ahora, <strong>perderás todo el progreso</strong> de esta sesión. Las preguntas respondidas no se guardarán.</p>
+    <div class="modal-actions">
+      <button type="button" class="modal-cancel" id="modalCancelBtn">Seguir respondiendo</button>
+      <button type="button" class="modal-confirm" id="modalConfirmBtn">Sí, salir</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   TEMAS
+   ============================================================ */
+const TEMAS = {
+  1: { title: "Recolección de datos, codificación y estadística descriptiva",
+       short: "Recolección de datos", icon: "📝" },
+  2: { title: "Técnicas de observación",
+       short: "Técnicas de observación", icon: "👁️" },
+  3: { title: "Diseño de la investigación",
+       short: "Diseño de la investigación", icon: "🔬" },
+  4: { title: "Población y muestra",
+       short: "Población y muestra", icon: "👥" },
+  5: { title: "Conceptos y variables",
+       short: "Conceptos y variables", icon: "📊" }
+};
+
+/* ============================================================
+   BANCO DE PREGUNTAS · 125 preguntas (25 por tema)
+   ============================================================ */
+const QUIZ = [
+
+  /* ============ TEMA 1 ============ */
+  { tema:1, q:"Según el esquema de fundamentos, ¿cuál es el flujo correcto del proceso metodológico?",
+    o:["Problema → Método → Datos → Análisis","Método → Problema → Análisis → Datos","Datos → Problema → Método → Análisis","Análisis → Problema → Método → Datos"], a:0, j:"Página 2." },
+  { tema:1, q:"¿Cuál es el propósito principal del procedimiento de recolección de datos?",
+    o:["Inventar datos para llenar la matriz.","Aplicar un protocolo definido para registrar información de manera ordenada y objetiva.","Demostrar que la hipótesis es correcta desde el inicio.","Evitar el uso de instrumentos estandarizados."], a:1, j:"Página 3." },
+  { tema:1, q:"En el diseño de instrumentos, ¿qué significa que un instrumento tenga “validez”?",
+    o:["Que los resultados son consistentes bajo condiciones similares.","Que mide exactamente aquello que se pretende medir.","Que es fácil de codificar.","Que reduce los sesgos."], a:1, j:"Página 4." },
+  { tema:1, q:"En el caso práctico de la medición de una vereda, si los estudiantes anotan las medidas reales obtenidas sin alterarlas, están aplicando el principio de:",
+    o:["Transparencia.","No manipulación.","Integridad científica.","Confiabilidad."], a:2, j:"Página 12." },
+  { tema:1, q:"Si un investigador modifica los resultados de una encuesta porque contradicen su hipótesis, está violando la prohibición de:",
+    o:["Manipulación de datos.","Transparencia.","Confiabilidad.","Validez."], a:0, j:"Página 11." },
+  { tema:1, q:"¿Cuál es la función de un cronograma (diagrama de Gantt) en la recolección de datos?",
+    o:["Calcular la media y la mediana de los datos obtenidos.","Organizar las actividades y controlar el avance del trabajo en el tiempo.","Aplicar el instrumento en el entorno real.","Codificar las variables cualitativas."], a:1, j:"Página 6." },
+  { tema:1, q:"Según el proceso de integración metodológica, ¿qué paso sigue después de “Recolectar”?",
+    o:["Interpretar.","Planificar.","Codificar.","Describir."], a:2, j:"Página 7." },
+  { tema:1, q:"¿Cuál de las siguientes es una medida de tendencia central?",
+    o:["Varianza.","Coeficiente de variación.","Mediana.","Desviación estándar."], a:2, j:"Página 16. (Varianza, CV y Desviación estándar son medidas de variabilidad)." },
+  { tema:1, q:"De acuerdo con la tabla de frecuencias del ejemplo (Pág. 19), ¿qué porcentaje representa el nivel “Alto” en la columna “Después”?",
+    o:["50%","35%","65%","100%"], a:2, j:"Página 19." },
+  { tema:1, q:"¿Qué tipo de variable es el “número de cursos aprobados” (3, 4, 5, 6...)?",
+    o:["Cualitativa nominal.","Cualitativa ordinal.","Cuantitativa discreta.","Cuantitativa continua."], a:2, j:"Página 24." },
+  { tema:1, q:"En la matriz de datos, ¿qué representan las filas y las columnas respectivamente?",
+    o:["Variables y participantes.","Participantes (o casos) y variables estudiadas.","Instrumentos y técnicas.","Datos y análisis."], a:1, j:"Página 22." },
+  { tema:1, q:"Si una investigación mide “nivel de satisfacción” con 1 = Bajo, 2 = Medio, 3 = Alto, se está utilizando una variable:",
+    o:["Cualitativa nominal.","Cuantitativa continua.","Cualitativa ordinal.","Cuantitativa discreta."], a:2, j:"Página 24." },
+  { tema:1, q:"Según el texto, ¿cuál es una ventaja de usar software estadístico como R o Python?",
+    o:["Permiten el análisis sin necesidad de datos.","Automatizan el procesamiento con bibliotecas específicas.","Son los únicos programas que existen.","Reemplazan completamente al investigador."], a:1, j:"Página 25." },
+  { tema:1, q:"¿Qué medida de variabilidad se calcula mediante la fórmula que incluye el cuadrado de las diferencias respecto a la media?",
+    o:["Rango.","Moda.","Varianza.","Mediana."], a:2, j:"Página 18 (Fórmula de Varianza)." },
+  { tema:1, q:"¿Cuál de los siguientes es un ejemplo de manipulación de datos según el texto?",
+    o:["Corregir errores de manera justificada y documentada.","Presentar resultados reales y verificables.","No inventar ni alterar datos.","Eliminar datos solo porque contradicen la hipótesis."], a:3, j:"Página 11." },
+  { tema:1, q:"En el ejemplo de la medición de la vereda, “explicar cómo realizaron las mediciones” corresponde a:",
+    o:["Integridad científica.","No manipulación.","Transparencia.","Confiabilidad."], a:2, j:"Página 12." },
+  { tema:1, q:"Según la tabla de frecuencias (Pág. 19), ¿cuál fue la frecuencia del nivel “Medio” ANTES de la capacitación?",
+    o:["5","3","0","7"], a:0, j:"Página 19." },
+  { tema:1, q:"¿Qué herramienta de software se describe en el PDF como útil para organizar datos, calcular medidas y crear tablas y gráficos?",
+    o:["Python.","R.","SPSS.","Excel."], a:3, j:"Página 25." },
+  { tema:1, q:"Al asignar códigos a variables cualitativas, el texto señala que es importante que el código sea:",
+    o:["Claro, consistente y definido en un diccionario de variables.","Siempre un número entero.","Cambiante según el participante.","Inventado en el momento."], a:0, j:"Página 23." },
+  { tema:1, q:"¿Cuál es el primer paso del proceso de ejecución de campo?",
+    o:["Registrar mediciones.","Aplicar el instrumento.","Contactar y organizar la muestra.","Revisar datos."], a:2, j:"Página 5." },
+  { tema:1, q:"Según la fórmula de la media, ¿qué representa “n”?",
+    o:["El número de variables.","El número total de datos o sujetos.","La desviación estándar.","El valor máximo."], a:1, j:"Página 16 (Fórmula de la media)." },
+  { tema:1, q:"¿Qué tipo de gráfico se utiliza para representar la distribución de frecuencias mediante barras contiguas?",
+    o:["Polígono de frecuencias.","Histograma.","Gráfico de pastel.","Diagrama de Gantt."], a:1, j:"Página 20." },
+  { tema:1, q:"En la tabla de medidas (Pág. 17), ¿cuál fue la media del puntaje DESPUÉS de la capacitación?",
+    o:["4.40","4.50","7.80","8.00"], a:2, j:"Página 17." },
+  { tema:1, q:"¿Qué principio ético busca garantizar la honestidad, responsabilidad y respeto en el uso de datos?",
+    o:["La manipulación.","Las consideraciones éticas.","La estadística descriptiva.","La codificación."], a:1, j:"Página 8." },
+  { tema:1, q:"Si una investigación registra el peso de los participantes (ej. 72.8 kg), esta variable es:",
+    o:["Cualitativa nominal.","Cuantitativa discreta.","Cuantitativa continua.","Cualitativa ordinal."], a:2, j:"Página 24." },
+
+  /* ============ TEMA 2 ============ */
+  { tema:2, q:"¿Qué es la observación según el documento?",
+    o:["Ver por casualidad sin un propósito.","Un proceso sistemático y planificado de mirar, escuchar y registrar hechos sin alterarlos.","Una técnica que solo usan los médicos.","Una conversación entre dos personas."], a:1, j:"Página 3." },
+  { tema:2, q:"¿Cuál de las siguientes NO es una característica de la observación?",
+    o:["Intencional.","Sistemática.","Subjetiva (basada en opiniones personales).","Registrada."], a:2, j:"Página 4 (la característica es “Objetiva: se registra lo que realmente se ve, sin opiniones personales”)." },
+  { tema:2, q:"Cuando el investigador tiene contacto directo con el fenómeno y usa sus sentidos o instrumentos, se trata de:",
+    o:["Observación indirecta.","Observación pasiva.","Observación directa.","Observación encubierta."], a:2, j:"Página 8." },
+  { tema:2, q:"La observación donde el investigador se integra al grupo y participa en sus actividades se denomina:",
+    o:["Observación activa.","Observación pasiva.","Observación de laboratorio.","Observación indirecta."], a:0, j:"Página 10." },
+  { tema:2, q:"La observación que se lleva a cabo mediante un plan previamente establecido y determina qué aspectos se observarán es la:",
+    o:["Asistemática.","Semisistemática.","Sistemática.","Naturalista."], a:2, j:"Página 12." },
+  { tema:2, q:"¿Qué tipo de observación ocurre cuando los sujetos NO saben que están siendo observados?",
+    o:["Observación naturalista.","Observación encubierta.","Observación directa.","Observación sistemática."], a:1, j:"Página 17." },
+  { tema:2, q:"La observación que se desarrolla en un ambiente acondicionado y controlado por el investigador es la:",
+    o:["Observación de campo.","Observación naturalista.","Observación de laboratorio.","Observación pasiva."], a:2, j:"Página 16." },
+  { tema:2, q:"¿Qué tipo de entrevista se compone de preguntas concretas buscando una respuesta simple (a menudo sí o no)?",
+    o:["Entrevista abierta.","Entrevista semiabierta.","Entrevista estructurada.","Entrevista periodística."], a:2, j:"Página 22." },
+  { tema:2, q:"La entrevista del ámbito médico donde se busca un diagnóstico se denomina:",
+    o:["Entrevista laboral.","Entrevista clínica.","Entrevista psicológica.","Entrevista de opinión."], a:1, j:"Página 23." },
+  { tema:2, q:"En el periodismo, la entrevista que busca dar a conocer detalles sobre la personalidad y vida de alguien famoso se llama:",
+    o:["Entrevista de noticia.","Entrevista de opinión.","Entrevista de personalidad (perfil).","Entrevista estructurada."], a:2, j:"Página 25." },
+  { tema:2, q:"¿Cuál es el paso de la entrevista donde se resume lo discutido y se agradece al entrevistado?",
+    o:["Preparación.","Apertura.","Desarrollo.","Cierre."], a:3, j:"Página 26." },
+  { tema:2, q:"¿Qué componente de las actitudes se relaciona con las creencias, ideas y conocimientos?",
+    o:["Componente afectivo.","Componente conductual.","Componente cognitivo.","Componente social."], a:2, j:"Página 29." },
+  { tema:2, q:"La escala de medición de actitudes que mide principalmente el “grado de acuerdo” es la:",
+    o:["Escala de Thurstone.","Escala de Likert.","Escala de Guttman.","Diferencial semántico."], a:1, j:"Página 31." },
+  { tema:2, q:"¿Cuál es una limitación de las escalas de medición de actitudes?",
+    o:["No permiten comparar entre participantes.","Las respuestas pueden estar influidas por la deseabilidad social.","No se pueden aplicar a grupos numerosos.","Siempre reflejan las conductas reales."], a:1, j:"Página 30." },
+  { tema:2, q:"La observación que no sigue un protocolo rígido y es útil en las primeras etapas de la investigación es la:",
+    o:["Observación sistemática.","Observación asistemática.","Observación de laboratorio.","Observación activa."], a:1, j:"Página 14." },
+  { tema:2, q:"Según el texto, ¿qué significa “off-the record” en el periodismo?",
+    o:["Lo que se dice públicamente en la entrevista.","Lo que se dice tras cámaras y debería permanecer oculto.","La burbuja de confianza en la TV.","Una entrevista estructurada."], a:1, j:"Página 24." },
+  { tema:2, q:"La entrevista que combina preguntas abiertas y otras de respuesta concreta se llama:",
+    o:["Estructurada.","Abierta.","Semiabierta.","Clínica."], a:2, j:"Página 22." },
+  { tema:2, q:"¿Qué tipo de observación se realiza en el ambiente habitual del fenómeno sin alterar las condiciones naturales?",
+    o:["Observación de laboratorio.","Observación naturalista o de campo.","Observación encubierta.","Observación indirecta."], a:1, j:"Página 15." },
+  { tema:2, q:"El componente de las actitudes que se relaciona con la intención de actuar es el:",
+    o:["Cognitivo.","Afectivo.","Conductual.","Perceptivo."], a:2, j:"Página 30." },
+  { tema:2, q:"¿Qué escala de actitudes mide el “nivel o grado progresivo”?",
+    o:["Likert.","Thurstone.","Guttman.","Stapel."], a:2, j:"Página 31." },
+  { tema:2, q:"Según el texto, ¿cuál es el primer paso del método científico?",
+    o:["La hipótesis.","La observación.","La experimentación.","La conclusión."], a:1, j:"Página 6." },
+  { tema:2, q:"La observación que utiliza documentos, fotografías o videos para obtener información es la:",
+    o:["Directa.","Indirecta.","Activa.","Naturalista."], a:1, j:"Página 9." },
+  { tema:2, q:"¿Qué característica de la entrevista permite aclarar o profundizar en las respuestas?",
+    o:["Planificada.","Interpersonal.","Flexible.","Objetiva."], a:2, j:"Página 20." },
+  { tema:2, q:"¿En qué paso de la entrevista se define el objetivo y se investiga sobre la persona?",
+    o:["Apertura.","Desarrollo.","Preparación.","Evaluación."], a:2, j:"Página 26." },
+  { tema:2, q:"¿Qué escala se aplica comúnmente en marcas, productos e instituciones para medir percepción o significado?",
+    o:["Likert.","Guttman.","Diferencial semántico.","Stapel."], a:2, j:"Página 31." },
+
+  /* ============ TEMA 3 ============ */
+  { tema:3, q:"¿Qué es el diseño de investigación?",
+    o:["La recolección de datos de campo.","El plan o estrategia que establece cómo se realizará la investigación para alcanzar los objetivos.","La técnica de muestreo.","El marco teórico."], a:1, j:"Página 2." },
+  { tema:3, q:"¿Cuál de los siguientes es un elemento que organiza un diseño?",
+    o:["La bibliografía.","Los participantes o muestra.","El resumen.","La portada."], a:1, j:"Página 5." },
+  { tema:3, q:"En los diseños experimentales, el investigador:",
+    o:["Solo observa sin intervenir.","Manipula deliberadamente una o más variables independientes.","No tiene grupo de control.","Utiliza siempre grupos intactos."], a:1, j:"Página 9." },
+  { tema:3, q:"El diseño con el grado de control más bajo, sin grupo de control ni asignación aleatoria, es el:",
+    o:["Cuasiexperimental.","Experimental verdadero.","Preexperimental.","Transversal."], a:2, j:"Página 10." },
+  { tema:3, q:"¿Qué caracteriza al diseño cuasiexperimental?",
+    o:["Asignación completamente aleatoria.","Uso de grupos intactos (ya formados antes del experimento).","No manipula variables.","Es un estudio transversal."], a:1, j:"Página 10." },
+  { tema:3, q:"¿Qué exige el diseño experimental verdadero (“estándar de oro”)?",
+    o:["Solo manipulación de variables.","Manipulación, grupo de control y asignación aleatoria.","Solo observación en su ambiente natural.","Uso de datos cualitativos."], a:1, j:"Página 11." },
+  { tema:3, q:"La investigación ex post facto corresponde a los diseños:",
+    o:["Experimentales.","No experimentales.","Cuasiexperimentales.","Preexperimentales."], a:1, j:"Página 12." },
+  { tema:3, q:"El diseño no experimental que recolecta datos en un único momento (una “fotografía”) es el:",
+    o:["Longitudinal.","Transversal o transeccional.","Experimental.","Fenomenológico."], a:1, j:"Página 13." },
+  { tema:3, q:"El diseño que estudia cómo evoluciona un fenómeno a través del tiempo (una “película”) es el:",
+    o:["Transversal.","Longitudinal.","Preexperimental.","Convergente."], a:1, j:"Página 13." },
+  { tema:3, q:"¿Cuál es el propósito principal de un diseño cualitativo?",
+    o:["Medir variables mediante números.","Comprobar relaciones estadísticas.","Comprender profundamente un fenómeno en su contexto natural.","Manipular variables independientes."], a:2, j:"Página 15." },
+  { tema:3, q:"El diseño cualitativo que estudia las costumbres y comportamientos de un grupo en su entorno es el:",
+    o:["Fenomenológico.","Etnográfico.","Teoría fundamentada.","Narrativo."], a:1, j:"Página 17." },
+  { tema:3, q:"El diseño cualitativo que busca generar una teoría a partir de los datos obtenidos es la:",
+    o:["Investigación-acción.","Fenomenología.","Teoría fundamentada.","Narrativa."], a:2, j:"Página 17." },
+  { tema:3, q:"¿Qué diseño mixto ejecuta la recolección cuantitativa y cualitativa de manera simultánea o en paralelo?",
+    o:["Secuencial explicativo.","Secuencial exploratorio.","Diseño convergente.","Experimental."], a:2, j:"Página 20." },
+  { tema:3, q:"El diseño mixto que inicia con una fase cuantitativa y luego una cualitativa para explicar los resultados es el:",
+    o:["Convergente.","Secuencial explicativo.","Secuencial exploratorio.","Transversal."], a:1, j:"Página 21." },
+  { tema:3, q:"El diseño mixto que inicia con una fase cualitativa para explorar y luego una cuantitativa para generalizar es el:",
+    o:["Convergente.","Secuencial explicativo.","Secuencial exploratorio.","Longitudinal."], a:2, j:"Página 22." },
+  { tema:3, q:"Según el texto, ¿cómo se elige el diseño de investigación?",
+    o:["Al azar.","Porque es el más barato.","De acuerdo con el problema, los objetivos y las preguntas de investigación.","Porque lo dice el docente."], a:2, j:"Página 24." },
+  { tema:3, q:"En el ejemplo de la influencia del agua en el concreto, ¿por qué se elige un diseño experimental?",
+    o:["Porque no se puede manipular el agua.","Porque permite manipular la variable independiente (agua) y ver su efecto en la dependiente (resistencia).","Porque es un estudio transversal.","Porque utiliza encuestas."], a:1, j:"Página 25." },
+  { tema:3, q:"¿Qué diferencia fundamental hay entre manipular y observar variables?",
+    o:["Manipular implica alterar la realidad proactivamente; observar requiere un rigor pasivo sin intervenir.","Son exactamente lo mismo.","Observar requiere más presupuesto.","Manipular solo se usa en cualitativa."], a:0, j:"Página 14." },
+  { tema:3, q:"¿Cuál de los siguientes es un esquema de diseño cuantitativo?",
+    o:["Problema → Datos → Análisis → Resultados.","Problema → Testimonios → Categorías → Conclusiones.","Observación → Entrevista → Análisis.","Introducción → Desarrollo → Conclusión."], a:0, j:"Página 23." },
+  { tema:3, q:"La investigación-acción es un diseño cualitativo que busca:",
+    o:["Comprender una problemática y generar acciones para mejorarla.","Estudiar documentos históricos.","Medir variables numéricas.","Manipular variables en laboratorio."], a:0, j:"Página 17." },
+  { tema:3, q:"¿Cuál es la clave del éxito de una investigación según las conclusiones del Grupo 3?",
+    o:["Usar el diseño más caro.","Mantener una estricta coherencia entre el problema, los objetivos y el diseño seleccionado.","Tener muchos participantes.","Usar solo estadística descriptiva."], a:1, j:"Página 26." },
+  { tema:3, q:"En el diseño experimental, ¿qué es la variable independiente?",
+    o:["El efecto que se mide.","La causa o factor que se manipula.","El error de medición.","La muestra seleccionada."], a:1, j:"Página 9 (y Pág. 5)." },
+  { tema:3, q:"El diseño no experimental también se conoce como:",
+    o:["Ex ante.","Ex post facto (después de los hechos).","Pre-experimental.","Cuasi-experimental."], a:1, j:"Página 12." },
+  { tema:3, q:"¿Qué tipo de datos utiliza principalmente el diseño cualitativo?",
+    o:["Datos numéricos y estadísticos.","Datos no numéricos como palabras, relatos, experiencias y documentos.","Solo datos de laboratorio.","Solo variables cuantitativas discretas."], a:1, j:"Páginas 15 y 16." },
+  { tema:3, q:"En el diseño secuencial explicativo, ¿qué fase va primero?",
+    o:["La cualitativa.","La cuantitativa.","Ambas al mismo tiempo.","Depende del investigador."], a:1, j:"Página 21." },
+
+  /* ============ TEMA 4 ============ */
+  { tema:4, q:"¿Qué es la población en una investigación?",
+    o:["Una parte de los elementos a estudiar.","El conjunto total de elementos que poseen las características de interés.","El grupo de personas encuestadas.","El lugar geográfico del estudio."], a:1, j:"Página 5." },
+  { tema:4, q:"¿Cómo se denomina al elemento individual que forma parte de la población y del cual se recogen datos?",
+    o:["Muestra.","Unidad de estudio.","Variable.","Indicador."], a:1, j:"Página 6." },
+  { tema:4, q:"¿Cuál de los siguientes NO es un criterio para delimitar la población?",
+    o:["Lugar.","Tiempo.","Presupuesto.","Características."], a:2, j:"Página 8." },
+  { tema:4, q:"La población que tiene un número determinado o estimable de elementos (ej. 350 estudiantes) se llama:",
+    o:["Población infinita.","Población finita.","Muestra probabilística.","Población objetivo."], a:1, j:"Página 11." },
+  { tema:4, q:"La parte de la población a la cual se pretende generalizar los resultados según los objetivos es la:",
+    o:["Muestra.","Unidad de estudio.","Población objetivo.","Población infinita."], a:2, j:"Página 12." },
+  { tema:4, q:"¿Qué es la muestra?",
+    o:["El conjunto total de la población.","Un subconjunto de elementos de la población seleccionado para el estudio.","El lugar donde se realiza la investigación.","El instrumento de recolección."], a:1, j:"Página 15." },
+  { tema:4, q:"¿Es correcto afirmar que la muestra siempre debe ser el 10% de la población?",
+    o:["Sí, es una regla universal.","No, el tamaño depende de múltiples factores como el nivel de confianza, margen de error, etc.","Sí, si la población es menor a 1000.","No, siempre debe ser el 50%."], a:1, j:"Página 19." },
+  { tema:4, q:"En el muestreo probabilístico, ¿todos los individuos tienen la misma probabilidad de ser elegidos?",
+    o:["Sí, es su característica principal.","No, depende del investigador.","Solo en el muestreo por conveniencia.","Solo en el muestreo intencional."], a:0, j:"Página 22." },
+  { tema:4, q:"¿Qué muestreo selecciona elementos al azar mediante un intervalo fijo (k)?",
+    o:["Muestreo aleatorio simple.","Muestreo aleatorio sistemático.","Muestreo estratificado.","Muestreo por conglomerados."], a:1, j:"Página 24." },
+  { tema:4, q:"El muestreo que divide la población en grupos (estratos) según una característica común (edad, sexo) es el:",
+    o:["Muestreo aleatorio simple.","Muestreo aleatorio estratificado.","Muestreo por conglomerados.","Muestreo por cuotas."], a:1, j:"Página 25." },
+  { tema:4, q:"¿En qué muestreo se selecciona a los participantes por su disponibilidad y facilidad de acceso?",
+    o:["Muestreo intencional.","Muestreo por conveniencia.","Muestreo por bola de nieve.","Muestreo consecutivo."], a:1, j:"Página 30." },
+  { tema:4, q:"El muestreo donde el investigador selecciona deliberadamente a expertos o personas con características específicas es el:",
+    o:["Muestreo por conveniencia.","Muestreo intencional o por criterio.","Muestreo probabilístico.","Muestreo aleatorio simple."], a:1, j:"Página 31." },
+  { tema:4, q:"El muestreo donde los primeros participantes recomiendan a otros se llama:",
+    o:["Muestreo por cuotas.","Muestreo consecutivo.","Muestreo por bola de nieve.","Muestreo sistemático."], a:2, j:"Página 33." },
+  { tema:4, q:"Las condiciones que una persona debe cumplir para formar parte del estudio son los criterios de:",
+    o:["Exclusión.","Inclusión.","Eliminación.","Selección."], a:1, j:"Página 37." },
+  { tema:4, q:"Las condiciones que impiden que una persona participe en el estudio son los criterios de:",
+    o:["Inclusión.","Exclusión.","Aceptación.","Muestreo."], a:1, j:"Página 37." },
+  { tema:4, q:"En el ejemplo de “Nivel de estrés académico en estudiantes de tercer ciclo”, ¿cuál es un criterio de exclusión?",
+    o:["Estar matriculado en tercer ciclo.","Aceptar participar voluntariamente.","No pertenecer al tercer ciclo académico.","Completar el cuestionario."], a:2, j:"Página 40." },
+  { tema:4, q:"¿Qué muestreo establece cantidades de participantes para distintos grupos (ej. 20 albañiles, 10 ingenieros) sin usar azar?",
+    o:["Muestreo por cuotas.","Muestreo estratificado.","Muestreo por conglomerados.","Muestreo simple."], a:0, j:"Página 32." },
+  { tema:4, q:"¿Cuál es la diferencia entre muestreo probabilístico y no probabilístico?",
+    o:["El probabilístico usa azar y permite calcular probabilidades; el no probabilístico no.","El probabilístico es más rápido y barato.","El no probabilístico siempre es representativo.","No hay diferencia."], a:0, j:"Página 36." },
+  { tema:4, q:"La población puede estar formada por:",
+    o:["Solo personas.","Solo animales.","Personas, viviendas, empresas, documentos, obras, etc.","Solo documentos."], a:2, j:"Página 10." },
+  { tema:4, q:"En el muestreo por conglomerados, los grupos o conglomerados deben ser:",
+    o:["Seleccionados al azar y mutuamente excluyentes.","Todos iguales.","Seleccionados por conveniencia.","De tamaño exacto de 10 personas."], a:0, j:"Página 26." },
+  { tema:4, q:"El muestreo consecutivo incluye a:",
+    o:["Los participantes recomendados por otros.","Todos los participantes accesibles que cumplen los criterios, conforme se presentan.","Los participantes elegidos al azar.","Solo a los expertos."], a:1, j:"Página 34." },
+  { tema:4, q:"¿Qué permite la correcta definición de la población y la muestra?",
+    o:["Aumentar el presupuesto.","Optimizar tiempo, costos y recursos, garantizando validez.","Evitar el uso de instrumentos.","Manipular los datos."], a:1, j:"Página 41." },
+  { tema:4, q:"Para identificar la población, una de las preguntas es:",
+    o:["¿Cuánto cuesta el estudio?","¿Quiénes o qué elementos quiero estudiar?","¿Qué software usaré?","¿Quién es el docente?"], a:1, j:"Página 13." },
+  { tema:4, q:"La estructura de la población se compone de:",
+    o:["Elementos + características + lugar + período.","Muestra + variables + instrumentos.","Datos + análisis + resultados.","Sujetos + encuestas + estadísticas."], a:0, j:"Página 14." },
+  { tema:4, q:"En el muestreo aleatorio simple, ¿cómo se seleccionan los elementos?",
+    o:["Con un intervalo fijo (k).","Dividiendo la población en estratos.","Asignando un número a cada elemento y seleccionando al azar.","Por recomendación de otros."], a:2, j:"Página 23." },
+
+  /* ============ TEMA 5 ============ */
+  { tema:5, q:"¿Qué es un concepto científico?",
+    o:["Una idea basada en experiencias personales.","Una idea o representación que permite describir, comprender y explicar un fenómeno de manera precisa y objetiva.","Una opinión generalizada.","Una variable cualitativa."], a:1, j:"Página 2." },
+  { tema:5, q:"¿Cuál es una característica de los conceptos científicos?",
+    o:["Subjetivo.","Impreciso.","Comprobable.","Ambiguo."], a:2, j:"Página 3." },
+  { tema:5, q:"¿En qué se diferencia un concepto científico de uno cotidiano?",
+    o:["El científico se basa en experiencias personales.","El científico busca ser objetivo y puede ser observado y medido.","El cotidiano requiere medición.","No hay diferencia."], a:1, j:"Página 4." },
+  { tema:5, q:"¿Qué es una variable?",
+    o:["Una característica o condición que puede cambiar o tomar diferentes valores.","Un concepto fijo que no cambia.","Una conclusión de la investigación.","Un instrumento de medición."], a:0, j:"Páginas 7 y 12." },
+  { tema:5, q:"La variable que el investigador modifica o controla (la causa) se denomina:",
+    o:["Variable dependiente.","Variable independiente.","Variable interviniente.","Variable extraña."], a:1, j:"Página 8." },
+  { tema:5, q:"La variable que es el resultado o efecto de los cambios en la otra variable se denomina:",
+    o:["Variable independiente.","Variable dependiente.","Variable controlada.","Variable cualitativa."], a:1, j:"Página 9." },
+  { tema:5, q:"Si estudiamos cómo la cantidad de agua afecta la resistencia del concreto, ¿cuál es la variable independiente?",
+    o:["La resistencia del concreto.","La cantidad de agua.","La temperatura de curado.","El tipo de cemento."], a:1, j:"Páginas 11 y 24." },
+  { tema:5, q:"Si estudiamos cómo la cantidad de agua afecta la resistencia del concreto, ¿cuál es la variable dependiente?",
+    o:["La cantidad de agua.","La temperatura de curado.","La resistencia del concreto.","El tipo de agregado."], a:2, j:"Páginas 11 y 24." },
+  { tema:5, q:"¿Qué tipo de variable es el “tipo de suelo” (arenoso, arcilloso, limoso)?",
+    o:["Cuantitativa continua.","Cuantitativa discreta.","Cualitativa.","Variable de control."], a:2, j:"Página 15." },
+  { tema:5, q:"¿Qué tipo de variable es la “altura de una edificación” (12 m)?",
+    o:["Cualitativa nominal.","Cuantitativa continua.","Cuantitativa discreta.","Cualitativa ordinal."], a:1, j:"Páginas 15 y 16." },
+  { tema:5, q:"Las variables discretas:",
+    o:["Se miden con instrumentos de precisión.","Toman valores enteros y se obtienen por conteo (ej. número de pisos).","Son cualitativas.","Pueden tomar cualquier valor en un intervalo."], a:1, j:"Página 16." },
+  { tema:5, q:"Las variables continuas:",
+    o:["Se cuentan.","Toman cualquier valor dentro de un intervalo y se miden (ej. temperatura, peso).","Son nominales.","Siempre son números enteros."], a:1, j:"Página 16." },
+  { tema:5, q:"La variable que aparece entre la independiente y la dependiente, influyendo en la relación, es la:",
+    o:["Variable extraña.","Variable interviniente.","Variable controlada.","Variable cualitativa."], a:1, j:"Página 20." },
+  { tema:5, q:"Un factor que no forma parte del objetivo principal, pero que puede aparecer e influir inesperadamente en los resultados, es una:",
+    o:["Variable interviniente.","Variable extraña.","Variable de control.","Variable dependiente."], a:1, j:"Página 21." },
+  { tema:5, q:"La variable que el investigador mantiene constante durante el experimento para evitar que afecte los resultados es la:",
+    o:["Variable independiente.","Variable dependiente.","Variable de control o controlada.","Variable interviniente."], a:2, j:"Página 22." },
+  { tema:5, q:"En el experimento del concreto, mantener constante el “tipo de cemento” es un ejemplo de:",
+    o:["Variable independiente.","Variable dependiente.","Variable de control.","Variable extraña."], a:2, j:"Páginas 22 y 24." },
+  { tema:5, q:"¿Qué es la operacionalización de variables?",
+    o:["El proceso de definir la población.","El proceso de transformar una variable teórica en algo observable, medible y analizable.","La técnica de recolección de datos.","El análisis estadístico final."], a:1, j:"Página 26." },
+  { tema:5, q:"En la operacionalización, los “aspectos o componentes en los que puede dividirse una variable” se llaman:",
+    o:["Indicadores.","Instrumentos.","Dimensiones.","Unidades."], a:2, j:"Página 27." },
+  { tema:5, q:"Las características específicas y medibles que permiten conocer el comportamiento de una dimensión se llaman:",
+    o:["Variables.","Indicadores.","Dimensiones.","Conceptos."], a:1, j:"Página 28." },
+  { tema:5, q:"¿Cuál es el instrumento para medir la “resistencia a la compresión” del concreto?",
+    o:["Cinta métrica.","Termómetro.","Máquina de compresión.","Cono de Abrams."], a:2, j:"Página 29." },
+  { tema:5, q:"¿Cuál es la unidad de medida del indicador “resistencia a la compresión”?",
+    o:["Centímetros (cm).","Porcentaje (%).","Litros.","Megapascales (MPa)."], a:3, j:"Página 28." },
+  { tema:5, q:"¿Qué instrumento se utiliza para medir el asentamiento del concreto?",
+    o:["Vernier.","Cono de Abrams.","Balanza.","Termómetro."], a:1, j:"Página 29." },
+  { tema:5, q:"Una variable debe ser “observable”, lo que significa que:",
+    o:["Debe ser posible identificarla en la realidad.","Debe ser inventada por el investigador.","No necesita ser definida.","Solo puede ser cualitativa."], a:0, j:"Página 13." },
+  { tema:5, q:"El “número de trabajadores” (35) es un ejemplo de variable:",
+    o:["Cualitativa.","Cuantitativa continua.","Cuantitativa discreta.","Interviniente."], a:2, j:"Página 15." },
+  { tema:5, q:"En el esquema de relación de variables, ¿qué produce cambios en qué?",
+    o:["La variable dependiente produce cambios en la independiente.","La variable independiente produce cambios en la dependiente.","La variable extraña produce cambios en la controlada.","La variable interviniente produce cambios en la independiente."], a:1, j:"Página 10." }
+];
+
+/* ============================================================
+   REFERENCIAS
+   ============================================================ */
+const LETRAS        = ["A","B","C","D"];
+const startScreen   = document.getElementById("startScreen");
+const quizScreen    = document.getElementById("quizScreen");
+const resultsScreen = document.getElementById("resultsScreen");
+const balotarioScreen = document.getElementById("balotarioScreen");
+const topicGrid     = document.getElementById("topicGrid");
+const questionContainer = document.getElementById("questionContainer");
+const nextBtn       = document.getElementById("nextBtn");
+const progressLabel = document.getElementById("progressLabel");
+const progressPct   = document.getElementById("progressPct");
+const progressFill  = document.getElementById("progressFill");
+const quizTitle     = document.getElementById("quizTitle");
+const themeToggle   = document.getElementById("themeToggle");
+const filterBar     = document.getElementById("filterBar");
+const balotarioContent = document.getElementById("balotarioContent");
+const balCounter    = document.getElementById("balCounter");
+const confirmModal  = document.getElementById("confirmModal");
+const modalCancelBtn = document.getElementById("modalCancelBtn");
+const modalConfirmBtn = document.getElementById("modalConfirmBtn");
+
+/* ============================================================
+   ESTADO
+   ============================================================ */
+let state = {
+  mode: "start",
+  tema: null,
+  questions: [],
+  answers: [],
+  currentIdx: 0,
+  answeredCurrent: false
+};
+let goingBack = false;
+
+/* ============================================================
+   MODO CLARO / OSCURO
+   ============================================================ */
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("quiz-meto-theme", theme);
+  themeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
+  themeToggle.setAttribute("aria-label",
+    theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
+}
+function initTheme() {
+  const saved = localStorage.getItem("quiz-meto-theme");
+  if (saved === "dark" || saved === "light") return applyTheme(saved);
+  const prefersDark = window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(prefersDark ? "dark" : "light");
+}
+themeToggle.addEventListener("click", () => {
+  const cur = document.documentElement.getAttribute("data-theme") || "light";
+  applyTheme(cur === "dark" ? "light" : "dark");
+});
+
+/* ============================================================
+   HISTORIAL (back del navegador)
+   ============================================================ */
+history.replaceState({ screen: "start" }, "");
+
+function pushScreen(mode) {
+  const cur = history.state;
+  if (cur && cur.screen && cur.screen !== "start") {
+    history.replaceState({ screen: mode }, "");
+  } else {
+    history.pushState({ screen: mode }, "");
+  }
+}
+
+window.addEventListener("popstate", () => {
+  goingBack = false;
+  if (state.mode !== "start") doBackToMenu();
+});
+
+/* ============================================================
+   PANTALLA DE INICIO
+   ============================================================ */
+function renderStartScreen() {
+  topicGrid.innerHTML = "";
+
+  const complete = document.createElement("button");
+  complete.className = "topic-card complete";
+  complete.innerHTML = `
+    <div class="tc-num">Examen completo</div>
+    <div class="tc-title">🎯 Todos los temas · respuesta inmediata</div>
+    <div class="tc-count">${QUIZ.length} preguntas · 5 temas</div>
+  `;
+  complete.addEventListener("click", () => startQuiz("all"));
+  topicGrid.appendChild(complete);
+
+  Object.entries(TEMAS).forEach(([id, tema]) => {
+    const temaId = Number(id);
+    const count  = QUIZ.filter(q => q.tema === temaId).length;
+    const card   = document.createElement("button");
+    card.className = "topic-card";
+    card.innerHTML = `
+      <div class="tc-num">Tema ${id}</div>
+      <div class="tc-title">${tema.icon} ${tema.title}</div>
+      <div class="tc-count">${count} preguntas · respuesta inmediata</div>
+    `;
+    card.addEventListener("click", () => startQuiz(temaId));
+    topicGrid.appendChild(card);
+  });
+
+  const bal = document.createElement("button");
+  bal.className = "topic-card balotario";
+  bal.innerHTML = `
+    <span class="bal-icon">📖</span>
+    <div class="bal-body">
+      <div class="tc-num">Balotario</div>
+      <div class="tc-title">Todas las preguntas con sus respuestas</div>
+      <div class="tc-count">Consulta el banco completo · ${QUIZ.length} preguntas</div>
+    </div>
+  `;
+  bal.addEventListener("click", showBalotario);
+  topicGrid.appendChild(bal);
+}
+
+/* ============================================================
+   CAMBIO DE PANTALLAS
+   ============================================================ */
+function showOnly(screen) {
+  [startScreen, quizScreen, resultsScreen, balotarioScreen].forEach(s => {
+    s.style.display = "none";
+  });
+  screen.style.display = "block";
+}
+
+/* ============================================================
+   MODAL DE CONFIRMACIÓN
+   ============================================================ */
+function openConfirmModal() {
+  confirmModal.classList.add("show");
+  document.body.style.overflow = "hidden";
+  setTimeout(() => modalCancelBtn.focus(), 50);
+}
+function closeConfirmModal() {
+  confirmModal.classList.remove("show");
+  document.body.style.overflow = "";
+}
+modalCancelBtn.addEventListener("click", closeConfirmModal);
+modalConfirmBtn.addEventListener("click", () => {
+  closeConfirmModal();
+  backToMenu();
+});
+confirmModal.addEventListener("click", (e) => {
+  if (e.target === confirmModal) closeConfirmModal();
+});
+
+/* ============================================================
+   QUIZ
+   ============================================================ */
+function getQuestions(temaId) {
+  if (temaId === "all") return QUIZ.slice();
+  return QUIZ.filter(q => q.tema === Number(temaId));
+}
+
+function hasProgress() {
+  return state.answers.some(a => a !== null);
+}
+
+function requestExitQuiz() {
+  if (state.mode !== "quiz") {
+    backToMenu();
+    return;
+  }
+  if (hasProgress()) {
+    openConfirmModal();
+  } else {
+    backToMenu();
+  }
+}
+
+function startQuiz(tema) {
+  closeConfirmModal();
+  state.mode = "quiz";
+  state.tema = tema;
+  state.questions = getQuestions(tema);
+  state.currentIdx = 0;
+  state.answers = new Array(state.questions.length).fill(null);
+  state.answeredCurrent = false;
+
+  pushScreen("quiz");
+  showOnly(quizScreen);
+
+  if (tema === "all") {
+    quizTitle.textContent = `Examen completo · ${state.questions.length} preguntas`;
+  } else {
+    const t = TEMAS[Number(tema)];
+    quizTitle.textContent = `Tema ${tema} · ${t.icon} ${t.title}`;
+  }
+
+  renderCurrentQuestion();
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function renderCurrentQuestion() {
+  const idx = state.currentIdx;
+  const q   = state.questions[idx];
+  state.answeredCurrent = false;
+
+  questionContainer.innerHTML = "";
+
+  const card = document.createElement("div");
+  card.className = "question";
+  card.dataset.index = idx;
+
+  const head = document.createElement("div");
+  head.className = "q-head";
+  head.innerHTML = `<div class="q-num">${idx + 1}</div>
+                    <div class="q-text">${q.q}</div>`;
+  card.appendChild(head);
+
+  q.o.forEach((opt, k) => {
+    const label = document.createElement("label");
+    label.className = "option";
+    label.dataset.value = k;
+    label.innerHTML = `
+      <input type="radio" name="current" value="${k}">
+      <span class="letter">${LETRAS[k]}</span>
+      <span class="text">${opt}</span>`;
+    label.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (state.answeredCurrent) return;
+      selectOption(k, card);
+    });
+    card.appendChild(label);
+  });
+
+  const just = document.createElement("div");
+  just.className = "justify";
+  card.appendChild(just);
+
+  questionContainer.appendChild(card);
+
+  nextBtn.textContent = (idx === state.questions.length - 1)
+    ? "Ver resultados ✓"
+    : "Siguiente →";
+  nextBtn.disabled = true;
+}
+
+function selectOption(k, card) {
+  if (state.answeredCurrent) return;
+  state.answeredCurrent = true;
+
+  const idx = state.currentIdx;
+  const q   = state.questions[idx];
+  const correct = (k === q.a);
+
+  state.answers[idx] = { selected: k, correct };
+
+  card.querySelectorAll(".option").forEach(op => {
+    const v = Number(op.dataset.value);
+    if (v === q.a) op.classList.add("is-correct");
+    if (v === k && v !== q.a) op.classList.add("is-wrong");
+    op.style.cursor = "default";
+  });
+
+  card.classList.add(correct ? "correct" : "wrong");
+
+  const just = card.querySelector(".justify");
+  just.innerHTML = `<b class="${correct ? 'fb-ok' : 'fb-bad'}">
+      ${correct ? '✅ ¡Correcto!' : '❌ Incorrecto'} · Respuesta correcta: ${LETRAS[q.a]}.</b>
+      ${q.j}`;
+  just.classList.add("show");
+
+  nextBtn.disabled = false;
+}
+
+function updateProgress() {
+  const total = state.questions.length;
+  const cur   = state.currentIdx + 1;
+  const pct   = Math.round((cur / total) * 100);
+  progressLabel.textContent = `Pregunta ${cur} / ${total}`;
+  progressPct.textContent   = pct + "%";
+  progressFill.style.width  = pct + "%";
+}
+
+nextBtn.addEventListener("click", () => {
+  if (!state.answeredCurrent) return;
+
+  if (state.currentIdx < state.questions.length - 1) {
+    state.currentIdx++;
+    renderCurrentQuestion();
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    showResults();
+  }
+});
+
+/* ============================================================
+   RESULTADOS
+   ============================================================ */
+function showResults() {
+  state.mode = "results";
+
+  const total = state.questions.length;
+  let ok = 0, bad = 0, blank = 0;
+
+  state.answers.forEach(a => {
+    if (!a) blank++;
+    else if (a.correct) ok++;
+    else bad++;
+  });
+
+  const pct = Math.round((ok / total) * 100);
+
+  document.getElementById("scoreBig").textContent = `${ok} / ${total}`;
+  document.getElementById("scorePct").textContent = `${pct}% de aciertos`;
+  document.getElementById("cntOk").textContent    = ok;
+  document.getElementById("cntBad").textContent   = bad;
+  document.getElementById("cntBlank").textContent = blank;
+
+  let msg, color;
+  if (pct >= 90)      { msg = "🏆 ¡Excelente! Dominas el contenido.";        color = "var(--ok)"; }
+  else if (pct >= 75) { msg = "🎉 ¡Muy bien! Solo repasa algunos detalles."; color = "var(--ok)"; }
+  else if (pct >= 60) { msg = "👍 Aprobado. Refuerza los temas fallados.";   color = "#f59e0b"; }
+  else if (pct >= 40) { msg = "📚 Necesitas repasar el material.";           color = "#f97316"; }
+  else                { msg = "⚠️ Repasa los PDFs antes de repetir el quiz."; color = "var(--bad)"; }
+
+  const msgEl = document.getElementById("scoreMsg");
+  msgEl.textContent = msg;
+  msgEl.style.color = color;
+
+  showOnly(resultsScreen);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+document.getElementById("retryBtn").addEventListener("click", () => {
+  startQuiz(state.tema);
+});
+
+document.getElementById("backToMenuBtn").addEventListener("click", backToMenu);
+
+/* ============================================================
+   BALOTARIO
+   ============================================================ */
+let balotarioFilter = "all";
+
+function showBalotario() {
+  state.mode = "balotario";
+  pushScreen("balotario");
+  showOnly(balotarioScreen);
+  renderFilterBar();
+  renderBalotario(balotarioFilter);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function renderFilterBar() {
+  filterBar.innerHTML = "";
+  const opts = [
+    { id: "all", label: "📚 Todos los temas" },
+    ...Object.entries(TEMAS).map(([id, tema]) => ({
+      id: Number(id),
+      label: `Tema ${id}: ${tema.short}`
+    }))
+  ];
+  opts.forEach(op => {
+    const btn = document.createElement("button");
+    btn.className = "filter-btn" + (balotarioFilter === op.id ? " active" : "");
+    btn.textContent = op.label;
+    btn.addEventListener("click", () => {
+      balotarioFilter = op.id;
+      renderFilterBar();
+      renderBalotario(op.id);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    filterBar.appendChild(btn);
+  });
+}
+
+function renderBalotario(filter) {
+  balotarioContent.innerHTML = "";
+
+  const filtered = (filter === "all")
+    ? QUIZ.map((q, i) => ({ ...q, _idx: i }))
+    : QUIZ.map((q, i) => ({ ...q, _idx: i })).filter(q => q.tema === filter);
+
+  balCounter.textContent = `${filtered.length} pregunta${filtered.length === 1 ? "" : "s"} en el balotario`;
+
+  let lastTema = null;
+  filtered.forEach(q => {
+    if (filter === "all" && q.tema !== lastTema) {
+      lastTema = q.tema;
+      const t = TEMAS[q.tema];
+      const h = document.createElement("div");
+      h.className = "theme-title";
+      h.textContent = `Tema ${q.tema} · ${t.icon} ${t.title}`;
+      balotarioContent.appendChild(h);
+    }
+
+    const card = document.createElement("div");
+    card.className = "question";
+
+    const head = document.createElement("div");
+    head.className = "q-head";
+    head.innerHTML = `<div class="q-num">${q._idx + 1}</div>
+                      <div class="q-text">${q.q}</div>`;
+    card.appendChild(head);
+
+    q.o.forEach((opt, k) => {
+      const row = document.createElement("div");
+      row.className = "option bal-option" + (k === q.a ? " is-correct" : "");
+      row.innerHTML = `<span class="letter">${LETRAS[k]}</span>
+                       <span class="text">${opt}</span>`;
+      card.appendChild(row);
+    });
+
+    const just = document.createElement("div");
+    just.className = "justify show";
+    just.innerHTML = `<b>Respuesta correcta: ${LETRAS[q.a]}.</b> Justificación: ${q.j}`;
+    card.appendChild(just);
+
+    balotarioContent.appendChild(card);
+  });
+}
+
+/* ============================================================
+   NAVEGACIÓN
+   ============================================================ */
+function doBackToMenu() {
+  goingBack = false;
+  closeConfirmModal();
+  state.mode = "start";
+  state.questions = [];
+  state.answers = [];
+  state.currentIdx = 0;
+  state.answeredCurrent = false;
+  showOnly(startScreen);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function backToMenu() {
+  if (state.mode === "start" || goingBack) return;
+  const hs = history.state;
+  if (hs && hs.screen && hs.screen !== "start") {
+    goingBack = true;
+    history.back();
+    setTimeout(() => {
+      if (goingBack) doBackToMenu();
+    }, 250);
+  } else {
+    doBackToMenu();
+  }
+}
+
+document.getElementById("quizBackBtn").addEventListener("click", requestExitQuiz);
+document.getElementById("balotarioBackBtn").addEventListener("click", backToMenu);
+
+/* ============================================================
+   ATAJOS DE TECLADO
+   ============================================================ */
+document.addEventListener("keydown", (e) => {
+  const tag = (e.target.tagName || "").toLowerCase();
+  if (tag === "input" || tag === "textarea" || tag === "select") return;
+
+  // ── Si el modal está abierto, solo manejamos Escape (cancelar) ──
+  if (confirmModal.classList.contains("show")) {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      closeConfirmModal();
+    }
+    return;
+  }
+
+  // ── Escape: volver (con confirmación en preguntas) ──
+  if (e.key === "Escape") {
+    if (state.mode === "quiz") {
+      e.preventDefault();
+      requestExitQuiz();
+    } else if (state.mode !== "start") {
+      e.preventDefault();
+      backToMenu();
+    }
+    return;
+  }
+
+  // ── Atajos solo dentro del quiz ──
+  if (state.mode !== "quiz") return;
+  if (quizScreen.style.display === "none") return;
+
+  const active = document.activeElement;
+
+  if (!state.answeredCurrent) {
+    const card = questionContainer.querySelector(".question");
+    if (!card) return;
+
+    const upper = e.key.length === 1 ? e.key.toUpperCase() : "";
+    let idx = LETRAS.indexOf(upper);
+    if (idx === -1 && /^[1-4]$/.test(e.key)) idx = Number(e.key) - 1;
+
+    if (idx >= 0 && idx < 4) {
+      e.preventDefault();
+      selectOption(idx, card);
+    }
+    return;
+  }
+
+  if (e.key === "Enter" || e.key === "ArrowRight") {
+    if (active === nextBtn) return;
+    e.preventDefault();
+    if (!nextBtn.disabled) nextBtn.click();
+  }
+});
+
+/* ============================================================
+   ARRANQUE
+   ============================================================ */
+initTheme();
+renderStartScreen();
+</script>
+
+</body>
+</html>
