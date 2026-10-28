@@ -727,7 +727,7 @@
 <header>
   <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">🌙</button>
   <h1>📊 Quiz Metodología</h1>
-  <p>880 preguntas · Respuesta inmediata · Balotario con subtemas</p>
+  <p>995 preguntas · Respuesta inmediata · Balotario con subtemas</p>
 </header>
 
 <main>
@@ -843,7 +843,9 @@ const TEMAS = {
   8: { title: "Grupo B III - Variables, diseños y muestreo",
        short: "Grupo B III", icon: "📙" },
   9: { title: "Grupo B IV - Proyecto de mecánica de suelos en Pucallpa",
-       short: "Grupo B IV", icon: "📕" }
+       short: "Grupo B IV", icon: "📕" },
+  10: { title: "Grupo 06 - Percepción vecinal sobre el pavimento en el Jirón 2 de Mayo, Pucallpa",
+        short: "Grupo 06", icon: "🏘️" }
 };
 
 const SUBTEMAS = {
@@ -917,6 +919,17 @@ const SUBTEMAS = {
     4: "Marco metodológico",
     5: "Aspectos administrativos",
     6: "Anexos y resultados"
+  },
+  10: {
+    1: "Portada e índice",
+    2: "Planteamiento del problema",
+    3: "Marco teórico",
+    4: "Sistema de hipótesis",
+    5: "Marco metodológico",
+    6: "Resultados y discusión",
+    7: "Conclusiones",
+    8: "Aspectos administrativos y presupuesto",
+    9: "Referencias y anexos"
   }
 };
 
@@ -1856,6 +1869,127 @@ QUIZ.push(
   { tema:9, sub:6, q:"¿Cuál es el objetivo de la investigación según la matriz de consistencia?", o:["Comparar las características geotécnicas de los suelos identificados en ambas calicatas.","Diseñar la cimentación.","Calcular la capacidad portante.","Realizar el estudio de suelos."], a:0, j:"Subtema: Anexos y resultados." }
 );
 
+/* ═══════════════════════════════════════════════════════════
+   TEMA 10 · GRUPO 06 - PERCEPCIÓN VECINAL PAVIMENTO (115 preguntas)
+   ═══════════════════════════════════════════════════════════ */
+QUIZ.push(
+  { tema:10, sub:1, q:"¿Cuál es el título del trabajo presentado?", o:["Percepción vecinal sobre el estado del pavimento en el Jirón 2 de Mayo, Pucallpa.","Estudio de suelos en el Jirón 2 de Mayo.","Análisis de la movilidad urbana en Pucallpa.","Informe de investigación sobre el pavimento rígido."], a:0, j:"Subtema: Portada e índice." },
+  { tema:10, sub:1, q:"¿A qué ciclo y carrera corresponde el trabajo?", o:["Ingeniería Civil · Quinto ciclo.","Ingeniería Civil · Tercer ciclo.","Arquitectura · Tercer ciclo.","Ingeniería Ambiental · Tercer ciclo."], a:1, j:"Subtema: Portada e índice." },
+  { tema:10, sub:1, q:"¿Quién es el autor del trabajo?", o:["David Daniel Sánchez Rivera.","Fidias Arias-Odón.","Hernández Sampieri.","Lozano Miñope."], a:0, j:"Subtema: Portada e índice." },
+  { tema:10, sub:1, q:"¿Qué año se indica en la portada?", o:["2024.","2025.","2026.","2023."], a:2, j:"Subtema: Portada e índice." },
+  { tema:10, sub:1, q:"¿Qué tipo de caso se presenta en la portada?", o:["Un caso real ejecutado.","Un caso académico con ocho encuestas ficticias.","Un proyecto de tesis real.","Un estudio de laboratorio."], a:1, j:"Subtema: Portada e índice." },
+  { tema:10, sub:1, q:"Según el índice, ¿cuántas secciones tiene el trabajo?", o:["5 secciones.","6 secciones.","7 secciones.","8 secciones."], a:2, j:"Subtema: Portada e índice." },
+  { tema:10, sub:1, q:"Según el índice, ¿en qué páginas se encuentran los anexos y las ocho encuestas ficticias?", o:["Páginas 21-22.","Páginas 23.","Páginas 24-25.","Páginas 15-17."], a:2, j:"Subtema: Portada e índice." },
+  { tema:10, sub:2, q:"¿Qué se delimita en el planteamiento del problema?", o:["Qué se quiere conocer, por qué y con qué propósito.","El presupuesto y el cronograma.","La bibliografía utilizada.","Las conclusiones del estudio."], a:0, j:"Subtema: Planteamiento del problema." },
+  { tema:10, sub:2, q:"Según los fundamentos del problema, ¿qué se busca comprender?", o:["Las experiencias vecinales del tramo sin presumir daños en toda la vía.","El costo de la pavimentación.","La resistencia del concreto.","El diseño de la mezcla asfáltica."], a:0, j:"Subtema: Planteamiento del problema." },
+  { tema:10, sub:2, q:"La justificación e importancia busca explicar el valor:", o:["Teórico, práctico, social y metodológico.","Económico y financiero.","Político y religioso.","Cultural y artístico."], a:0, j:"Subtema: Planteamiento del problema." },
+  { tema:10, sub:2, q:"Según la justificación, ¿qué se busca generar al escuchar opiniones?", o:["Un presupuesto.","Una comprensión que complemente futuras evaluaciones.","Un diseño de pavimento.","Una ley municipal."], a:1, j:"Subtema: Planteamiento del problema." },
+  { tema:10, sub:2, q:"¿Qué revisa la viabilidad del estudio?", o:["Solo el presupuesto.","Disponibilidad teórica, metodológica, técnica, económica y temporal.","La cantidad de libros en la biblioteca.","El clima de la región."], a:1, j:"Subtema: Planteamiento del problema." },
+  { tema:10, sub:2, q:"¿Cuál es el presupuesto referencial de la viabilidad?", o:["S/ 50.","S/ 70.","S/ 100.","S/ 200."], a:1, j:"Subtema: Planteamiento del problema." },
+  { tema:10, sub:2, q:"¿Cuál es el tiempo estimado para el estudio según la viabilidad?", o:["Dos semanas.","Tres semanas.","Cuatro semanas.","Un mes y medio."], a:2, j:"Subtema: Planteamiento del problema." },
+  { tema:10, sub:2, q:"Según la viabilidad, se cuenta con:", o:["Teléfono y computadora propios.","Laboratorio propio.","Vehículo propio.","Oficina propia."], a:0, j:"Subtema: Planteamiento del problema." },
+  { tema:10, sub:2, q:"¿Cuál es la pregunta general de la formulación del problema?", o:["¿Cuánto cuesta arreglar el pavimento?","¿Cómo perciben los vecinos el estado vial y su significado para la movilidad?","¿Qué tipo de suelo hay en el Jirón 2 de Mayo?","¿Cuál es la resistencia del concreto?"], a:1, j:"Subtema: Planteamiento del problema." },
+  { tema:10, sub:2, q:"¿Cuáles son las preguntas específicas?", o:["¿Qué condiciones describen?, ¿qué experiencias relatan?, ¿qué priorizan?","¿Cuánto cuesta?, ¿quién lo hace?, ¿cuándo termina?","¿Qué materiales usan?, ¿cómo lo usan?, ¿dónde lo usan?","¿Cuál es la causa?, ¿cuál es el efecto?, ¿cuál es la solución?"], a:0, j:"Subtema: Planteamiento del problema." },
+  { tema:10, sub:2, q:"¿Cuál es el objetivo general de la investigación?", o:["Comprender las percepciones vecinales sobre el estado vial del tramo.","Diseñar un nuevo pavimento.","Calcular el presupuesto de reparación.","Evaluar la resistencia del suelo."], a:0, j:"Subtema: Planteamiento del problema." },
+  { tema:10, sub:2, q:"¿Cuáles son los objetivos específicos?", o:["Describir condiciones, interpretar experiencias e identificar prioridades.","Medir, calcular y presupuestar.","Diseñar, construir y supervisar.","Analizar, sintetizar y concluir."], a:0, j:"Subtema: Planteamiento del problema." },
+  { tema:10, sub:3, q:"¿Qué se revisa en los antecedentes?", o:["Estudios internacionales, nacionales y locales.","Solo estudios locales.","Solo libros de texto.","Solo tesis de la UNU."], a:0, j:"Subtema: Marco teórico." },
+  { tema:10, sub:3, q:"¿Cuáles son los ejemplos de antecedentes mencionados?", o:["FHWA (2015), Lozano Miñope (2024) y Sales Dávila e Hidalgo Sánchez (2017).","Braun y Clarke (2006), Sánchez Flores (2019).","Hernández Sampieri (2014).","Arias-Odón (2023)."], a:0, j:"Subtema: Marco teórico." },
+  { tema:10, sub:3, q:"Las bases teóricas reúnen:", o:["Teorías, modelos y enfoques que sustentan las categorías.","Solo definiciones.","Solo fórmulas matemáticas.","Solo el presupuesto."], a:0, j:"Subtema: Marco teórico." },
+  { tema:10, sub:3, q:"¿Cuál es la perspectiva de las bases teóricas en este caso?", o:["Positivista.","Interpretativa.","Crítica.","Empírico-analítica."], a:1, j:"Subtema: Marco teórico." },
+  { tema:10, sub:3, q:"Según las bases teóricas, ¿qué se relaciona en esta perspectiva?", o:["Condiciones percibidas, experiencias y prioridades.","Materiales, costos y tiempos.","Suelos, cimentaciones y estructuras.","Normas, leyes y reglamentos."], a:0, j:"Subtema: Marco teórico." },
+  { tema:10, sub:3, q:"Según las bases conceptuales, ¿cómo se define \"Percepción\"?", o:["Interpretación de la experiencia.","Desplazamientos.","Posibilidad de recorrer.","Medición técnica del pavimento."], a:0, j:"Subtema: Marco teórico." },
+  { tema:10, sub:3, q:"Según las bases conceptuales, ¿cómo se define \"Movilidad\"?", o:["Interpretación de la experiencia.","Desplazamientos.","Posibilidad de recorrer.","Medición técnica del pavimento."], a:1, j:"Subtema: Marco teórico." },
+  { tema:10, sub:3, q:"Según las bases conceptuales, ¿cómo se define \"Transitabilidad\"?", o:["Interpretación de la experiencia.","Desplazamientos.","Posibilidad de recorrer.","Medición técnica del pavimento."], a:2, j:"Subtema: Marco teórico." },
+  { tema:10, sub:3, q:"¿Qué se explícita en las bases filosóficas?", o:["Filosofía de la ciencia, epistemología, ontología, valores e implicaciones.","Solo la ontología.","Solo los valores.","Solo la epistemología."], a:0, j:"Subtema: Marco teórico." },
+  { tema:10, sub:3, q:"¿Cuál es el caso de las bases filosóficas?", o:["Experiencias diversas, interpretación contextual y respeto por las opiniones discrepantes.","Solo la opinión de la mayoría.","La medición exacta de las variables.","La experimentación controlada."], a:0, j:"Subtema: Marco teórico." },
+  { tema:10, sub:4, q:"En este enfoque, las hipótesis se adaptan a:", o:["Supuestos orientadores revisables.","Leyes universales.","Fórmulas matemáticas.","Resultados estadísticos."], a:0, j:"Subtema: Sistema de hipótesis." },
+  { tema:10, sub:4, q:"¿Cuál es el supuesto de la hipótesis general?", o:["Las percepciones podrían variar según la experiencia de uso y el recorrido.","El pavimento está en mal estado en toda la vía.","El presupuesto es insuficiente.","La muestra es representativa."], a:0, j:"Subtema: Sistema de hipótesis." },
+  { tema:10, sub:4, q:"Según la operacionalización, ¿cuáles son las categorías utilizadas?", o:["Estado vial percibido, experiencias de movilidad y necesidades de atención.","Variable independiente y dependiente.","Población y muestra.","Presupuesto y cronograma."], a:0, j:"Subtema: Sistema de hipótesis." },
+  { tema:10, sub:4, q:"En la definición operacional, ¿cuál es la unidad de análisis?", o:["Experiencias vecinales.","El pavimento.","Los vecinos.","El tramo."], a:0, j:"Subtema: Sistema de hipótesis." },
+  { tema:10, sub:4, q:"¿Qué tipo de códigos se utilizan en la definición operacional?", o:["Nominales: positiva o negativa.","Ordinales: 1 al 10.","De intervalo: 0 al 100.","De razón: metros cuadrados."], a:0, j:"Subtema: Sistema de hipótesis." },
+  { tema:10, sub:4, q:"Según la definición operacional, ¿qué NO se utiliza en este estudio?", o:["Índice técnico de pavimento.","Códigos nominales.","Unidad de análisis.","Registros de experiencias."], a:0, j:"Subtema: Sistema de hipótesis." },
+  { tema:10, sub:5, q:"¿Qué hace el enfoque cualitativo según el PDF?", o:["Interpreta.","Mide.","Integra.","Experimenta."], a:0, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:5, q:"¿Qué hace el enfoque cuantitativo según el PDF?", o:["Interpreta.","Mide.","Integra.","Experimenta."], a:1, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:5, q:"¿Qué hace el enfoque mixto según el PDF?", o:["Interpreta.","Mide.","Integra.","Experimenta."], a:2, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:5, q:"¿Cuál es el tipo y alcance del caso?", o:["Básico, exploratorio y descriptivo.","Aplicado, explicativo y correlacional.","Experimental, puro y longitudinal.","Documental, transversal y causal."], a:0, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:5, q:"¿Qué resumen los porcentajes en este estudio?", o:["El corpus ficticio.","La población total.","Los resultados reales.","Las encuestas nacionales."], a:0, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:5, q:"¿Cuál es el diseño de la investigación?", o:["Estudio de caso cualitativo de un tramo acotado.","Experimental puro.","Cuasi-experimental.","Documental longitudinal."], a:0, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:5, q:"¿Qué pasos incluye el diseño de la investigación?", o:["Recoger, ordenar, codificar e interpretar.","Medir, calcular, presupuestar y construir.","Diseñar, ejecutar, supervisar y entregar.","Analizar, sintetizar, concluir y publicar."], a:0, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:5, q:"¿Cuál es la población y muestra del caso?", o:["Ocho personas ficticias = 100 %.","100 personas reales.","50 vecinos del Jirón 2 de Mayo.","10 expertos en pavimentos."], a:0, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:5, q:"¿Qué porcentaje del total representa cada persona ficticia?", o:["10 %.","12,5 %.","15 %.","20 %."], a:1, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:5, q:"¿Cuáles son las técnicas e instrumentos mencionados?", o:["Cuestionario abierto, guía de entrevista y observación.","Solo encuestas cerradas.","Solo experimentos de laboratorio.","Solo análisis documental."], a:0, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:5, q:"En una aplicación real, ¿qué requeriría el instrumento?", o:["Revisión docente y piloto.","Compra de software.","Aprobación del municipio.","Financiamiento externo."], a:0, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:5, q:"¿Qué establece el procedimiento de recolección?", o:["Actividades, cronograma y consideraciones éticas.","Solo el presupuesto.","Solo la muestra.","Solo las conclusiones."], a:0, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:5, q:"¿Qué se debe solicitar en el procedimiento de recolección?", o:["Consentimiento.","Dinero.","Materiales.","Equipos."], a:0, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:5, q:"¿Cómo se registran las respuestas?", o:["Anónimas.","Con nombre y apellido.","Con DNI.","Con firma legalizada."], a:0, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:5, q:"¿Qué se analiza en el análisis de datos?", o:["Motivos y prioridades.","Solo frecuencias.","Solo promedios.","Solo gráficos."], a:0, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:5, q:"¿Qué herramientas ayudan a organizar extractos y códigos?", o:["Word o una hoja de cálculo.","AutoCAD.","SPSS.","MATLAB."], a:0, j:"Subtema: Marco metodológico." },
+  { tema:10, sub:6, q:"¿Cuántas opiniones positivas se registraron en las ocho encuestas ficticias?", o:["4 (50 %).","6 (75 %).","2 (25 %).","8 (100 %)."], a:1, j:"Subtema: Resultados y discusión." },
+  { tema:10, sub:6, q:"¿Cuántas opiniones negativas se registraron?", o:["2 (25 %).","4 (50 %).","6 (75 %).","0 (0 %)."], a:0, j:"Subtema: Resultados y discusión." },
+  { tema:10, sub:6, q:"¿Cuál es el estado global supuesto del pavimento?", o:["6/10 (condición intermedia).","8/10 (excelente).","4/10 (malo).","10/10 (perfecto)."], a:0, j:"Subtema: Resultados y discusión." },
+  { tema:10, sub:6, q:"En la escala del estado global, ¿qué significa 0?", o:["Pésimo.","Excelente.","Regular.","Bueno."], a:0, j:"Subtema: Resultados y discusión." },
+  { tema:10, sub:6, q:"En la escala del estado global, ¿qué significa 10?", o:["Pésimo.","Excelente.","Regular.","Bueno."], a:1, j:"Subtema: Resultados y discusión." },
+  { tema:10, sub:6, q:"Según la contrastación de hipótesis, ¿qué NO demuestra la distribución sola?", o:["Causas ni variaciones entre grupos.","La cantidad de encuestados.","El porcentaje de positivas.","El porcentaje de negativas."], a:0, j:"Subtema: Resultados y discusión." },
+  { tema:10, sub:6, q:"¿Qué tipo de prueba estadística se utilizó?", o:["Ninguna (sin prueba estadística).","T-Student.","ANOVA.","Chi-cuadrado."], a:0, j:"Subtema: Resultados y discusión." },
+  { tema:10, sub:6, q:"En la discusión, ¿qué hacen los antecedentes?", o:["Contextualizan el ejemplo.","Verifican el estado actual de la vía.","Modifican los resultados.","Invalidan el estudio."], a:0, j:"Subtema: Resultados y discusión." },
+  { tema:10, sub:6, q:"Según la discusión, las opiniones favorables pueden coexistir con:", o:["Necesidades de mejora y experiencias negativas.","Solo experiencias positivas.","La ausencia de problemas.","Un estado global de 10/10."], a:0, j:"Subtema: Resultados y discusión." },
+  { tema:10, sub:6, q:"¿Qué se reconoce en las implicaciones y aporte científico del ejercicio?", o:["La diversidad de experiencias.","La uniformidad de opiniones.","La exactitud de los datos.","La validez estadística."], a:0, j:"Subtema: Resultados y discusión." },
+  { tema:10, sub:6, q:"¿Los datos ficticios constituyen evidencia empírica?", o:["Sí.","No.","Solo parcialmente.","Depende del contexto."], a:1, j:"Subtema: Resultados y discusión." },
+  { tema:10, sub:7, q:"Según las conclusiones principales, ¿qué predomina en el ejercicio?", o:["La opinión positiva (6 de 8).","La opinión negativa (6 de 8).","La opinión neutral (4 de 8).","La falta de opinión."], a:0, j:"Subtema: Conclusiones." },
+  { tema:10, sub:7, q:"El estado global de 6/10 admite:", o:["Mejoras pendientes.","Que no hay problemas.","Que es perfecto.","Que debe demolerse."], a:0, j:"Subtema: Conclusiones." },
+  { tema:10, sub:7, q:"¿Qué proponen las recomendaciones?", o:["Recoger experiencias diversas, documentar el tramo y realizar evaluación técnica antes de plantear obras.","Construir de inmediato sin evaluación.","Ignorar las opiniones negativas.","Aumentar el presupuesto."], a:0, j:"Subtema: Conclusiones." },
+  { tema:10, sub:7, q:"Según las implicaciones, ¿qué complementa el estudio de una vía?", o:["Escuchar a los usuarios.","Solo la medición técnica.","Solo el presupuesto.","Solo la opinión del ingeniero."], a:0, j:"Subtema: Conclusiones." },
+  { tema:10, sub:7, q:"Según las implicaciones, ¿qué se conserva al escuchar a los usuarios?", o:["La voz de la minoría.","La voz de la mayoría.","El presupuesto.","La norma técnica."], a:0, j:"Subtema: Conclusiones." },
+  { tema:10, sub:7, q:"¿Cuáles son las limitaciones del estudio?", o:["Datos ficticios, grupo pequeño y ausencia de medición técnica.","Presupuesto alto y mucho tiempo.","Muestra grande y datos reales.","Falta de bibliografía."], a:0, j:"Subtema: Conclusiones." },
+  { tema:10, sub:7, q:"¿Qué se plantea a futuro como línea de investigación?", o:["Contrastar relatos y observación.","Solo aumentar la muestra.","Solo cambiar el diseño.","Solo usar software."], a:0, j:"Subtema: Conclusiones." },
+  { tema:10, sub:7, q:"Según el cierre, ¿qué conecta el esquema?", o:["Problema, método y conclusiones.","Presupuesto, tiempo y recursos.","Autores, citas y referencias.","Portada, índice y anexos."], a:0, j:"Subtema: Conclusiones." },
+  { tema:10, sub:7, q:"¿Toda afirmación requiere qué?", o:["Evidencia acorde con su alcance.","Una cita de autor.","Un cálculo matemático.","Una firma del docente."], a:0, j:"Subtema: Conclusiones." },
+  { tema:10, sub:8, q:"¿Qué se organiza en los aspectos administrativos?", o:["Personas, recursos, presupuesto y tiempo.","Solo el presupuesto.","Solo el tiempo.","Solo los recursos materiales."], a:0, j:"Subtema: Aspectos administrativos y presupuesto." },
+  { tema:10, sub:8, q:"¿Quiénes son los recursos humanos?", o:["Investigadores, asesor, apoyo y especialistas.","Solo los estudiantes.","Solo el docente.","Solo el asesor."], a:0, j:"Subtema: Aspectos administrativos y presupuesto." },
+  { tema:10, sub:8, q:"Según los roles propuestos, ¿qué hacen los estudiantes?", o:["Registro y análisis.","Orientación y revisión.","Financiamiento.","Construcción."], a:0, j:"Subtema: Aspectos administrativos y presupuesto." },
+  { tema:10, sub:8, q:"Según los roles propuestos, ¿qué hace el docente?", o:["Registro y análisis.","Orientación y revisión.","Financiamiento.","Construcción."], a:1, j:"Subtema: Aspectos administrativos y presupuesto." },
+  { tema:10, sub:8, q:"¿Cuál es el costo de los \"Materiales\"?", o:["S/ 10.","S/ 5.","S/ 15.","S/ 40."], a:0, j:"Subtema: Aspectos administrativos y presupuesto." },
+  { tema:10, sub:8, q:"¿Cuál es el costo de los \"Instrumentos impresos\"?", o:["S/ 10.","S/ 5.","S/ 15.","S/ 40."], a:1, j:"Subtema: Aspectos administrativos y presupuesto." },
+  { tema:10, sub:8, q:"¿Cuál es el costo de la \"Conectividad\"?", o:["S/ 10.","S/ 5.","S/ 15.","S/ 40."], a:2, j:"Subtema: Aspectos administrativos y presupuesto." },
+  { tema:10, sub:8, q:"¿Cuál es el costo del \"Transporte\"?", o:["S/ 10.","S/ 5.","S/ 15.","S/ 40."], a:3, j:"Subtema: Aspectos administrativos y presupuesto." },
+  { tema:10, sub:8, q:"¿Cuál es el total referencial del presupuesto?", o:["S/ 50.","S/ 70.","S/ 100.","S/ 150."], a:1, j:"Subtema: Aspectos administrativos y presupuesto." },
+  { tema:10, sub:8, q:"Según el presupuesto, ¿se realizaron gastos ejecutados?", o:["Sí.","No.","Solo en transporte.","Solo en materiales."], a:1, j:"Subtema: Aspectos administrativos y presupuesto." },
+  { tema:10, sub:8, q:"En el cronograma, ¿qué se hace en la Semana 1 (S1)?", o:["Planificar, elaborar y revisar fuentes.","Recolectar información y realizar campo.","Procesar y analizar.","Redactar el informe, presentar y sustentar."], a:0, j:"Subtema: Aspectos administrativos y presupuesto." },
+  { tema:10, sub:8, q:"En el cronograma, ¿qué se hace en la Semana 2 (S2)?", o:["Planificar.","Recolectar información y realizar campo.","Procesar y analizar.","Redactar el informe."], a:1, j:"Subtema: Aspectos administrativos y presupuesto." },
+  { tema:10, sub:8, q:"En el cronograma, ¿qué se hace en la Semana 3 (S3)?", o:["Planificar.","Recolectar información.","Procesar y analizar.","Redactar el informe."], a:2, j:"Subtema: Aspectos administrativos y presupuesto." },
+  { tema:10, sub:8, q:"En el cronograma, ¿qué se hace en la Semana 4 (S4)?", o:["Planificar.","Recolectar información.","Procesar y analizar.","Redactar el informe, presentar y sustentar."], a:3, j:"Subtema: Aspectos administrativos y presupuesto." },
+  { tema:10, sub:9, q:"¿Quién es el autor de la referencia \"Análisis temático\"?", o:["Braun y Clarke (2006).","Sánchez Flores (2019).","FHWA (2015).","Lozano Miñope (2024)."], a:0, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"¿Quién es el autor de la referencia \"Fundamentos cualitativos\"?", o:["Braun y Clarke (2006).","Sánchez Flores (2019).","FHWA (2015).","Lozano Miñope (2024)."], a:1, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"¿Quién es el autor de la referencia \"Movilidad urbana\"?", o:["Braun y Clarke (2006).","Sánchez Flores (2019).","FHWA (2015).","Lozano Miñope (2024)."], a:2, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"¿Quién es el autor de la referencia \"Percepción comunitaria e infraestructura\"?", o:["Braun y Clarke (2006).","Sánchez Flores (2019).","FHWA (2015).","Lozano Miñope (2024)."], a:3, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"¿Quién es el autor de la referencia \"Antecedente vial de Pucallpa\"?", o:["Braun y Clarke (2006).","Sales Dávila e Hidalgo Sánchez (2017).","FHWA (2015).","Lozano Miñope (2024)."], a:1, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"En la matriz de consistencia, ¿qué se describe?", o:["Condiciones (describir), experiencias (interpretar) y prioridades (identificar).","Solo el presupuesto.","Solo las hipótesis.","Solo el cronograma."], a:0, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"Según los anexos, ¿qué tipo de preguntas tiene el cuestionario?", o:["Preguntas abiertas.","Preguntas cerradas.","Preguntas mixtas.","Preguntas de opción múltiple."], a:0, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"Según los anexos, ¿qué puede hacer la entrevista?", o:["Profundizar con repreguntas neutrales y ejemplos concretos.","Solo registrar sí o no.","Solo medir variables.","Solo calcular promedios."], a:0, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"Según la ficha de observación, ¿qué se registra?", o:["Fecha, tramo, superficie, paso peatonal, obstáculos y fotografías.","Solo la fecha.","Solo las fotografías.","Solo los obstáculos."], a:0, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"Según los anexos, ¿qué se distingue en los registros?", o:["Hechos observados e interpretaciones.","Datos reales y ficticios.","Presupuesto y gastos.","Autores y citas."], a:0, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"Según la encuesta ficticia E01, ¿cuál es la valoración?", o:["Positiva.","Negativa.","Neutral.","No se especifica."], a:0, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"Según E01, ¿qué sugiere el encuestado?", o:["Mantenimiento preventivo.","Revisar sectores.","Conservar la superficie.","Mantener el paso despejado."], a:0, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"Según E02, ¿qué sugiere el encuestado?", o:["Mantenimiento preventivo.","Revisar sectores.","Conservar la superficie.","Mantener el paso despejado."], a:1, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"Según E03, ¿qué sugiere el encuestado?", o:["Mantenimiento preventivo.","Revisar sectores.","Conservar la superficie.","Mantener el paso despejado."], a:2, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"Según E04, ¿qué sugiere el encuestado?", o:["Mantenimiento preventivo.","Revisar sectores.","Conservar la superficie.","Mantener el paso despejado."], a:3, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"Según E05, ¿qué sugiere el encuestado?", o:["Atención oportuna.","Mejoras graduales.","Revisar las irregularidades.","Identificar dificultades."], a:0, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"Según E06, ¿qué sugiere el encuestado?", o:["Atención oportuna.","Mejoras graduales.","Revisar las irregularidades.","Identificar dificultades."], a:1, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"Según E07, ¿cuál es la valoración?", o:["Positiva.","Negativa.","Neutral.","No se especifica."], a:1, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"Según E07, ¿qué sugiere el encuestado?", o:["Revisarlas.","Mejoras graduales.","Atención oportuna.","Mantenimiento preventivo."], a:0, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"Según E08, ¿cuál es la valoración?", o:["Positiva.","Negativa.","Neutral.","No se especifica."], a:1, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"Según E08, ¿qué sugiere el encuestado?", o:["Identificar dificultades.","Mejoras graduales.","Atención oportuna.","Mantenimiento preventivo."], a:0, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"¿Cuál es el porcentaje total de las 8 encuestas?", o:["50 %.","75 %.","100 %.","12,5 %."], a:2, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"¿Cuál es el porcentaje de opiniones positivas?", o:["25 %.","50 %.","75 %.","100 %."], a:2, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"¿Cuál es el porcentaje de opiniones negativas?", o:["25 %.","50 %.","75 %.","100 %."], a:0, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"¿Cuál es el estado global reportado en las encuestas?", o:["4/10.","6/10.","8/10.","10/10."], a:1, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"En la pregunta general, ¿qué se busca comprender?", o:["Las percepciones vecinales sobre el estado vial del tramo.","La resistencia del concreto.","El presupuesto municipal.","La cantidad de baches."], a:0, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"¿Cuál de las siguientes es una pregunta específica?", o:["¿Qué condiciones describen?","¿Cuánto cuesta?","¿Quién lo construyó?","¿Cuándo se termina?"], a:0, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"En las bases conceptuales, ¿qué se define como \"Posibilidad de recorrer\"?", o:["Percepción.","Movilidad.","Transitabilidad.","Pavimento."], a:2, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"En la definición operacional, ¿qué código se usa para lo negativo?", o:["Positiva.","Negativa.","Neutra.","Ausente."], a:1, j:"Subtema: Referencias y anexos." },
+  { tema:10, sub:9, q:"En el análisis de datos, ¿qué se construye?", o:["Temas.","Presupuestos.","Planos.","Maquetas."], a:0, j:"Subtema: Referencias y anexos." }
+);
+
 /* ============================================================
    REFERENCIAS
    ============================================================ */
@@ -1946,7 +2080,7 @@ function renderStartScreen() {
   complete.innerHTML = `
     <div class="tc-num">Examen completo</div>
     <div class="tc-title">🎯 Todos los temas · respuesta inmediata</div>
-    <div class="tc-count">${QUIZ.length} preguntas · 9 temas</div>`;
+    <div class="tc-count">${QUIZ.length} preguntas · 10 temas</div>`;
   complete.addEventListener("click", () => openQuantityModal("all"));
   topicGrid.appendChild(complete);
 
