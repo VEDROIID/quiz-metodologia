@@ -124,7 +124,6 @@
 
   main { max-width: 860px; margin: 0 auto; padding: 26px 16px 0; }
 
-  /* ============ START ============ */
   .start-title {
     font-size: clamp(1.3rem, 3vw, 1.7rem);
     text-align: center; margin-top: 10px; margin-bottom: 8px;
@@ -207,7 +206,6 @@
     font-weight: 500;
   }
 
-  /* ============ HEADER DE PANTALLA ============ */
   .screen-header {
     display: flex; align-items: center;
     gap: 14px; margin-bottom: 18px;
@@ -231,7 +229,6 @@
   }
   .screen-title { font-size: 1.15rem; font-weight: 800; }
 
-  /* ============ PROGRESO ============ */
   .progress-wrap {
     position: sticky; top: 0; z-index: 100;
     background: var(--progress-bg);
@@ -264,7 +261,6 @@
     transition: width .3s ease;
   }
 
-  /* ============ QUESTION CARD ============ */
   .question {
     background: var(--card-bg);
     border-radius: 16px;
@@ -293,7 +289,6 @@
   }
   .q-text { font-weight: 600; font-size: 1.02rem; padding-top: 3px; }
 
-  /* ============ OPTIONS ============ */
   .option {
     display: flex; align-items: center; gap: 12px;
     padding: 11px 14px;
@@ -349,7 +344,6 @@
     background: var(--correct-bg);
   }
 
-  /* ============ JUSTIFY ============ */
   .justify {
     display: none;
     margin-top: 14px;
@@ -371,7 +365,6 @@
   .justify .fb-ok  { color: var(--ok); }
   .justify .fb-bad { color: var(--bad); }
 
-  /* ============ NEXT BUTTON ============ */
   .quiz-actions {
     display: flex;
     justify-content: flex-end;
@@ -400,7 +393,6 @@
     box-shadow: none;
   }
 
-  /* ============ TECLAS ============ */
   .kbd-hint {
     text-align: center;
     font-size: .8rem;
@@ -422,7 +414,6 @@
     margin: 0 1px;
   }
 
-  /* ============ RESULT CARD ============ */
   #resultsScreen { display: none; }
   .score-card {
     background: var(--card-bg);
@@ -495,7 +486,6 @@
   }
   .btn-secondary:hover { background: var(--option-selected-bg); }
 
-  /* ============ BALOTARIO ============ */
   .filter-bar {
     display: flex;
     gap: 8px;
@@ -532,7 +522,6 @@
     font-weight: 600;
   }
 
-  /* ============ TEMA TITLE ============ */
   .theme-title {
     font-size: .95rem;
     font-weight: 800;
@@ -548,7 +537,6 @@
   }
   .theme-title:first-child { margin-top: 0; }
 
-  /* ============ SUBTEMA TITLE ============ */
   .sub-title {
     font-size: .82rem;
     font-weight: 700;
@@ -561,7 +549,6 @@
     border-left: 3px solid var(--primary);
   }
 
-  /* ============ MODAL DE CONFIRMACIÓN ============ */
   .modal-overlay {
     display: none;
     position: fixed;
@@ -669,7 +656,6 @@
     outline: none;
   }
 
-  /* ============ MODAL CANTIDAD DE PREGUNTAS ============ */
   .quantity-input-wrap {
     display: flex;
     align-items: center;
@@ -720,7 +706,6 @@
     font-style: italic;
   }
 
-  /* ============ RESPONSIVE ============ */
   @media (max-width: 600px) {
     .question { padding: 18px 15px 14px; }
     .q-text { font-size: .97rem; }
@@ -742,7 +727,7 @@
 <header>
   <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">🌙</button>
   <h1>📊 Quiz Metodología</h1>
-  <p>425 preguntas · Respuesta inmediata · Balotario con subtemas</p>
+  <p>770 preguntas · Respuesta inmediata · Balotario con subtemas</p>
 </header>
 
 <main>
@@ -850,7 +835,13 @@ const TEMAS = {
   3: { title: "Diseño de la investigación", short: "Diseño de la investigación", icon: "🔬" },
   4: { title: "Técnicas de observación", short: "Técnicas de observación", icon: "👁️" },
   5: { title: "Procedimiento de recolección de datos, codificación y estadística descriptiva",
-       short: "Recolección de datos", icon: "📝" }
+       short: "Recolección de datos", icon: "📝" },
+  6: { title: "Grupo B I - Fundamentos de investigación y metodología",
+       short: "Grupo B I", icon: "📘" },
+  7: { title: "Grupo B II - Proyecto e informe de investigación",
+       short: "Grupo B II", icon: "📗" },
+  8: { title: "Grupo B III - Variables, diseños y muestreo",
+       short: "Grupo B III", icon: "📙" }
 };
 
 const SUBTEMAS = {
@@ -889,20 +880,42 @@ const SUBTEMAS = {
     3: "Estadística descriptiva",
     4: "Codificación, matriz de datos y tipos de variables",
     5: "Herramientas tecnológicas y software"
+  },
+  6: {
+    1: "La investigación científica y los enfoques",
+    2: "Niveles de investigación",
+    3: "Tipos de investigación científica",
+    4: "Población, muestra y muestreo",
+    5: "Diseño, técnicas e instrumentos",
+    6: "Proceso, recolección y organización de datos",
+    7: "Análisis estadístico",
+    8: "Preguntas directas de imágenes y ejemplos"
+  },
+  7: {
+    1: "Naturaleza del proyecto de investigación",
+    2: "Tipos de investigación según la imagen",
+    3: "Esquema orientativo del proyecto",
+    4: "Metodología y viabilidad",
+    5: "El informe final y su estructura",
+    6: "Ejemplo hipotético en ingeniería civil",
+    7: "Comparación y calidad académica"
+  },
+  8: {
+    1: "Concepto e importancia de las variables",
+    2: "Variable independiente y dependiente",
+    3: "Variable interviniente",
+    4: "Diseño de investigación",
+    5: "Población y muestra",
+    6: "Tipos de muestreo"
   }
 };
 
-/* ============================================================
-   BANCO DE PREGUNTAS · 425 preguntas
-   a = índice correcto (0=A, 1=B, 2=C, 3=D)
-   ============================================================ */
 const QUIZ = [];
 
 /* ═══════════════════════════════════════════════════════════
    TEMA 1 · CONCEPTOS Y VARIABLES (70 preguntas)
    ═══════════════════════════════════════════════════════════ */
 QUIZ.push(
-  /* Subtema 1: Concepto científico y diferencias con concepto cotidiano (10) */
   { tema:1, sub:1, q:"Según el PDF, ¿qué es un concepto científico?", o:["Una opinión personal sobre un fenómeno","Una idea o representación que permite describir, comprender y explicar un fenómeno de manera precisa y objetiva","Una experiencia cotidiana sin medición","Una creencia que varía según la persona"], a:1, j:"Subtema: Concepto científico y diferencias con concepto cotidiano." },
   { tema:1, sub:1, q:"¿En qué se basa un concepto científico según el PDF?", o:["En experiencias personales","En opiniones subjetivas","En observación de fenómenos, evidencia obtenida mediante estudios, conocimiento científico y medición y análisis","En tradiciones orales"], a:2, j:"Subtema: Concepto científico y diferencias con concepto cotidiano." },
   { tema:1, sub:1, q:"¿Cuál de los siguientes es un ejemplo de concepto científico en Ingeniería Civil mencionado en el PDF?", o:["La belleza de un edificio","La densidad","El gusto por la construcción","La fama del ingeniero"], a:1, j:"Subtema: Concepto científico y diferencias con concepto cotidiano." },
@@ -913,8 +926,6 @@ QUIZ.push(
   { tema:1, sub:1, q:"Según el PDF, ¿cuál es una diferencia del concepto cotidiano respecto al científico?", o:["Se basa en conocimientos y evidencias","Tiene un significado definido","Puede ser impreciso y variar según la persona","Puede ser observado y medido"], a:2, j:"Subtema: Concepto científico y diferencias con concepto cotidiano." },
   { tema:1, sub:1, q:"Según el PDF, ¿cuál es una característica del concepto científico frente al cotidiano?", o:["Se basa en experiencias personales","Puede ser impreciso","No necesariamente requiere medición","Busca ser objetivo y común"], a:3, j:"Subtema: Concepto científico y diferencias con concepto cotidiano." },
   { tema:1, sub:1, q:"Según el PDF, los conceptos científicos permiten:", o:["Definir claramente qué se quiere estudiar","Mantener opiniones personales","Evitar la medición","Depender de la experiencia individual"], a:0, j:"Subtema: Concepto científico y diferencias con concepto cotidiano." },
-
-  /* Subtema 2: Variables: definición, características e importancia (12) */
   { tema:1, sub:2, q:"Según el PDF, ¿qué es una variable?", o:["Un concepto cotidiano sin medición","Una característica, propiedad o condición que puede cambiar o tomar diferentes valores entre los elementos que forman parte de una investigación","Una opinión del investigador","Un instrumento de medición"], a:1, j:"Subtema: Variables: definición, características e importancia." },
   { tema:1, sub:2, q:"¿Cuál de los siguientes es un ejemplo de variable en Ingeniería Civil mencionado en el PDF?", o:["La simpatía del ingeniero","La resistencia del concreto","El color favorito del investigador","La marca de la computadora"], a:1, j:"Subtema: Variables: definición, características e importancia." },
   { tema:1, sub:2, q:"Según el PDF, las variables permiten:", o:["Observar, medir y analizar un determinado fenómeno","Evitar la recolección de datos","Sustituir la hipótesis","Eliminar la medición"], a:0, j:"Subtema: Variables: definición, características e importancia." },
@@ -927,8 +938,6 @@ QUIZ.push(
   { tema:1, sub:2, q:"En el ejemplo del PDF sobre resistencia del concreto, ¿cuál es la unidad de medida?", o:["La máquina de compresión","MPa","La probeta","El cemento"], a:1, j:"Subtema: Variables: definición, características e importancia." },
   { tema:1, sub:2, q:"En el ejemplo del PDF sobre resistencia del concreto, ¿cuál es el instrumento?", o:["La probeta","El cemento","La máquina de ensayo de compresión","El agregado"], a:2, j:"Subtema: Variables: definición, características e importancia." },
   { tema:1, sub:2, q:"Según el PDF, las variables son importantes porque permiten:", o:["Convertir un problema de investigación en información que puede ser observada y analizada","Evitar la formulación de hipótesis","Sustituir la observación","Eliminar la recolección de datos"], a:0, j:"Subtema: Variables: definición, características e importancia." },
-
-  /* Subtema 3: Variable independiente y dependiente (10) */
   { tema:1, sub:3, q:"Según el PDF, la variable independiente es:", o:["El resultado que se observa","La variable que el investigador modifica o controla","La variable que se mantiene constante","La variable que aparece entre la independiente y la dependiente"], a:1, j:"Subtema: Variable independiente y dependiente." },
   { tema:1, sub:3, q:"Según el PDF, la variable independiente es:", o:["El efecto que se mide","La causa o el factor que se cambia a propósito","El resultado obtenido","La variable que se observa"], a:1, j:"Subtema: Variable independiente y dependiente." },
   { tema:1, sub:3, q:"¿Cuál de los siguientes es un ejemplo de variable independiente mencionado en el PDF?", o:["La resistencia a la compresión del concreto","La cantidad de agua en una mezcla de concreto","La dilatación del material","La calificación obtenida en el examen"], a:1, j:"Subtema: Variable independiente y dependiente." },
@@ -939,8 +948,6 @@ QUIZ.push(
   { tema:1, sub:3, q:"Según el PDF, si cambia la variable independiente:", o:["Se observa qué pasa con la dependiente","Se mantiene constante la dependiente","Se elimina la dependiente","No ocurre nada con la dependiente"], a:0, j:"Subtema: Variable independiente y dependiente." },
   { tema:1, sub:3, q:"Según el PDF, la variable independiente es:", o:["El efecto que se mide","La causa que se controla y produce cambios en la dependiente","El resultado que se observa","La variable que se mantiene constante"], a:1, j:"Subtema: Variable independiente y dependiente." },
   { tema:1, sub:3, q:"Según el PDF, la variable dependiente es:", o:["La causa que se controla","El efecto que se mide","La variable que se modifica","La variable que se mantiene constante"], a:1, j:"Subtema: Variable independiente y dependiente." },
-
-  /* Subtema 4: Variables cualitativas, cuantitativas, discretas y continuas (15) */
   { tema:1, sub:4, q:"Según el PDF, las variables cualitativas:", o:["Se expresan mediante cantidades numéricas","Representan cualidades, características o categorías y generalmente no se expresan mediante cantidades numéricas","Se obtienen mediante conteo","Se miden en intervalos"], a:1, j:"Subtema: Variables cualitativas, cuantitativas, discretas y continuas." },
   { tema:1, sub:4, q:"¿Cuál de los siguientes es un ejemplo de variable cualitativa mencionado en el PDF?", o:["Altura de una edificación: 12 m","Tipo de suelo: arenoso, arcilloso, limoso","Resistencia del concreto: 28 MPa","Longitud de una viga: 5 m"], a:1, j:"Subtema: Variables cualitativas, cuantitativas, discretas y continuas." },
   { tema:1, sub:4, q:"Según el PDF, las variables cuantitativas:", o:["Representan cualidades","Son aquellas que pueden medirse y expresarse mediante números","Generalmente no se expresan mediante cantidades numéricas","Representan categorías"], a:1, j:"Subtema: Variables cualitativas, cuantitativas, discretas y continuas." },
@@ -956,8 +963,6 @@ QUIZ.push(
   { tema:1, sub:4, q:"Según el PDF, el tipo de cemento (Portland) es un ejemplo de variable:", o:["Cuantitativa discreta","Cuantitativa continua","Cualitativa","Interviniente"], a:2, j:"Subtema: Variables cualitativas, cuantitativas, discretas y continuas." },
   { tema:1, sub:4, q:"Según el PDF, el número de pisos (6 pisos) es un ejemplo de variable:", o:["Cualitativa","Cuantitativa discreta","Cuantitativa continua","Extraña"], a:1, j:"Subtema: Variables cualitativas, cuantitativas, discretas y continuas." },
   { tema:1, sub:4, q:"Según el PDF, la longitud de una viga (4.75 m) es un ejemplo de variable:", o:["Cualitativa","Cuantitativa discreta","Cuantitativa continua","Controlada"], a:2, j:"Subtema: Variables cualitativas, cuantitativas, discretas y continuas." },
-
-  /* Subtema 5: Variables interviniente, extraña y controlada (10) */
   { tema:1, sub:5, q:"Según el PDF, la variable interviniente es aquella que:", o:["Se mantiene constante durante el experimento","Aparece entre la variable independiente y la dependiente, pudiendo influir en la relación entre ambas","No forma parte del objetivo principal pero puede aparecer e influir en los resultados","Es la causa que se controla"], a:1, j:"Subtema: Variables interviniente, extraña y controlada." },
   { tema:1, sub:5, q:"En el ejemplo del PDF, ¿cuál podría ser una variable interviniente entre la cantidad de agua y la resistencia del concreto?", o:["La resistencia del concreto","La cantidad de agua","La temperatura de curado","El tipo de cemento"], a:2, j:"Subtema: Variables interviniente, extraña y controlada." },
   { tema:1, sub:5, q:"Según el PDF, la variable extraña es:", o:["La que se mantiene constante","La que aparece entre la independiente y la dependiente","Un factor que no forma parte del objetivo principal de la investigación pero que puede aparecer e influir en los resultados","La que se modifica intencionalmente"], a:2, j:"Subtema: Variables interviniente, extraña y controlada." },
@@ -968,8 +973,6 @@ QUIZ.push(
   { tema:1, sub:5, q:"Según el PDF, la variable independiente se recuerda como:", o:["La que observo qué ocurre","La que modifico","La que influye en la relación","La que intento mantener constante"], a:1, j:"Subtema: Variables interviniente, extraña y controlada." },
   { tema:1, sub:5, q:"Según el PDF, la variable dependiente se recuerda como:", o:["La que modifico","La que observo qué ocurre","La que influye en la relación","La que intento mantener constante"], a:1, j:"Subtema: Variables interviniente, extraña y controlada." },
   { tema:1, sub:5, q:"Según el PDF, la variable extraña se recuerda como:", o:["La que modifico","La que observo qué ocurre","La que aparece y puede alterar el resultado","La que intento mantener constante"], a:2, j:"Subtema: Variables interviniente, extraña y controlada." },
-
-  /* Subtema 6: Operacionalización, dimensiones, indicadores e instrumentos (13) */
   { tema:1, sub:6, q:"Según el PDF, operacionalizar es:", o:["El proceso mediante el cual una variable teórica se transforma en algo que puede ser observado, medido y analizado","El proceso de eliminar variables","El proceso de mantener constante una variable","El proceso de formular hipótesis"], a:0, j:"Subtema: Operacionalización, dimensiones, indicadores e instrumentos." },
   { tema:1, sub:6, q:"Según el PDF, la operacionalización permite establecer:", o:["Qué se va a medir, cómo se medirá y con qué instrumento","Solo el instrumento","Solo la unidad de medida","Solo la hipótesis"], a:0, j:"Subtema: Operacionalización, dimensiones, indicadores e instrumentos." },
   { tema:1, sub:6, q:"En el ejemplo del PDF sobre resistencia del concreto, ¿cuál es la característica?", o:["MPa","Resistencia a compresión","Ensayo de compresión","Máquina de compresión"], a:1, j:"Subtema: Operacionalización, dimensiones, indicadores e instrumentos." },
@@ -989,7 +992,6 @@ QUIZ.push(
    TEMA 2 · POBLACIÓN Y MUESTRA (95 preguntas)
    ═══════════════════════════════════════════════════════════ */
 QUIZ.push(
-  /* Subtema 1: Población, unidad de estudio y delimitación (15) */
   { tema:2, sub:1, q:"Según el PDF, la población o universo de estudio es:", o:["Una parte de los elementos de la investigación","El conjunto total de elementos que poseen las características de interés para una investigación y sobre los cuales se pretende obtener información o extraer conclusiones","Un subconjunto de la muestra","Un instrumento de recolección de datos"], a:1, j:"Subtema: Población, unidad de estudio y delimitación." },
   { tema:2, sub:1, q:"Según el PDF, cada elemento que forma parte de la población se denomina:", o:["Muestra","Unidad de estudio o unidad de análisis","Estrato","Conglomerado"], a:1, j:"Subtema: Población, unidad de estudio y delimitación." },
   { tema:2, sub:1, q:"Según el PDF, la unidad de estudio es:", o:["El conjunto total de elementos","El elemento individual que forma parte de la población y sobre el cual se recogerán los datos necesarios para responder al problema de investigación","Un subconjunto de la población","Un instrumento de medición"], a:1, j:"Subtema: Población, unidad de estudio y delimitación." },
@@ -1005,8 +1007,6 @@ QUIZ.push(
   { tema:2, sub:1, q:"Según el PDF, las características o criterios de inclusión responden a la pregunta:", o:["¿Quiénes o qué?","¿Dónde?","¿Cuándo?","¿Qué condición deben cumplir?"], a:3, j:"Subtema: Población, unidad de estudio y delimitación." },
   { tema:2, sub:1, q:"Según el PDF, en el ejemplo \"Percepción de los pobladores sobre el estado de las vías urbanas de un sector de Manantay, 2026\", la unidad de estudio sería:", o:["Todos los pobladores","Cada poblador individualmente","Las vías urbanas","El sector de Manantay"], a:1, j:"Subtema: Población, unidad de estudio y delimitación." },
   { tema:2, sub:1, q:"Según el PDF, no sería suficientemente preciso decir:", o:["\"Estudiantes de Ingeniería Civil de una universidad ubicada en Pucallpa durante el año 2026\"","\"Estudiantes universitarios de Perú\"","\"Estudiantes de Ingeniería Civil matriculados en el semestre actual\"","\"Estudiantes de Ingeniería Civil con más de 50% de créditos aprobados\""], a:1, j:"Subtema: Población, unidad de estudio y delimitación." },
-
-  /* Subtema 2: Muestra, importancia y diferencias con población (15) */
   { tema:2, sub:2, q:"Según el PDF, la muestra es:", o:["El conjunto total de elementos","Un subconjunto de elementos de la población que se selecciona para participar en una investigación y del cual se recopilan los datos necesarios para el estudio","La población objetivo","El universo general"], a:1, j:"Subtema: Muestra, importancia y diferencias con población." },
   { tema:2, sub:2, q:"Según el PDF, la muestra es importante porque:", o:["Permite obtener información de una población sin necesidad de estudiar a todos sus integrantes","Elimina la necesidad de población","Sustituye la hipótesis","Evita la recolección de datos"], a:0, j:"Subtema: Muestra, importancia y diferencias con población." },
   { tema:2, sub:2, q:"Según el PDF, una muestra permite:", o:["Realizar investigaciones cuando la población es grande","Eliminar la población","Evitar el análisis","Sustituir el diseño"], a:0, j:"Subtema: Muestra, importancia y diferencias con población." },
@@ -1022,8 +1022,6 @@ QUIZ.push(
   { tema:2, sub:2, q:"Según el PDF, la población:", o:["Incluye únicamente los elementos seleccionados para participar","Incluye a todos los elementos que cumplen las características establecidas","Es el grupo del que se obtienen directamente los datos","Generalmente es menor que la muestra"], a:1, j:"Subtema: Muestra, importancia y diferencias con población." },
   { tema:2, sub:2, q:"Según el PDF, la muestra:", o:["Incluye a todos los elementos que cumplen las características establecidas","Incluye únicamente los elementos seleccionados para participar","Es el grupo al que se dirige la investigación","Puede ser muy grande"], a:1, j:"Subtema: Muestra, importancia y diferencias con población." },
   { tema:2, sub:2, q:"Según el PDF, en el ejemplo de diferencia entre población y muestra:", o:["Población: 100 pobladores; Muestra: 800 pobladores","Población: 800 pobladores; Muestra: 100 pobladores seleccionados","Población: 800 pobladores; Muestra: 800 pobladores","Población: 100 pobladores; Muestra: 100 pobladores"], a:1, j:"Subtema: Muestra, importancia y diferencias con población." },
-
-  /* Subtema 3: Muestreo probabilístico (25) */
   { tema:2, sub:3, q:"Según el PDF, el muestreo probabilístico es:", o:["Una técnica en donde los individuos de la población son elegidos aleatoriamente y cada uno cuenta con la misma probabilidad positiva de ser elegidos","Una técnica donde los individuos se seleccionan por conveniencia","Una técnica donde no se conoce la probabilidad de selección","Una técnica donde el investigador elige deliberadamente"], a:0, j:"Subtema: Muestreo probabilístico." },
   { tema:2, sub:3, q:"Según el PDF, el muestreo probabilístico es uno de los tipos de muestreo más recomendados porque:", o:["Es más eficiente, preciso y asegura la representatividad de la muestra extraída","Es más rápido y económico","No requiere lista de la población","Se aplica a poblaciones grandes"], a:0, j:"Subtema: Muestreo probabilístico." },
   { tema:2, sub:3, q:"Según el PDF, en el muestreo aleatorio simple:", o:["Todos los elementos de la población tienen la misma posibilidad de ser seleccionados y la elección de un elemento no influye en la selección de otro","Se elige un primer elemento al azar y luego se sigue un intervalo fijo","La población se divide en estratos","Se seleccionan conglomerados"], a:0, j:"Subtema: Muestreo probabilístico." },
@@ -1049,8 +1047,6 @@ QUIZ.push(
   { tema:2, sub:3, q:"Según el PDF, ¿cuál de los siguientes es un tipo de muestreo probabilístico?", o:["Muestreo mixto o por etapas múltiples","Muestreo por bola de nieve","Muestreo intencional","Muestreo por conveniencia"], a:0, j:"Subtema: Muestreo probabilístico." },
   { tema:2, sub:3, q:"Según el PDF, en el muestreo sistemático, si k = 5:", o:["Se seleccionará un elemento cada 5 posiciones hasta completar la muestra","Se seleccionarán 5 elementos en total","Se seleccionarán 5 muestras","Se dividirá la población en 5 estratos"], a:0, j:"Subtema: Muestreo probabilístico." },
   { tema:2, sub:3, q:"Según el PDF, en el muestreo estratificado, los estratos se forman según una característica común como:", o:["Edad, sexo, profesión o estado civil","Color de cabello","Estatura","Peso"], a:0, j:"Subtema: Muestreo probabilístico." },
-
-  /* Subtema 4: Muestreo no probabilístico (25) */
   { tema:2, sub:4, q:"Según el PDF, el muestreo no probabilístico es:", o:["Una técnica en la que la muestra se selecciona sin recurrir al azar, según la disponibilidad de los participantes o los criterios del investigador","Una técnica donde todos tienen la misma probabilidad","Una técnica que garantiza la representatividad","Una técnica que permite inferencias estadísticas"], a:0, j:"Subtema: Muestreo no probabilístico." },
   { tema:2, sub:4, q:"Según el PDF, una característica del muestreo no probabilístico es:", o:["Los participantes no se seleccionan al azar","Se conoce la probabilidad de selección de cada persona","Garantiza la representatividad de la población","Permite inferencias estadísticas"], a:0, j:"Subtema: Muestreo no probabilístico." },
   { tema:2, sub:4, q:"Según el PDF, una característica del muestreo no probabilístico es:", o:["No se conoce la probabilidad de selección de cada persona","Se selecciona al azar","Es más lento y costoso","Garantiza la representatividad"], a:0, j:"Subtema: Muestreo no probabilístico." },
@@ -1076,8 +1072,6 @@ QUIZ.push(
   { tema:2, sub:4, q:"Según el PDF, ¿cuál de los siguientes es un tipo de muestreo no probabilístico?", o:["Muestreo aleatorio simple","Muestreo aleatorio sistemático","Muestreo intencional o por criterio","Muestreo por conglomerados"], a:2, j:"Subtema: Muestreo no probabilístico." },
   { tema:2, sub:4, q:"Según el PDF, ¿cuál de los siguientes es un tipo de muestreo no probabilístico?", o:["Muestreo aleatorio simple","Muestreo por cuotas","Muestreo aleatorio estratificado","Muestreo por conglomerados"], a:1, j:"Subtema: Muestreo no probabilístico." },
   { tema:2, sub:4, q:"Según el PDF, ¿cuál de los siguientes es un tipo de muestreo no probabilístico?", o:["Muestreo aleatorio simple","Muestreo aleatorio sistemático","Muestreo por bola de nieve","Muestreo aleatorio estratificado"], a:2, j:"Subtema: Muestreo no probabilístico." },
-
-  /* Subtema 5: Criterios de inclusión y exclusión (15) */
   { tema:2, sub:5, q:"Según el PDF, los criterios de inclusión son:", o:["Condiciones que impiden que una persona participe en el estudio","Condiciones que una persona debe cumplir para formar parte del estudio","Características que alteran los resultados","Condiciones que hacen no elegible al participante"], a:1, j:"Subtema: Criterios de inclusión y exclusión." },
   { tema:2, sub:5, q:"Según el PDF, los criterios de exclusión son:", o:["Condiciones que una persona debe cumplir para formar parte del estudio","Condiciones que impiden que una persona participe en el estudio, aunque inicialmente cumpla con los criterios de inclusión","Características necesarias para formar parte del estudio","Condiciones que permiten identificar a los participantes que cumplen los requisitos"], a:1, j:"Subtema: Criterios de inclusión y exclusión." },
   { tema:2, sub:5, q:"Según el PDF, los criterios de inclusión:", o:["Determinan quiénes no pueden participar","Determinan quiénes pueden participar","Establecen las condiciones que impiden la participación","Permiten retirar o descartar participantes"], a:1, j:"Subtema: Criterios de inclusión y exclusión." },
@@ -1099,7 +1093,6 @@ QUIZ.push(
    TEMA 3 · DISEÑO DE LA INVESTIGACIÓN (85 preguntas)
    ═══════════════════════════════════════════════════════════ */
 QUIZ.push(
-  /* Subtema 1: Concepto, función e importancia del diseño (10) */
   { tema:3, sub:1, q:"Según el PDF, el diseño de investigación es:", o:["Un instrumento de recolección de datos","El plan o estrategia que establece cómo se realizará una investigación para obtener información, responder al problema planteado y alcanzar los objetivos","Una técnica de muestreo","Una variable"], a:1, j:"Subtema: Concepto, función e importancia del diseño." },
   { tema:3, sub:1, q:"Según el PDF, el diseño sirve para:", o:["Organizar y orientar todo el proceso de investigación","Eliminar la recolección de datos","Sustituir el problema","Evitar los objetivos"], a:0, j:"Subtema: Concepto, función e importancia del diseño." },
   { tema:3, sub:1, q:"Según el PDF, el diseño permite:", o:["Orientar la recolección de datos","Eliminar la muestra","Sustituir la hipótesis","Evitar el análisis"], a:0, j:"Subtema: Concepto, función e importancia del diseño." },
@@ -1110,8 +1103,6 @@ QUIZ.push(
   { tema:3, sub:1, q:"Según el PDF, el diseño permite:", o:["Alcanzar los objetivos planteados","Eliminar los objetivos","Sustituir los objetivos","Ignorar los objetivos"], a:0, j:"Subtema: Concepto, función e importancia del diseño." },
   { tema:3, sub:1, q:"Según el PDF, elegir correctamente el diseño es importante porque:", o:["Permite obtener información pertinente y facilita responder el problema de investigación","Elimina la necesidad de datos","Sustituye la hipótesis","Evita el análisis"], a:0, j:"Subtema: Concepto, función e importancia del diseño." },
   { tema:3, sub:1, q:"Según el PDF, elegir correctamente el diseño es importante porque:", o:["Reduce errores en la investigación y hace que los resultados sean más consistentes","Aumenta los errores","Hace inconsistentes los resultados","Elimina la validez"], a:0, j:"Subtema: Concepto, función e importancia del diseño." },
-
-  /* Subtema 2: Diseños experimentales (15) */
   { tema:3, sub:2, q:"Según el PDF, en los diseños experimentales, el investigador:", o:["No manipula variables","Interviene deliberadamente manipulando una o más variables independientes para analizar las consecuencias sobre una o más variables dependientes, bajo un entorno estrictamente controlado","Solo observa los fenómenos","No tiene rol activo"], a:1, j:"Subtema: Diseños experimentales." },
   { tema:3, sub:2, q:"Según el PDF, los diseños experimentales se dividen en:", o:["Preexperimental, cuasiexperimental y experimental verdadero","Transversal y longitudinal","Convergente y secuencial","Fenomenológico y etnográfico"], a:0, j:"Subtema: Diseños experimentales." },
   { tema:3, sub:2, q:"Según el PDF, el diseño preexperimental es:", o:["El diseño con el grado de control más bajo","El diseño con mayor control","El diseño que usa grupos intactos","El diseño con asignación aleatoria"], a:0, j:"Subtema: Diseños experimentales." },
@@ -1127,8 +1118,6 @@ QUIZ.push(
   { tema:3, sub:2, q:"Según el PDF, el diseño experimental verdadero exige:", o:["Manipulación intencional de variables independientes","No manipular variables","Solo observar","No tener grupo de control"], a:0, j:"Subtema: Diseños experimentales." },
   { tema:3, sub:2, q:"Según el PDF, el diseño experimental verdadero exige:", o:["Presencia de un grupo de control que no recibe el tratamiento","Ausencia de grupo de control","Solo un grupo","Grupos intactos"], a:0, j:"Subtema: Diseños experimentales." },
   { tema:3, sub:2, q:"Según el PDF, el diseño experimental verdadero exige:", o:["Asignación completamente aleatoria de las unidades de prueba a los distintos grupos","Asignación por conveniencia","Asignación intencional","Sin asignación"], a:0, j:"Subtema: Diseños experimentales." },
-
-  /* Subtema 3: Diseños no experimentales (12) */
   { tema:3, sub:3, q:"Según el PDF, los diseños no experimentales también se conocen como:", o:["Investigación ex post facto (después de los hechos)","Investigación experimental","Investigación cuasiexperimental","Investigación preexperimental"], a:0, j:"Subtema: Diseños no experimentales." },
   { tema:3, sub:3, q:"Según el PDF, en los diseños no experimentales:", o:["El investigador no construye ninguna situación artificial ni manipula intencionalmente las variables","El investigador manipula variables","El investigador construye situaciones artificiales","El investigador asigna aleatoriamente"], a:0, j:"Subtema: Diseños no experimentales." },
   { tema:3, sub:3, q:"Según el PDF, en los diseños no experimentales, se observan los fenómenos:", o:["Tal como ocurren en su contexto y ambiente natural para después analizarlos","En un laboratorio controlado","Con manipulación de variables","Con asignación aleatoria"], a:0, j:"Subtema: Diseños no experimentales." },
@@ -1141,8 +1130,6 @@ QUIZ.push(
   { tema:3, sub:3, q:"Según el PDF, el diseño longitudinal es el equivalente a:", o:["Grabar una \"película\" del fenómeno","Tomar una \"fotografía\" del fenómeno","Manipular el fenómeno","Asignar aleatoriamente"], a:0, j:"Subtema: Diseños no experimentales." },
   { tema:3, sub:3, q:"Según el PDF, manipular implica que el investigador:", o:["Altera la realidad de forma proactiva: dosifica aditivos, cambia temperaturas, somete estructuras a cargas específicas","Mide la realidad existente sin intervenir","Observa el fenómeno tal como ocurre","No interviene en el proceso"], a:0, j:"Subtema: Diseños no experimentales." },
   { tema:3, sub:3, q:"Según el PDF, observar requiere:", o:["Un rigor pasivo: el investigador mide la realidad existente sin intervenir en el proceso que causó ese estado","Alterar la realidad de forma proactiva","Dosificar aditivos","Cambiar temperaturas"], a:0, j:"Subtema: Diseños no experimentales." },
-
-  /* Subtema 4: Diseño cualitativo y sus tipos (20) */
   { tema:3, sub:4, q:"Según el PDF, el diseño cualitativo busca:", o:["Medir variables mediante números","Comprobar relaciones estadísticas","Comprender profundamente un fenómeno dentro de un contexto natural","Manipular variables"], a:2, j:"Subtema: Diseño cualitativo y sus tipos." },
   { tema:3, sub:4, q:"Según el PDF, el diseño cualitativo utiliza principalmente datos expresados mediante:", o:["Números","Palabras, relatos, experiencias, comportamientos, documentos, imágenes u observaciones","Fórmulas","Ecuaciones"], a:1, j:"Subtema: Diseño cualitativo y sus tipos." },
   { tema:3, sub:4, q:"Según el PDF, una característica del diseño cualitativo es:", o:["Estudia los fenómenos en su contexto natural, intentando comprender tal como ocurren","Estudia los fenómenos en laboratorio","Manipula variables","Asigna aleatoriamente"], a:0, j:"Subtema: Diseño cualitativo y sus tipos." },
@@ -1163,8 +1150,6 @@ QUIZ.push(
   { tema:3, sub:4, q:"Según el PDF, el diseño cualitativo utiliza datos como:", o:["Palabras, relatos, experiencias, comportamientos, documentos, imágenes u observaciones","Solo números","Solo estadísticas","Solo fórmulas"], a:0, j:"Subtema: Diseño cualitativo y sus tipos." },
   { tema:3, sub:4, q:"Según el PDF, el diseño cualitativo generalmente trabaja con:", o:["Grupos pequeños seleccionados intencionalmente","Grupos grandes aleatorios","Toda la población","Muestras probabilísticas"], a:0, j:"Subtema: Diseño cualitativo y sus tipos." },
   { tema:3, sub:4, q:"Según el PDF, el diseño cualitativo tiene carácter:", o:["Interpretativo","Numérico","Estadístico","Experimental"], a:0, j:"Subtema: Diseño cualitativo y sus tipos." },
-
-  /* Subtema 5: Diseño mixto y esquemas (15) */
   { tema:3, sub:5, q:"Según el PDF, la investigación de enfoque mixto es:", o:["Solo la suma de recolección de datos cuantitativos y cualitativos","La integración sistemática de ambos enfoques en un mismo estudio","Solo cuantitativa","Solo cualitativa"], a:1, j:"Subtema: Diseño mixto y esquemas." },
   { tema:3, sub:5, q:"Según el PDF, el diseño mixto permite:", o:["Abordar un problema de investigación de manera más amplia y profunda de lo que permitiría un solo método de forma aislada","Abordar el problema de forma más limitada","Eliminar la recolección de datos","Sustituir la hipótesis"], a:0, j:"Subtema: Diseño mixto y esquemas." },
   { tema:3, sub:5, q:"Según el PDF, el diseño convergente:", o:["La recolección y el análisis de los datos cuantitativos y cualitativos se ejecutan de manera simultánea o en paralelo","Inicia con una fase cuantitativa y luego cualitativa","Inicia con una fase cualitativa y luego cuantitativa","Solo utiliza datos cuantitativos"], a:0, j:"Subtema: Diseño mixto y esquemas." },
@@ -1180,8 +1165,6 @@ QUIZ.push(
   { tema:3, sub:5, q:"Según el PDF, el esquema cualitativo incluye:", o:["Problema, datos, análisis, resultados","Experiencias, análisis, interpretación","Cuantitativo y cualitativo, integración, conclusiones","Problema, hipótesis, variables"], a:1, j:"Subtema: Diseño mixto y esquemas." },
   { tema:3, sub:5, q:"Según el PDF, el esquema mixto incluye:", o:["Problema, datos, análisis, resultados","Experiencias, análisis, interpretación","Cuantitativo y cualitativo, integración, conclusiones","Problema, hipótesis, variables"], a:2, j:"Subtema: Diseño mixto y esquemas." },
   { tema:3, sub:5, q:"Según el PDF, un esquema de diseño cuantitativo es:", o:["El plan o la estrategia general que guía al investigador para obtener, analizar e interpretar datos numéricos con el fin de responder a un problema de investigación","La estructura flexible que guía una investigación centrada en comprender fenómenos","La estrategia que combina enfoques","La ruta metodológica cualitativa"], a:0, j:"Subtema: Diseño mixto y esquemas." },
-
-  /* Subtema 6: Elección y justificación del diseño (13) */
   { tema:3, sub:6, q:"Según el PDF, el diseño se elige de acuerdo con:", o:["El problema de investigación, los objetivos y las preguntas de investigación","Solo el problema","Solo los objetivos","Solo las preguntas"], a:0, j:"Subtema: Elección y justificación del diseño." },
   { tema:3, sub:6, q:"Según el PDF, se elige un diseño experimental cuando:", o:["El investigador necesita manipular una variable y observar los cambios que produce sobre otra","No se manipulan variables","Solo se observa","No se interviene"], a:0, j:"Subtema: Elección y justificación del diseño." },
   { tema:3, sub:6, q:"Según el PDF, el diseño experimental permite analizar:", o:["Relaciones de causa y efecto","Solo descripciones","Solo opiniones","Solo experiencias"], a:0, j:"Subtema: Elección y justificación del diseño." },
@@ -1201,7 +1184,6 @@ QUIZ.push(
    TEMA 4 · TÉCNICAS DE OBSERVACIÓN (100 preguntas)
    ═══════════════════════════════════════════════════════════ */
 QUIZ.push(
-  /* Subtema 1: Observación: concepto, características e importancia (15) */
   { tema:4, sub:1, q:"Según el PDF, la observación es:", o:["Solo ver por casualidad","El proceso sistemático y planificado de mirar, escuchar y registrar los hechos, fenómenos o comportamientos tal como ocurren en la realidad, sin alterarlos","Una opinión personal","Una creencia"], a:1, j:"Subtema: Observación: concepto, características e importancia." },
   { tema:4, sub:1, q:"Según el PDF, la observación es la base de:", o:["Todo conocimiento científico, porque de ella nace el problema, la hipótesis y la investigación","Solo la opinión","Solo la creencia","Solo la experiencia"], a:0, j:"Subtema: Observación: concepto, características e importancia." },
   { tema:4, sub:1, q:"Según el PDF, una característica de la observación es:", o:["Intencional: se hace con un objetivo definido","Sin objetivo","Casual","Impreciso"], a:0, j:"Subtema: Observación: concepto, características e importancia." },
@@ -1217,8 +1199,6 @@ QUIZ.push(
   { tema:4, sub:1, q:"Según el PDF, la observación es importante porque:", o:["Desarrolla la capacidad crítica: enseña a no aceptar algo solo porque se dice, sino a comprobarlo","No desarrolla capacidad crítica","Solo permite aceptar","Solo permite creer"], a:0, j:"Subtema: Observación: concepto, características e importancia." },
   { tema:4, sub:1, q:"Según el PDF, la observación no es solo ver por casualidad, es:", o:["Mirar con atención, con un propósito y registrar lo visto","Mirar sin propósito","Ver sin atención","Ver sin registrar"], a:0, j:"Subtema: Observación: concepto, características e importancia." },
   { tema:4, sub:1, q:"Según el PDF, un ejemplo de observación es:", o:["Un médico observa los síntomas del paciente","Un médico inventa síntomas","Un médico ignora síntomas","Un médico supone síntomas"], a:0, j:"Subtema: Observación: concepto, características e importancia." },
-
-  /* Subtema 2: Tipos de observación (35) */
   { tema:4, sub:2, q:"Según el PDF, la observación directa se produce cuando:", o:["El investigador tiene contacto con el fenómeno que desea estudiar y puede obtener información de manera inmediata","El investigador no tiene contacto con el fenómeno","El investigador usa solo documentos","El investigador usa solo fotografías"], a:0, j:"Subtema: Tipos de observación." },
   { tema:4, sub:2, q:"Según el PDF, la observación directa permite:", o:["Registrar los hechos tal como ocurren","Registrar opiniones","Registrar creencias","Registrar suposiciones"], a:0, j:"Subtema: Tipos de observación." },
   { tema:4, sub:2, q:"Según el PDF, la observación indirecta se emplea cuando:", o:["El investigador no tiene contacto directo con el fenómeno estudiado, por lo que utiliza otras fuentes para obtener información","El investigador tiene contacto directo","El investigador usa solo sus sentidos","El investigador está presente"], a:0, j:"Subtema: Tipos de observación." },
@@ -1254,8 +1234,6 @@ QUIZ.push(
   { tema:4, sub:2, q:"Según el PDF, ¿cuál de los siguientes es un tipo de observación según la estructura?", o:["Sistemática, semisistemática y asistemática","Directa e indirecta","Activa y pasiva","Naturalista y de laboratorio"], a:0, j:"Subtema: Tipos de observación." },
   { tema:4, sub:2, q:"Según el PDF, ¿cuál de los siguientes es un tipo de observación según el ambiente?", o:["Naturalista o de campo y de laboratorio o controlada","Directa e indirecta","Activa y pasiva","Sistemática y asistemática"], a:0, j:"Subtema: Tipos de observación." },
   { tema:4, sub:2, q:"Según el PDF, la observación encubierta se diferencia porque:", o:["Las personas o grupos estudiados no saben que están siendo observados","Las personas saben que son observadas","El investigador participa","El investigador se integra"], a:0, j:"Subtema: Tipos de observación." },
-
-  /* Subtema 3: Entrevista: características, tipos y procedimientos (25) */
   { tema:4, sub:3, q:"Según el PDF, la entrevista es:", o:["Una técnica de recopilación de información que consiste en una conversación planificada entre dos o más personas, en la que el entrevistador realiza preguntas para obtener información, opiniones, experiencias o conocimientos del entrevistado","Una observación directa","Un instrumento de medición","Una variable"], a:0, j:"Subtema: Entrevista: características, tipos y procedimientos." },
   { tema:4, sub:3, q:"Según el PDF, una característica de la entrevista es:", o:["Planificada: tiene un objetivo y una preparación previa","Sin objetivo","Sin preparación","Casual"], a:0, j:"Subtema: Entrevista: características, tipos y procedimientos." },
   { tema:4, sub:3, q:"Según el PDF, una característica de la entrevista es:", o:["Interpersonal: existe una interacción directa entre entrevistador y entrevistado","Sin interacción","Indirecta","Impersonal"], a:0, j:"Subtema: Entrevista: características, tipos y procedimientos." },
@@ -1281,8 +1259,6 @@ QUIZ.push(
   { tema:4, sub:3, q:"Según el PDF, el procedimiento de una entrevista incluye:", o:["Preparación, apertura, desarrollo, cierre y evaluación","Solo preparación","Solo desarrollo","Solo cierre"], a:0, j:"Subtema: Entrevista: características, tipos y procedimientos." },
   { tema:4, sub:3, q:"Según el PDF, la preparación en una entrevista implica:", o:["Investigar sobre la persona que entrevistarás y definir los objetivos claros","No investigar","No definir objetivos","Improvisar"], a:0, j:"Subtema: Entrevista: características, tipos y procedimientos." },
   { tema:4, sub:3, q:"Según el PDF, la apertura en una entrevista implica:", o:["Empezar con una presentación amigable y explicar brevemente el propósito de la conversación","Empezar de forma brusca","No explicar el propósito","No presentarse"], a:0, j:"Subtema: Entrevista: características, tipos y procedimientos." },
-
-  /* Subtema 4: Actitudes y escalas de medición (25) */
   { tema:4, sub:4, q:"Según el PDF, las actitudes son:", o:["Disposiciones aprendidas que influyen en la manera en que una persona piensa, siente y actúa frente a un objeto, una persona, una situación o una idea","Conocimientos innatos","Habilidades físicas","Características hereditarias"], a:0, j:"Subtema: Actitudes y escalas de medición." },
   { tema:4, sub:4, q:"Según el PDF, las actitudes se pueden estudiar mediante:", o:["Preguntas o afirmaciones que permitan conocer las opiniones y valoraciones de los participantes","Solo observación","Solo experimentos","Solo mediciones físicas"], a:0, j:"Subtema: Actitudes y escalas de medición." },
   { tema:4, sub:4, q:"Según el PDF, las escalas de medición de actitudes son:", o:["Instrumentos utilizados en la investigación para medir y registrar las opiniones, percepciones, sentimientos y valoraciones de las personas respecto a un tema determinado","Instrumentos de medición física","Herramientas de laboratorio","Variables"], a:0, j:"Subtema: Actitudes y escalas de medición." },
@@ -1314,7 +1290,6 @@ QUIZ.push(
    TEMA 5 · RECOLECCIÓN DE DATOS, CODIFICACIÓN Y ESTADÍSTICA (75 preguntas)
    ═══════════════════════════════════════════════════════════ */
 QUIZ.push(
-  /* Subtema 1: Recolección de datos, instrumentos y trabajo de campo (15) */
   { tema:5, sub:1, q:"Según el PDF, la recolección de datos es:", o:["El conjunto de acciones operativas y logísticas necesarias para obtener datos crudos de la población, muestra o fuentes de estudio","Una técnica de muestreo","Un diseño de investigación","Una variable"], a:0, j:"Subtema: Recolección de datos, instrumentos y trabajo de campo." },
   { tema:5, sub:1, q:"Según el PDF, el propósito de la recolección de datos es:", o:["Aplicar un protocolo definido para registrar información de manera ordenada y objetiva","Aplicar un protocolo indefinido","Registrar información de manera desordenada","Registrar información subjetiva"], a:0, j:"Subtema: Recolección de datos, instrumentos y trabajo de campo." },
   { tema:5, sub:1, q:"Según el PDF, la recolección de datos permite:", o:["Contrastar conceptos o hipótesis con evidencia","Eliminar la evidencia","Sustituir la hipótesis","Evitar la contrastación"], a:0, j:"Subtema: Recolección de datos, instrumentos y trabajo de campo." },
@@ -1330,8 +1305,6 @@ QUIZ.push(
   { tema:5, sub:1, q:"Según el PDF, el proceso de ejecución de campo incluye:", o:["Contactar y organizar la muestra, explicar el procedimiento y las condiciones, realizar encuestas, observaciones, entrevistas o mediciones, y registrar y revisar la información","Solo contactar la muestra","Solo realizar encuestas","Solo registrar información"], a:0, j:"Subtema: Recolección de datos, instrumentos y trabajo de campo." },
   { tema:5, sub:1, q:"Según el PDF, el proceso de ejecución de campo debe ser:", o:["Transparente y detallado para favorecer la replicabilidad y reconocer posibles limitaciones","Opaco","Impreciso","Sin detalle"], a:0, j:"Subtema: Recolección de datos, instrumentos y trabajo de campo." },
   { tema:5, sub:1, q:"Según el PDF, el cronograma organiza las actividades de recolección en:", o:["Semanas o meses y permite controlar el avance","Días","Horas","Minutos"], a:0, j:"Subtema: Recolección de datos, instrumentos y trabajo de campo." },
-
-  /* Subtema 2: Ética, integridad científica y transparencia (12) */
   { tema:5, sub:2, q:"Según el PDF, las consideraciones éticas en el tratamiento de la información son:", o:["Principios que orientan el uso correcto de la información","Principios que orientan el uso incorrecto","Normas opcionales","Reglas sin importancia"], a:0, j:"Subtema: Ética, integridad científica y transparencia." },
   { tema:5, sub:2, q:"Según el PDF, las consideraciones éticas buscan garantizar:", o:["La honestidad, la responsabilidad y el respeto","La deshonestidad","La irresponsabilidad","La falta de respeto"], a:0, j:"Subtema: Ética, integridad científica y transparencia." },
   { tema:5, sub:2, q:"Según el PDF, las consideraciones éticas evitan:", o:["El uso indebido de los datos durante una investigación","El uso correcto de los datos","El uso adecuado de los datos","El uso ético de los datos"], a:0, j:"Subtema: Ética, integridad científica y transparencia." },
@@ -1344,8 +1317,6 @@ QUIZ.push(
   { tema:5, sub:2, q:"Según el PDF, la transparencia en la investigación implica:", o:["Presentar los resultados de manera clara","Presentar los resultados de manera confusa","Ocultar los resultados","Manipular los resultados"], a:0, j:"Subtema: Ética, integridad científica y transparencia." },
   { tema:5, sub:2, q:"Según el PDF, la transparencia en la investigación implica:", o:["Informar las limitaciones de la investigación","Ocultar las limitaciones","No informar las limitaciones","Eliminar las limitaciones"], a:0, j:"Subtema: Ética, integridad científica y transparencia." },
   { tema:5, sub:2, q:"Según el PDF, la prohibición de manipulación de datos implica:", o:["No inventar información","Inventar información","Alterar información","Manipular información"], a:0, j:"Subtema: Ética, integridad científica y transparencia." },
-
-  /* Subtema 3: Estadística descriptiva (18) */
   { tema:5, sub:3, q:"Según el PDF, las medidas de tendencia central son:", o:["Valores estadísticos que representan el centro de un conjunto de datos de manera diferente","Valores que representan los extremos","Valores que representan la dispersión","Valores que representan la variabilidad"], a:0, j:"Subtema: Estadística descriptiva." },
   { tema:5, sub:3, q:"Según el PDF, las medidas de tendencia central incluyen:", o:["Media, mediana y moda","Rango, varianza y desviación estándar","Coeficiente de variación","Frecuencia absoluta"], a:0, j:"Subtema: Estadística descriptiva." },
   { tema:5, sub:3, q:"Según el PDF, la media se representa como:", o:["x̄ = Σxi / n","Me = x(n+1)/2","Mo = Li + ...","σ = √(Σ(xi - x̄)²/N)"], a:0, j:"Subtema: Estadística descriptiva." },
@@ -1364,8 +1335,6 @@ QUIZ.push(
   { tema:5, sub:3, q:"Según el PDF, en la tabla de frecuencias del ejemplo, el nivel \"Medio\" antes tiene un porcentaje de:", o:["50%","35%","65%","0%"], a:0, j:"Subtema: Estadística descriptiva." },
   { tema:5, sub:3, q:"Según el PDF, en la tabla de frecuencias del ejemplo, el nivel \"Alto\" después tiene un porcentaje de:", o:["50%","35%","65%","0%"], a:2, j:"Subtema: Estadística descriptiva." },
   { tema:5, sub:3, q:"Según el PDF, la marca de clase se representa como:", o:["xi","fi","Fi","hi"], a:0, j:"Subtema: Estadística descriptiva." },
-
-  /* Subtema 4: Codificación, matriz de datos y tipos de variables (20) */
   { tema:5, sub:4, q:"Según el PDF, la organización y tabulación de la matriz de datos es:", o:["Ordenar la información recolectada en filas y columnas para facilitar su revisión y análisis","Ordenar la información en desorden","No ordenar la información","Eliminar la información"], a:0, j:"Subtema: Codificación, matriz de datos y tipos de variables." },
   { tema:5, sub:4, q:"Según el PDF, un objetivo de la matriz de datos es:", o:["Detectar datos faltantes o inconsistentes","Ignorar datos faltantes","No detectar inconsistencias","Eliminar datos"], a:0, j:"Subtema: Codificación, matriz de datos y tipos de variables." },
   { tema:5, sub:4, q:"Según el PDF, un objetivo de la matriz de datos es:", o:["Evitar duplicaciones y errores","Permitir duplicaciones","Permitir errores","Ignorar errores"], a:0, j:"Subtema: Codificación, matriz de datos y tipos de variables." },
@@ -1386,8 +1355,6 @@ QUIZ.push(
   { tema:5, sub:4, q:"Según el PDF, el ejemplo discreto es:", o:["1 = Bajo, 2 = Medio, 3 = Alto","Número de cursos: 3, 4, 5, 6...","Peso: 72.8 kg","Estatura: 1.75 m"], a:1, j:"Subtema: Codificación, matriz de datos y tipos de variables." },
   { tema:5, sub:4, q:"Según el PDF, los códigos numéricos no siempre representan cantidades:", o:["A veces solo identifican categorías","Siempre representan cantidades","Nunca identifican categorías","Siempre son medidas"], a:0, j:"Subtema: Codificación, matriz de datos y tipos de variables." },
   { tema:5, sub:4, q:"Según el PDF, el procesamiento y la codificación transforman:", o:["Los datos recolectados en información ordenada y útil","Los datos en información desordenada","La información en datos","Los datos en basura"], a:0, j:"Subtema: Codificación, matriz de datos y tipos de variables." },
-
-  /* Subtema 5: Herramientas tecnológicas y software (10) */
   { tema:5, sub:5, q:"Según el PDF, Excel:", o:["Organiza datos, calcula medidas y crea tablas y gráficos","Solo organiza datos","Solo calcula medidas","Solo crea gráficos"], a:0, j:"Subtema: Herramientas tecnológicas y software." },
   { tema:5, sub:5, q:"Según el PDF, R:", o:["Permite análisis avanzados, programación y gráficos reproducibles","Solo análisis básicos","Solo programación","Solo gráficos"], a:0, j:"Subtema: Herramientas tecnológicas y software." },
   { tema:5, sub:5, q:"Según el PDF, SPSS:", o:["Facilita análisis estadísticos mediante menús y procedimientos","Solo análisis avanzados","Solo programación","Solo gráficos"], a:0, j:"Subtema: Herramientas tecnológicas y software." },
@@ -1398,6 +1365,369 @@ QUIZ.push(
   { tema:5, sub:5, q:"Según el PDF, una ventaja de las herramientas tecnológicas es:", o:["Resultados reproducibles","Resultados no reproducibles","Pérdida de tiempo","Más errores"], a:0, j:"Subtema: Herramientas tecnológicas y software." },
   { tema:5, sub:5, q:"Según el PDF, una matriz bien organizada, códigos consistentes y un software adecuado permiten:", o:["Analizar los resultados con mayor precisión y fundamentar conclusiones","Analizar los resultados con menor precisión","No fundamentar conclusiones","Eliminar los resultados"], a:0, j:"Subtema: Herramientas tecnológicas y software." },
   { tema:5, sub:5, q:"Según el PDF, en resumen, se debe:", o:["Organizar y revisar los datos, codificar según el tipo de variable, elegir herramientas según el objetivo e interpretar resultados con criterio","Desorganizar los datos","No codificar","No interpretar"], a:0, j:"Subtema: Herramientas tecnológicas y software." }
+);
+
+/* ═══════════════════════════════════════════════════════════
+   TEMA 6 · GRUPO B I (120 preguntas)
+   ═══════════════════════════════════════════════════════════ */
+QUIZ.push(
+  { tema:6, sub:1, q:"Según el PDF, ¿qué permite la investigación científica?", o:["Conocer mejor la realidad, mejorar el aprendizaje y desarrollar la creatividad intelectual","Ganar dinero y prestigio académico","Evitar el estudio de campo","Copiar los resultados de otros investigadores"], a:0, j:"Subtema: La investigación científica y los enfoques." },
+  { tema:6, sub:1, q:"¿Qué enfoque de investigación se caracteriza por tener una naturaleza numérica y medible, y un proceso secuencial y riguroso?", o:["Cualitativo","Mixto","Cuantitativo","Exploratorio"], a:2, j:"Subtema: La investigación científica y los enfoques." },
+  { tema:6, sub:1, q:"¿Cuál de los siguientes es un ejemplo de enfoque cuantitativo mencionado en el documento?", o:["Entrevistas a choferes","Grupos focales con vecinos","Prueba de asentamiento del concreto","Reuniones con operarios de maquinaria"], a:2, j:"Subtema: La investigación científica y los enfoques." },
+  { tema:6, sub:1, q:"El enfoque cualitativo permite alcanzar un análisis sistemático de información más:", o:["Numérica y medible","Subjetiva e interpretativa","Deductiva y generalizable","Estrictamente objetiva"], a:1, j:"Subtema: La investigación científica y los enfoques." },
+  { tema:6, sub:1, q:"¿Qué característica NO corresponde al enfoque cualitativo?", o:["Diseño flexible","Muestras grandes y probabilísticas","Rol activo del investigador","Inductivo y naturalista"], a:1, j:"Subtema: La investigación científica y los enfoques." },
+  { tema:6, sub:1, q:"¿Cuál es un ejemplo de técnica del enfoque cualitativo según el PDF?", o:["Cálculo de deflexión en una viga","Encuestas con preguntas abiertas","Consumo de agua por habitante","Velocidad de infiltración de un suelo"], a:1, j:"Subtema: La investigación científica y los enfoques." },
+  { tema:6, sub:1, q:"El enfoque mixto combina sistemáticamente los métodos cuantitativo y cualitativo para lograr:", o:["Un proceso más rápido","Menos gastos económicos","Una comprensión más profunda y completa de un fenómeno","Evitar la triangulación de datos"], a:2, j:"Subtema: La investigación científica y los enfoques." },
+  { tema:6, sub:1, q:"¿Qué característica es propia del enfoque mixto?", o:["Pluralismo o eclecticismo metodológico","Perspectiva puramente objetiva","Uso exclusivo de estadísticas","Muestras no probabilísticas únicamente"], a:0, j:"Subtema: La investigación científica y los enfoques." },
+  { tema:6, sub:1, q:"¿Cuál es un ejemplo de aplicación del enfoque mixto?", o:["Prueba de asentamiento del concreto","Baches en una avenida y falta de agua en una comunidad","Cálculo de deflexión en una viga","Entrevistas a choferes"], a:1, j:"Subtema: La investigación científica y los enfoques." },
+  { tema:6, sub:1, q:"¿Qué enfoque tiene como característica la \"triangulación de datos\"?", o:["Cuantitativo","Cualitativo","Mixto","Exploratorio"], a:2, j:"Subtema: La investigación científica y los enfoques." },
+  { tema:6, sub:2, q:"Según la pirámide de los niveles de investigación, ¿cuál es el nivel que se encuentra en la base (el primero)?", o:["Aplicativo","Exploratorio","Descriptivo","Explicativo"], a:1, j:"Subtema: Niveles de investigación." },
+  { tema:6, sub:2, q:"¿Qué nivel de investigación se caracteriza por ser fenomenológico, constructivista y hermenéutico?", o:["Descriptivo","Relacional","Exploratorio","Explicativo"], a:2, j:"Subtema: Niveles de investigación." },
+  { tema:6, sub:2, q:"¿Cuál es un ejemplo de nivel exploratorio mencionado en el PDF?", o:["El efecto del calor en la resistencia del asfalto","Exploración visual y recopilación de datos de un suelo desconocido","Relación entre horas de estudio y rendimiento","Predicción de asentamientos del suelo en una vivienda"], a:1, j:"Subtema: Niveles de investigación." },
+  { tema:6, sub:2, q:"El nivel descriptivo se encarga de identificar y describir fenómenos considerando un contexto:", o:["Estadístico y matemático","Temporal y geográfico específico","Causal y experimental","Predictivo y aplicativo"], a:1, j:"Subtema: Niveles de investigación." },
+  { tema:6, sub:2, q:"¿Qué enfoque utiliza principalmente el nivel descriptivo?", o:["Bivariado","Multivariado","Univariado","Causal"], a:2, j:"Subtema: Niveles de investigación." },
+  { tema:6, sub:2, q:"¿Qué nivel busca determinar si existe una asociación o vínculo entre dos o más variables, sin demostrar causa y efecto?", o:["Exploratorio","Descriptivo","Relacional","Explicativo"], a:2, j:"Subtema: Niveles de investigación." },
+  { tema:6, sub:2, q:"El nivel relacional se caracteriza por tener:", o:["Ausencia de causalidad","Manipulación experimental","Análisis univariado","Objetivo causal"], a:0, j:"Subtema: Niveles de investigación." },
+  { tema:6, sub:2, q:"¿Cuál es un ejemplo de nivel relacional?", o:["Características de un grupo de personas enfermas","Relación entre las horas semanales de estudio y el rendimiento académico","Exploración de un suelo desconocido","Predicción de asentamientos del suelo"], a:1, j:"Subtema: Niveles de investigación." },
+  { tema:6, sub:2, q:"¿Qué nivel busca identificar las causas de un fenómeno y explicar por qué ocurre?", o:["Predictivo","Relacional","Descriptivo","Explicativo"], a:3, j:"Subtema: Niveles de investigación." },
+  { tema:6, sub:2, q:"El nivel explicativo se caracteriza por tener un:", o:["Bajo nivel teórico","Alto nivel teórico y estructura rigurosa","Objetivo puramente descriptivo","Riesgo nulo metodológico"], a:1, j:"Subtema: Niveles de investigación." },
+  { tema:6, sub:2, q:"¿Qué nivel busca anticipar la probabilidad de que ocurra un fenómeno mediante modelos matemáticos y estadísticos?", o:["Explicativo","Predictivo","Aplicativo","Relacional"], a:1, j:"Subtema: Niveles de investigación." },
+  { tema:6, sub:2, q:"Para el nivel predictivo, es necesario conocer previamente:", o:["Las causas y los factores que influyen en el fenómeno","Solo la opinión de los expertos","La muestra de forma aleatoria","El presupuesto del proyecto"], a:0, j:"Subtema: Niveles de investigación." },
+  { tema:6, sub:2, q:"¿Qué nivel estudia los procesos, resultados e impactos de una intervención realizada para mejorar una situación?", o:["Descriptivo","Exploratorio","Aplicativo","Predictivo"], a:2, j:"Subtema: Niveles de investigación." },
+  { tema:6, sub:2, q:"En el ejemplo del nivel aplicativo, un ingeniero civil identifica deterioro en una carretera por baja capacidad portante y aplica una técnica de mejoramiento. ¿Qué busca comprobar?", o:["Si aumenta la resistencia y disminuyen las deformaciones","Si el suelo es infinito","Si los choferes están de acuerdo","Si el asfalto cambia de color"], a:0, j:"Subtema: Niveles de investigación." },
+  { tema:6, sub:3, q:"Según el PDF, ¿cuál de los siguientes NO es un criterio para clasificar la investigación científica?", o:["Según su propósito o finalidad","Según el color del documento","Según la naturaleza de los datos y el enfoque","Según la dimensión temporal"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"La investigación que busca incrementar y ampliar el conocimiento teórico sin perseguir una aplicación práctica inmediata se llama:", o:["Aplicada","Básica (o pura)","De campo","Documental"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"¿Cuál es una característica de la investigación aplicada?", o:["Busca el \"saber por el saber\"","Es puramente teórica y abstracta","Es utilitaria, pragmática y con fines comerciales o sociales","No tiene impacto a corto plazo"], a:2, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"La investigación exploratoria se realiza para estudiar un problema:", o:["Muy conocido y documentado","Poco conocido, nuevo o del que no existe suficiente información previa","Que ya tiene una solución definitiva","Que requiere manipulación de variables"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"¿Qué tipo de metodología tiene la investigación exploratoria?", o:["Rígida y estructurada","Flexible, elástica y abierta","Experimental y controlada","Estadística y deductiva"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"La investigación descriptiva actúa metodológicamente como:", o:["Una \"película\" en movimiento","Un \"retrato\" o fotografía detallada del estado actual de las cosas","Un análisis de causa-efecto","Una simulación matemática"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"¿Qué pregunta NO responde rigurosamente la investigación descriptiva?", o:["¿Qué es?","¿Cómo es?","¿Por qué ocurre?","¿Quiénes son?"], a:2, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"La investigación correlacional es un tipo de estudio:", o:["Cualitativo y experimental","Cuantitativo y no experimental","Documental y longitudinal","Explicativo y predictivo"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"¿Qué establece la investigación correlacional?", o:["Relaciones estrictas de causa-efecto","Si las variables cambian juntas (positiva, negativa o nula)","La manipulación de la variable independiente","El impacto de una intervención social"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"La investigación explicativa busca encontrar:", o:["Solo descripciones","El porqué y el para qué de los fenómenos (causa-efecto)","Predicciones futuras","Relaciones de asociación simple"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"¿Qué tipo de investigación es estrictamente objetiva, estructurada y deductiva?", o:["Cualitativa","Mixta","Cuantitativa","Descriptiva"], a:2, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"¿Qué tipo de muestra utiliza típicamente la investigación cualitativa?", o:["Grandes y probabilísticas","Intencionales y pequeñas, pero ricas en información","Aleatorias simples","Estratificadas"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"La investigación experimental exige:", o:["Un solo grupo de control","Grupo experimental y grupo de control con asignación estrictamente aleatoria","Solo observación de campo","Entrevistas a profundidad"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"¿Qué investigación busca causa-efecto pero NO utiliza asignación al azar (aleatorización)?", o:["Experimental pura","Cuasi-experimental","No experimental","Descriptiva"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"En la investigación no experimental, el investigador adopta un rol:", o:["Activo y manipulador","Pasivo frente a la manifestación de las variables","De control absoluto","Predictivo"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"¿Qué tipo de investigación se fundamenta exclusivamente en el uso de fuentes secundarias y primarias ya existentes?", o:["De campo","Documental","Experimental","Cuasi-experimental"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"¿Qué tipo de investigación garantiza la obtención de datos primarios, frescos y con alta fidelidad contextual?", o:["Documental","De campo","Bibliométrica","Teórica"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"La investigación transversal recolecta datos en:", o:["Varios momentos","Un solo momento o en un tiempo único","Un laboratorio experimental","Un periodo de 10 años"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"¿Qué tipo de investigación funciona como una \"película\" en movimiento del fenómeno?", o:["Transversal","Longitudinal","Descriptiva","Correlacional"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:3, q:"¿Qué riesgo enfrenta la investigación longitudinal?", o:["No poder generalizar","Pérdida de participantes (atrición) debido al paso del tiempo","Ser muy barata","No poder ver la evolución"], a:1, j:"Subtema: Tipos de investigación científica." },
+  { tema:6, sub:4, q:"¿Qué es la población según el PDF?", o:["Un subconjunto de elementos","El conjunto total de elementos que comparten características comunes y sobre los cuales se quiere investigar","El grupo de control","La muestra representativa"], a:1, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"Los \"accidentes de tránsito ocurridos en un año\" son un ejemplo de elemento tipo:", o:["Persona","Objeto","Evento","Muestra"], a:2, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"\"Todas las posibles tiradas de un dado\" es un ejemplo de:", o:["Población finita","Población infinita","Muestra probabilística","Muestra no probabilística"], a:1, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"\"Los 85 puentes registrados en una región\" es un ejemplo de:", o:["Población finita","Población infinita","Muestra","Muestreo"], a:0, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"¿Qué es la muestra?", o:["La población total","Un subconjunto representativo de la población del cual se recogen los datos reales","Un tipo de investigación cualitativa","El instrumento de recolección"], a:1, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"¿Por qué se trabaja con la muestra en lugar de la población?", o:["Porque es más precisa","Porque estudiar toda la población suele ser costoso, lento o inviable","Porque no se pueden generalizar los resultados","Porque la población no tiene características comunes"], a:1, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"Los resultados de la muestra se generalizan a la población mediante:", o:["La observación","La inferencia","La entrevista","La codificación"], a:1, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"El muestreo probabilístico se caracteriza porque:", o:["El investigador elige a dedo","Todos los elementos tienen una probabilidad conocida de ser elegidos","Se eligen grupos completos al azar","Solo se eligen expertos"], a:1, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"El muestreo aleatorio simple se asemeja a:", o:["Un sorteo directo","Una división en estratos","Una recomendación entre pares","Llenar una cuota"], a:0, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"El muestreo sistemático consiste en:", o:["Elegir cada k-ésimo elemento","Elegir grupos completos","Dividir en estratos","Elegir por conveniencia"], a:0, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"El muestreo estratificado se realiza:", o:["Dividiendo en grupos (estratos) y tomando muestra de cada uno","Eligiendo grupos completos al azar","Por sorteo directo","Con cuotas"], a:0, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"El muestreo por conglomerados consiste en:", o:["Elegir a los más accesibles","Elegir grupos completos al azar","Dividir en estratos","Seleccionar cada k-ésimo elemento"], a:1, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"El muestreo no probabilístico se caracteriza porque:", o:["Todos tienen probabilidad de ser elegidos","La selección depende del criterio del investigador; no todos tienen opción de ser elegidos","Permite generalizar con rigor","Se usa en el método científico puro"], a:1, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"El muestreo por conveniencia se realiza:", o:["Al azar","Seleccionando a los sujetos por su fácil acceso o disponibilidad","Por recomendación de otros","Por cuotas"], a:1, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"El muestreo intencional o por juicio se basa en:", o:["El azar","El criterio del investigador","La accesibilidad","La recomendación"], a:1, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"El muestreo por cuotas consiste en:", o:["Elegir cada k-ésimo elemento","Llenar una cuota por categoría","Elegir grupos completos","Un sorteo directo"], a:1, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:4, q:"El muestreo \"bola de nieve\" se caracteriza porque:", o:["Se eligen grupos al azar","Un participante recomienda a otro","Se divide en estratos","Se llena una cuota"], a:1, j:"Subtema: Población, muestra y muestreo." },
+  { tema:6, sub:5, q:"El diseño de investigación se define como:", o:["El plan o estrategia general que define cómo se recolectarán y analizarán los datos","El resultado final del estudio","La bibliografía del proyecto","El cronograma de actividades"], a:0, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"En el diseño experimental, si NO hay aleatorización, se denomina:", o:["Preexperimental","Cuasiexperimental","No experimental","Transversal"], a:1, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"El diseño no experimental se caracteriza porque:", o:["Se manipulan variables","Se observan los fenómenos tal como ocurren en su contexto natural","Hay asignación aleatoria","Es de laboratorio"], a:1, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"Un diseño transversal se asemeja a:", o:["Una \"fotografía\"","Una \"película\"","Un experimento puro","Un estudio longitudinal"], a:0, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"El diseño longitudinal incluye estudios de:", o:["Tendencia, cohorte y panel","Solo panel","Solo cohorte","Transversales y descriptivos"], a:0, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"En el ejemplo del PDF sobre el diseño de investigación, el tema fue:", o:["Estudio de suelos","Percepción y expectativas académicas de los estudiantes sobre la carrera de Ingeniería Civil","Baches en Pucallpa","Resistencia del concreto"], a:1, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"En el ejemplo del PDF, la muestra fue de:", o:["10 alumnos","6 alumnos","100 alumnos","50 alumnos"], a:1, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"En el ejemplo del PDF, el diseño fue:", o:["Experimental, longitudinal","No experimental, transversal descriptivo","Cuasiexperimental, transversal","Documental, longitudinal"], a:1, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"Según el análisis del ejemplo, ¿qué habilidad se consideró más indispensable (50%)?", o:["Creatividad","Habilidad en la física","Habilidad matemática","Trabajo en grupo"], a:2, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"Según el análisis del ejemplo, ¿qué habilidad se consideró en un 33%?", o:["Creatividad","Habilidad en la física","Habilidad matemática","Trabajo en grupo"], a:1, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"La observación es una técnica que consiste en:", o:["Hacer preguntas cerradas","Examinar atentamente hechos, fenómenos o situaciones de la realidad para obtener información directa","Revisar documentos","Conversar con expertos"], a:1, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"¿Qué técnica recopila información mediante un conjunto de preguntas dirigidas a un grupo de personas?", o:["Observación","Encuesta","Entrevista","Análisis documental"], a:1, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"La encuesta que permite responder libremente con palabras propias se llama:", o:["Cerrada","Abierta","Mixta","Estructurada"], a:1, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"La entrevista se define como:", o:["Un cuestionario cerrado","Una conversación entre el investigador y una o varias personas","Una ficha de observación","Un análisis de documentos"], a:1, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"¿Qué técnica revisa, selecciona e interpreta documentos existentes?", o:["La encuesta","La entrevista","El análisis documental","La observación"], a:2, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"El cuestionario es un instrumento que contiene:", o:["Preguntas abiertas y cerradas","Solo fotografías","Solo preguntas abiertas","Fichas de observación"], a:0, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"La guía de entrevista puede ser:", o:["Solo estructurada","Estructurada, semiestructurada y no estructurada","Solo abierta","Solo cerrada"], a:1, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"La ficha de observación permite registrar de manera ordenada:", o:["Solo números","Hechos, características y comportamientos observados","Entrevistas","Presupuestos"], a:1, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:5, q:"¿Cuál es un elemento principal de la ficha de observación?", o:["Fecha y lugar de observación","Bibliografía","Marco teórico","Conclusión"], a:0, j:"Subtema: Diseño, técnicas e instrumentos." },
+  { tema:6, sub:6, q:"El proceso de investigación científica es:", o:["Un proceso riguroso y sistemático","Un proceso aleatorio","Un proceso exclusivamente de laboratorio","Un proceso rápido y sin reglas"], a:0, j:"Subtema: Proceso, recolección y organización de datos." },
+  { tema:6, sub:6, q:"En la recolección y organización de datos, ¿qué paso consiste en la detección y corrección de errores o datos faltantes?", o:["Codificación","Tabulación","Limpieza","Base de datos"], a:2, j:"Subtema: Proceso, recolección y organización de datos." },
+  { tema:6, sub:6, q:"La \"codificación\" en la organización de datos consiste en:", o:["Asignar códigos para estandarizar la información","Contar datos en tablas","Graficar","Limpiar errores"], a:0, j:"Subtema: Proceso, recolección y organización de datos." },
+  { tema:6, sub:6, q:"La \"tabulación\" se refiere a:", o:["Asignar códigos","Conteo y ordenación de datos en tablas","Almacenar información","Limpiar datos"], a:1, j:"Subtema: Proceso, recolección y organización de datos." },
+  { tema:6, sub:6, q:"En el ejemplo de estudio de suelos, ¿qué se hace en las calicatas?", o:["Se hacen pruebas de laboratorio","Se excavan pozos manuales de 1.5 a 3.0 metros para sacar muestras de suelo","Se cuenta cuántos golpes necesita el martillo","Se grafica la curva granulométrica"], a:1, j:"Subtema: Proceso, recolección y organización de datos." },
+  { tema:6, sub:6, q:"En el ejemplo del ensayo SPT, se cuenta cuántos golpes necesita el martillo para hundir el suelo:", o:["10 cm","20 cm","30 cm","50 cm"], a:2, j:"Subtema: Proceso, recolección y organización de datos." },
+  { tema:6, sub:6, q:"¿Qué ensayo sirve para saber cuánta agua tiene el suelo?", o:["Granulometría","Límites de Atterberg","Contenido de Humedad","SPT"], a:2, j:"Subtema: Proceso, recolección y organización de datos." },
+  { tema:6, sub:6, q:"La clasificación SUCS se utiliza en el ejemplo para:", o:["Medir la humedad","Clasificar el suelo (Ej. \"Arena arcillosa (SC)\")","Calcular la deflexión","Dibujar el perfil estratigráfico"], a:1, j:"Subtema: Proceso, recolección y organización de datos." },
+  { tema:6, sub:6, q:"En la organización del ejemplo de suelo, el perfil estratigráfico mostró de 0.00 a 0.60m:", o:["Arcilla blanda","Arena compacta","Relleno","Roca madre"], a:2, j:"Subtema: Proceso, recolección y organización de datos." },
+  { tema:6, sub:7, q:"Las tablas de frecuencia permiten:", o:["Organizar y resumir un conjunto de datos indicando cuántas veces se repite cada valor","Calcular la media","Hacer entrevistas","Recolectar datos"], a:0, j:"Subtema: Análisis estadístico." },
+  { tema:6, sub:7, q:"¿Qué son los gráficos estadísticos?", o:["Dibujos decorativos","Representaciones visuales de datos que permiten organizar, comparar e interpretar información","Instrumentos de entrevista","Fórmulas matemáticas"], a:1, j:"Subtema: Análisis estadístico." },
+  { tema:6, sub:7, q:"Las medidas de tendencia central son:", o:["Media, mediana y moda","Varianza y desviación estándar","Porcentajes y correlación","Frecuencia y rango"], a:0, j:"Subtema: Análisis estadístico." },
+  { tema:6, sub:7, q:"¿Qué medida de tendencia central representa el valor que más se repite?", o:["Media","Mediana","Moda","Varianza"], a:2, j:"Subtema: Análisis estadístico." },
+  { tema:6, sub:7, q:"La varianza y la desviación estándar son medidas de:", o:["Tendencia central","Dispersión o variabilidad","Frecuencia","Correlación"], a:1, j:"Subtema: Análisis estadístico." },
+  { tema:6, sub:7, q:"Según el PDF, la correlación:", o:["Significa necesariamente que una variable causa a la otra","Ayuda a identificar la relación entre dos variables, pero no significa necesariamente causalidad","Solo se usa en investigación cualitativa","Es igual a la media"], a:1, j:"Subtema: Análisis estadístico." },
+  { tema:6, sub:7, q:"En el ejemplo de correlación del PDF, la fórmula utilizada para la media de \"x\" es:", o:["x = 3000 / 5 = 600","x = 150 / 12 = 12.5","x = 428 / 5 = 85.6","x = 70194 / 5 = 14038.8"], a:0, j:"Subtema: Análisis estadístico." },
+  { tema:6, sub:7, q:"En el ejemplo del PDF, el 12% de 150 es:", o:["12","15","18","20"], a:2, j:"Subtema: Análisis estadístico." },
+  { tema:6, sub:7, q:"En el ejemplo del PDF, el 35% de 1200 es:", o:["350","420","500","600"], a:1, j:"Subtema: Análisis estadístico." },
+  { tema:6, sub:7, q:"En el cálculo de la correlación del PDF, el resultado de \"r\" fue:", o:["0.500","0.999","1.000","0.417"], a:1, j:"Subtema: Análisis estadístico." },
+  { tema:6, sub:8, q:"¿Qué universidad y facultad se menciona en la portada del PDF?", o:["Universidad Nacional de Ucayali - Facultad de Ingeniería Civil","Universidad Nacional Mayor de San Marcos - Facultad de Ingeniería","Universidad de Lima - Facultad de Arquitectura","Universidad Nacional de Ingeniería - Facultad de Civil"], a:0, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"En el ejemplo de población (Pág. 26), \"los sismos registrados en el Perú\" es un ejemplo de elemento tipo:", o:["Persona","Objeto","Evento","Muestra"], a:2, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"En la encuesta del PDF (Pág. 38), la pregunta \"¿Qué curso te parece el más complicado dentro de tus estudios?\" es de tipo:", o:["Cerrada","Abierta (Nombrar)","Mixta","De escala"], a:1, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"En la encuesta del PDF (Pág. 38), la pregunta \"¿Crees que la universidad influye en tu formación profesional?\" usa una escala de:", o:["Totalmente de acuerdo a Desacuerdo","Nunca a Siempre","1 al 10","Sí o No"], a:0, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"Según el gráfico circular de la Pág. 41, ¿qué porcentaje corresponde a la Creatividad?", o:["50%","33%","17%","100%"], a:2, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"Según la tabla de frecuencias de la Pág. 56, ¿cuál es el rango de edades con mayor frecuencia (50 pacientes)?", o:["[20, 30)","[30, 40)","[40, 50)","[50, 60)"], a:2, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"En la tabla de frecuencias de la Pág. 56, el número total de pacientes (n) es:", o:["100","150","200","250"], a:2, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"En el ejemplo de suelo (Pág. 54), la capacidad portante admisible recomendada en el informe geotécnico fue:", o:["1.50 kg/cm2","0.85 kg/cm2","2.00 kg/cm2","0.50 kg/cm2"], a:1, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"En el informe geotécnico del ejemplo (Pág. 54), se recomienda cimentación con zapatas cuadradas a una profundidad de:", o:["1.00m","1.50m","1.80m","2.50m"], a:2, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"En el perfil estratigráfico del ejemplo (Pág. 54), de 2.00 a 3.00m se encontró:", o:["Relleno","Arcilla blanda","Arena compacta","Grava"], a:2, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"El ensayo de Granulometría y Límites de Atterberg en el ejemplo (Pág. 53) sirve para saber si el suelo es:", o:["Arena, limo o arcilla","Suelto o compacto","Húmedo o seco","Ácido o básico"], a:0, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"¿Qué norma se utiliza para la clasificación SUCS en el ejemplo del PDF (Pág. 54)?", o:["NTP 339.134","ASTM D-123","ISO 9001","NTP 400.012"], a:0, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"En el ejemplo del PDF (Pág. 54), \"Arena arcillosa (SC)\" es un ejemplo de:", o:["Curva granulométrica","Clasificación SUCS","Perfil estratigráfico","Informe geotécnico"], a:1, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"Según el PDF (Pág. 31), ¿qué tipo de muestreo permite generalizar y calcular el error muestral?", o:["El no probabilístico","El probabilístico","El por conveniencia","El bola de nieve"], a:1, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"Según el PDF (Pág. 30), ¿qué se infiere de la muestra a la población?", o:["La varianza","Los resultados","El error","La moda"], a:1, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"Según el PDF (Pág. 56), ¿cuál es la amplitud (Amp) calculada en el ejemplo de la tabla de frecuencias?", o:["69","10","7","89"], a:1, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"En la fórmula de la varianza para una muestra (Pág. 59), el denominador es:", o:["N","n - 1","n + 1","n^2"], a:1, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"En la fórmula de la desviación estándar poblacional (Pág. 59), se utiliza la letra griega:", o:["Sigma (σ)","Mu (μ)","Alfa (α)","Beta (β)"], a:0, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"Según el PDF (Pág. 50), la investigación científica tiene como objetivo adquirir nuevo conocimiento, comprender fenómenos y resolver problemas a través de:", o:["La observación, el análisis y la experimentación","La intuición y la suerte","Solo la lectura de libros","Solo encuestas"], a:0, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"En la etapa de \"Evaluación y Crítica\" del análisis (Pág. 51), se menciona:", o:["La revisión por pares y la replicabilidad","El diseño de gráficos","La recolección de datos","El planteamiento del problema"], a:0, j:"Subtema: Preguntas directas de imágenes y ejemplos." },
+  { tema:6, sub:8, q:"En el análisis del ejemplo del PDF (Pág. 41), se revela una fuerte valoración de la influencia de:", o:["La universidad y el docente","Los amigos","La tecnología","Los libros"], a:0, j:"Subtema: Preguntas directas de imágenes y ejemplos." }
+);
+
+/* ═══════════════════════════════════════════════════════════
+   TEMA 7 · GRUPO B II (110 preguntas)
+   ═══════════════════════════════════════════════════════════ */
+QUIZ.push(
+  { tema:7, sub:1, q:"Según el documento, ¿cuál es la idea central que se debe mantener en una investigación?", o:["La extensión del documento","La coherencia entre la pregunta, los objetivos, la metodología y las conclusiones","La cantidad de bibliografía consultada","El presupuesto asignado"], a:1, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"¿Qué establece el proyecto de investigación?", o:["La ejecución y los hallazgos finales","Una propuesta de trabajo","Las conclusiones definitivas","Los resultados estadísticos"], a:1, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"¿Qué describe el informe final?", o:["La propuesta de trabajo","La ejecución del estudio y permite valorar sus hallazgos","Solo el marco teórico","El cronograma previsto"], a:1, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"Un proyecto de investigación sirve para evaluar la coherencia y la viabilidad antes de:", o:["Redactar la introducción","Recoger datos","Elegir el tema","Publicar los resultados"], a:1, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"¿Por qué el proyecto funciona como una guía de trabajo?", o:["Porque no puede modificarse","Porque puede ajustarse, siempre que los cambios se justifiquen y se registren","Porque solo lo revisa el docente","Porque reemplaza al informe final"], a:1, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"Según el documento, el problema de investigación debe sustentarse con:", o:["Suposiciones del investigador","Antecedentes y evidencias","Solo la opinión del docente","Datos inventados"], a:1, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"Una pregunta clara de investigación precisa qué se analizará, dónde y:", o:["Cómo se financiará","En qué periodo","Quiénes serán los jueces","Qué resultados se obtendrán"], a:1, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"¿Qué verbos se utilizan para expresar el objetivo general del estudio?", o:["Determinar, describir o comprender","Comprar, vender o financiar","Adivinar, suponer o inventar","Copiar, pegar o transcribir"], a:0, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"Los objetivos específicos permiten desarrollar el propósito general sin:", o:["Usar verbos","Incorporar tareas ajenas al problema","Definir la muestra","Tener un cronograma"], a:1, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"La justificación explica quién podría aprovechar el conocimiento y cuál sería:", o:["El costo del proyecto","Su aporte","La metodología usada","La muestra seleccionada"], a:1, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"¿Cuál es un error frecuente en la justificación?", o:["Explicar el aporte social","Anunciar beneficios que todavía no se han demostrado","Delimitar el problema","Usar antecedentes"], a:1, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"El proyecto orienta la revisión académica y, cuando corresponda, la:", o:["Evaluación ética","Venta de resultados","Publicación en revistas","Recolección de datos"], a:0, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"Una aprobación académica NO reemplaza:", o:["La revisión de literatura","Los permisos de acceso ni las autorizaciones exigibles","La firma del docente","El presupuesto"], a:1, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"Según la tabla de la Pág. 2, la metodología responde a la pregunta:", o:["¿Por qué conviene estudiar el problema?","¿Cómo se obtendrá y analizará la evidencia?","¿Qué falta conocer?","¿Con qué recursos y plazo?"], a:1, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"Según la tabla de la Pág. 2, la viabilidad responde a la pregunta:", o:["¿Qué conocimiento se busca obtener?","¿Por qué conviene estudiar?","¿Con qué recursos y dentro de qué plazo?","¿Qué falta conocer?"], a:2, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"El tema es un campo amplio de interés, mientras que el problema es:", o:["Otra área amplia","Una pregunta concreta dentro de ese campo","La conclusión del estudio","El título del informe"], a:1, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"En el ejemplo del documento, \"pavimentos urbanos\" es un:", o:["Problema","Objetivo","Tema","Justificación"], a:2, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:1, q:"La delimitación del problema debe establecer el ámbito, las unidades de análisis y:", o:["El periodo","El marco teórico","Las conclusiones","El resumen"], a:0, j:"Subtema: Naturaleza del proyecto de investigación." },
+  { tema:7, sub:2, q:"¿A quién se atribuye la imagen \"Tipos de investigación según distintos criterios\" transcrita en el documento?", o:["A Fidias Arias-Odón","A Mario Bunge","A Roberto Hernández Sampieri","A USC Libraries"], a:0, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:2, q:"Según la imagen, ¿cuál es el sentido metodológico del criterio \"Enfoque\"?", o:["Estrategia para obtener y analizar datos","Profundidad de la pregunta","Naturaleza de la evidencia y forma de abordarla","Diseño de la muestra"], a:2, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:2, q:"Según la imagen, los niveles o alcances son:", o:["Experimental y no experimental","Exploratorio, descriptivo y explicativo","Cuantitativo, cualitativo y mixto","Transversal y longitudinal"], a:1, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:2, q:"Según la imagen, el diseño cuantitativo incluye:", o:["No experimental, experimental y documental","Hermenéutica y etnografía","Concurrente y secuencial","Exploratorio y descriptivo"], a:0, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:2, q:"El enfoque cuantitativo en Ingeniería Civil puede utilizarse para estudiar:", o:["Cómo perciben los vecinos la movilidad","Propiedades de materiales o características de infraestructura","Significados culturales","Solo entrevistas abiertas"], a:1, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:2, q:"El enfoque cualitativo permite comprender:", o:["Solo datos numéricos","Experiencias y significados","La resistencia del concreto","Las leyes de la física"], a:1, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:2, q:"Aplicar una encuesta y una entrevista NO convierte automáticamente un estudio en mixto porque:", o:["Faltan datos numéricos","Se debe explicar cómo se conectarán y cómo la integración mejorará la interpretación","No se usó estadística","Falta un experimento"], a:1, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:2, q:"En la lámina, el diseño no experimental incluye:", o:["Transversal, longitudinal, ex post facto y estudio de caso","Preexperimental y cuasiexperimental","Bibliométrico y revisión sistemática","Teoría fundamentada"], a:0, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:2, q:"El diseño experimental comprende:", o:["Transversal y longitudinal","Preexperimental, cuasiexperimental y experimental puro","Etnografía y fenomenología","Análisis de contenido"], a:1, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:2, q:"Las modalidades experimentales difieren en:", o:["Costo y tiempo","Control y asignación de unidades","Tipo de bibliografía","Uso de encuestas"], a:1, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:2, q:"La imagen ubica en investigación documental:", o:["Estudios bibliométricos, revisiones sistemáticas, análisis de contenido y datos secundarios","Etnografía y biografía","Estudios de caso y acción participativa","Experimentos puros"], a:0, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:2, q:"Una revisión sistemática puede sintetizar evidencia:", o:["Solo cuantitativa","Solo cualitativa","Cuantitativa, cualitativa o ambas, según su pregunta","Solo de libros"], a:2, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:2, q:"\"De campo\" y \"en línea\" indican formas o contextos de:", o:["Análisis","Recolección","Publicación","Diseño"], a:1, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:2, q:"En el enfoque cualitativo aparecen (según la lámina):", o:["Hermenéutica, etnografía, fenomenología y biografía","Solo estudio de caso","Solo análisis de contenido","Solo teoría fundamentada"], a:0, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:2, q:"En el enfoque mixto se distinguen diseños:", o:["Transversales y longitudinales","Concurrentes y secuenciales","Experimentales y no experimentales","Exploratorios y explicativos"], a:1, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:2, q:"Otras clasificaciones (según el texto) también incluyen el alcance:", o:["Predictivo","Correlacional","Aplicativo","Relacional"], a:1, j:"Subtema: Tipos de investigación según la imagen." },
+  { tema:7, sub:3, q:"Según el esquema, el Capítulo I corresponde a:", o:["Marco teórico","Planteamiento del problema","Metodología","Administración del proyecto"], a:1, j:"Subtema: Esquema orientativo del proyecto." },
+  { tema:7, sub:3, q:"En los preliminares, el título debe corresponder al problema y evitar:", o:["Ser muy corto","Anunciar resultados aún desconocidos","Usar tecnicismos","Tener más de 20 palabras"], a:1, j:"Subtema: Esquema orientativo del proyecto." },
+  { tema:7, sub:3, q:"¿Qué incluye el Capítulo I (Planteamiento del problema)?", o:["Antecedentes y bases teóricas","Delimitación espacial, temporal y conceptual","Cronograma y presupuesto","Resultados esperados"], a:1, j:"Subtema: Esquema orientativo del proyecto." },
+  { tema:7, sub:3, q:"El Capítulo II (Marco teórico) incluye:", o:["Antecedentes relevantes y revisión crítica de lo ya estudiado","Población y muestra","Cronograma de actividades","Fichas de observación"], a:0, j:"Subtema: Esquema orientativo del proyecto." },
+  { tema:7, sub:3, q:"En estudios cualitativos, el marco teórico puede incluir:", o:["Solo hipótesis estadísticas","Categorías iniciales y supuestos orientadores","Solo variables cuantitativas","Solo experimentos"], a:1, j:"Subtema: Esquema orientativo del proyecto." },
+  { tema:7, sub:3, q:"El Capítulo III (Metodología) incluye:", o:["Enfoque, alcance, diseño, población, muestra y técnicas","Solo los objetivos","Solo la justificación","Solo los resultados"], a:0, j:"Subtema: Esquema orientativo del proyecto." },
+  { tema:7, sub:3, q:"La administración del proyecto incluye:", o:["Cronograma, presupuesto, recursos y permisos","Marco teórico","Planteamiento del problema","Resultados y discusión"], a:0, j:"Subtema: Esquema orientativo del proyecto." },
+  { tema:7, sub:3, q:"Los anexos deben mencionarse en el texto y pueden incluir:", o:["Instrumentos propuestos, matriz de consistencia y consentimientos","Solo la bibliografía","Solo los resultados","Solo las conclusiones"], a:0, j:"Subtema: Esquema orientativo del proyecto." },
+  { tema:7, sub:3, q:"Los resultados esperados describen productos o aportes previstos, sin presentarlos como:", o:["Objetivos","Hallazgos obtenidos","Metodología","Justificación"], a:1, j:"Subtema: Esquema orientativo del proyecto." },
+  { tema:7, sub:3, q:"¿Qué debe anticipar la propuesta del proyecto?", o:["Cómo responderá a cada objetivo","Los resultados exactos","Las conclusiones finales","Las limitaciones del docente"], a:0, j:"Subtema: Esquema orientativo del proyecto." },
+  { tema:7, sub:4, q:"La metodología debe permitir que otra persona comprenda:", o:["El presupuesto","El procedimiento","La bibliografía","Los resultados"], a:1, j:"Subtema: Metodología y viabilidad." },
+  { tema:7, sub:4, q:"En estudios cuantitativos se definen:", o:["Categorías iniciales","Variables e indicadores medibles","Supuestos orientadores","Solo entrevistas"], a:1, j:"Subtema: Metodología y viabilidad." },
+  { tema:7, sub:4, q:"En estudios cualitativos se precisan:", o:["Variables e indicadores","Categorías iniciales y criterios de selección de participantes","Solo experimentos","Solo estadísticas"], a:1, j:"Subtema: Metodología y viabilidad." },
+  { tema:7, sub:4, q:"La calidad de la evidencia incluye (cuando corresponda):", o:["La calibración de equipos, validez o confiabilidad","El color de las gráficas","El número de páginas","El presupuesto"], a:0, j:"Subtema: Metodología y viabilidad." },
+  { tema:7, sub:4, q:"El análisis de los datos se planifica:", o:["Después de recoger los datos","Antes de recoger datos","Al final del informe","Cuando el docente lo pida"], a:1, j:"Subtema: Metodología y viabilidad." },
+  { tema:7, sub:4, q:"En un estudio cuantitativo, cada variable debe tener una definición conceptual y:", o:["Una forma de medición","Un autor famoso","Una hipótesis","Un presupuesto"], a:0, j:"Subtema: Metodología y viabilidad." },
+  { tema:7, sub:4, q:"La frecuencia de un deterioro puede expresarse como número de observaciones o proporción, siempre que se defina:", o:["El denominador","El numerador","La muestra","La hipótesis"], a:0, j:"Subtema: Metodología y viabilidad." },
+  { tema:7, sub:4, q:"En un estudio cualitativo, para fortalecer la credibilidad se puede utilizar:", o:["Triangulación, reflexividad y registro del proceso analítico","Solo estadística descriptiva","Solo encuestas cerradas","Solo experimentos puros"], a:0, j:"Subtema: Metodología y viabilidad." },
+  { tema:7, sub:4, q:"¿Qué NO corresponde imponer a las preguntas cualitativas?", o:["Triangulación","Indicadores cuantitativos","Reflexividad","Registro analítico"], a:1, j:"Subtema: Metodología y viabilidad." },
+  { tema:7, sub:4, q:"Según el cronograma ilustrativo, en el Mes 1 se realiza:", o:["Recolección con permisos","Delimitación y revisión de antecedentes","Análisis y redacción","Diseño de instrumento"], a:1, j:"Subtema: Metodología y viabilidad." },
+  { tema:7, sub:4, q:"Según el cronograma, el diseño de instrumento y prueba piloto se realiza en el:", o:["Mes 1","Mes 2","Mes 3","Mes 4"], a:1, j:"Subtema: Metodología y viabilidad." },
+  { tema:7, sub:4, q:"Según el cronograma, en el Mes 4 se realiza:", o:["La recolección","El análisis y redacción","La delimitación","La prueba piloto"], a:1, j:"Subtema: Metodología y viabilidad." },
+  { tema:7, sub:4, q:"El presupuesto debe estimar cantidades, costos unitarios y subtotales:", o:["Aproximados","Verificables","Inventados","Sin base de cálculo"], a:1, j:"Subtema: Metodología y viabilidad." },
+  { tema:7, sub:4, q:"Según la ética e integridad, la participación debe ser:", o:["Obligatoria","Voluntaria","Remunerada","Anónima siempre"], a:1, j:"Subtema: Metodología y viabilidad." },
+  { tema:7, sub:4, q:"Fabricar datos, ocultar resultados inconvenientes o copiar textos sin atribución afecta:", o:["Solo al docente","La validez y la integridad del estudio","El presupuesto","El cronograma"], a:1, j:"Subtema: Metodología y viabilidad." },
+  { tema:7, sub:5, q:"El informe final comunica el estudio:", o:["Antes de ejecutarlo","Después de ejecutarlo","Durante la planificación","Antes de la revisión bibliográfica"], a:1, j:"Subtema: El informe final y su estructura." },
+  { tema:7, sub:5, q:"Si en el informe final hubo cambios respecto del proyecto, estos deben:", o:["Ocultarse","Justificarse","Eliminarse","Inventarse"], a:1, j:"Subtema: El informe final y su estructura." },
+  { tema:7, sub:5, q:"El informe final incluye limitaciones para que el lector valore:", o:["El presupuesto","Hasta dónde llegan sus conclusiones","La cantidad de bibliografía","La calidad del docente"], a:1, j:"Subtema: El informe final y su estructura." },
+  { tema:7, sub:5, q:"¿En qué consiste el informe final?", o:["En cambiar todos los verbos del proyecto al pasado","En incorporar evidencia, análisis y una respuesta fundamentada al problema","En copiar el proyecto","En eliminar la metodología"], a:1, j:"Subtema: El informe final y su estructura." },
+  { tema:7, sub:5, q:"El informe debe permitir distinguir los datos obtenidos de:", o:["La bibliografía","Las interpretaciones del investigador","Las conclusiones","Las recomendaciones"], a:1, j:"Subtema: El informe final y su estructura." },
+  { tema:7, sub:5, q:"Según la tabla de la Pág. 6, los \"Resultados\" contienen:", o:["Hallazgos organizados por objetivos, variables o categorías","Contexto y problema","Antecedentes y conceptos","Fuentes citadas"], a:0, j:"Subtema: El informe final y su estructura." },
+  { tema:7, sub:5, q:"Según la tabla, la \"Discusión\" contiene:", o:["Hallazgos","Interpretación, contraste con antecedentes, implicaciones y limitaciones","Respuestas sustentadas a los objetivos","Portada e índices"], a:1, j:"Subtema: El informe final y su estructura." },
+  { tema:7, sub:5, q:"Según la tabla, las \"Conclusiones\" son:", o:["Nuevos datos","Respuestas sustentadas a los objetivos","Propuestas pertinentes","Fuentes citadas"], a:1, j:"Subtema: El informe final y su estructura." },
+  { tema:7, sub:5, q:"Según la tabla, las \"Recomendaciones\" son:", o:["Respuestas a los objetivos","Propuestas pertinentes y derivadas de los hallazgos","Nuevos datos","Antecedentes"], a:1, j:"Subtema: El informe final y su estructura." },
+  { tema:7, sub:5, q:"La metodología ejecutada y los hallazgos suelen redactarse en:", o:["Presente","Pasado","Futuro","Imperativo"], a:1, j:"Subtema: El informe final y su estructura." },
+  { tema:7, sub:5, q:"Las definiciones teóricas pueden mantenerse en:", o:["Pasado","Presente","Futuro","Condicional"], a:1, j:"Subtema: El informe final y su estructura." },
+  { tema:7, sub:5, q:"El resumen se redacta:", o:["Al inicio","Al finalizar para representar fielmente el estudio","Antes de la metodología","En la planificación"], a:1, j:"Subtema: El informe final y su estructura." },
+  { tema:7, sub:5, q:"Las tablas deben identificar unidades, fuentes y:", o:["Denominadores","Autores","Precios","Años"], a:0, j:"Subtema: El informe final y su estructura." },
+  { tema:7, sub:5, q:"Las conclusiones responden a los objetivos sin:", o:["Introducir datos nuevos","Usar verbos","Mencionar limitaciones","Tener sustento"], a:0, j:"Subtema: El informe final y su estructura." },
+  { tema:7, sub:5, q:"Si se integran resultados y discusión, debe permanecer clara la distinción entre:", o:["Evidencia e interpretación","Proyecto e informe","Autor y docente","Teoría y práctica"], a:0, j:"Subtema: El informe final y su estructura." },
+  { tema:7, sub:6, q:"El título propuesto en el ejemplo es:", o:["Caracterización del deterioro superficial de pavimentos en tramos urbanos seleccionados de Pucallpa durante 2026","Estudio de suelos en Pucallpa","Análisis de la deflexión en vigas","Diseño de mezclas de concreto"], a:0, j:"Subtema: Ejemplo hipotético en ingeniería civil." },
+  { tema:7, sub:6, q:"El ejemplo del documento sirve para demostrar:", o:["Resultados reales","Coherencia metodológica y no contiene datos recogidos","La aplicación de la estadística inferencial","El uso de software especializado"], a:1, j:"Subtema: Ejemplo hipotético en ingeniería civil." },
+  { tema:7, sub:6, q:"La pregunta general del ejemplo es:", o:["¿Cómo mejorar el pavimento?","¿Qué tipos y frecuencias de deterioro superficial presentan los tramos seleccionados?","¿Cuánto cuesta reparar?","¿Quiénes son los responsables?"], a:1, j:"Subtema: Ejemplo hipotético en ingeniería civil." },
+  { tema:7, sub:6, q:"El objetivo general del ejemplo es:", o:["Diseñar un pavimento","Caracterizar los tipos y frecuencias de deterioro superficial de esos tramos","Calcular el presupuesto","Entrevistar a los vecinos"], a:1, j:"Subtema: Ejemplo hipotético en ingeniería civil." },
+  { tema:7, sub:6, q:"Un objetivo específico del ejemplo es:", o:["Construir la carretera","Identificar tipos de deterioro","Comprar maquinaria","Contratar personal"], a:1, j:"Subtema: Ejemplo hipotético en ingeniería civil." },
+  { tema:7, sub:6, q:"La clasificación del estudio del ejemplo es:", o:["Cualitativa, exploratoria, experimental","Cuantitativa, descriptiva, no experimental y transversal","Mixta, explicativa, longitudinal","Documental, correlacional, cuasiexperimental"], a:1, j:"Subtema: Ejemplo hipotético en ingeniería civil." },
+  { tema:7, sub:6, q:"El instrumento utilizado en el ejemplo es:", o:["Guía de entrevista a profundidad","Ficha de inspección con definiciones operativas, mediciones y registro fotográfico","Encuesta cerrada","Ficha de observación de laboratorio"], a:1, j:"Subtema: Ejemplo hipotético en ingeniería civil." },
+  { tema:7, sub:6, q:"El análisis del ejemplo incluye:", o:["Pruebas de hipótesis causales","Conteos, frecuencias y comparación descriptiva entre tramos","Análisis factorial","Regresión lineal múltiple"], a:1, j:"Subtema: Ejemplo hipotético en ingeniería civil." },
+  { tema:7, sub:6, q:"Si la selección de tramos es intencional, la generalización a todos los pavimentos de Pucallpa requiere:", o:["Cautela y justificación adicional","Ningún cuidado","Solo un mapa","Un presupuesto mayor"], a:0, j:"Subtema: Ejemplo hipotético en ingeniería civil." },
+  { tema:7, sub:6, q:"El estudio descriptivo del ejemplo NO demostraría por sí mismo que:", o:["Existe deterioro","La lluvia, el tránsito o un material causan el deterioro","Los tramos fueron inspeccionados","Se usaron fichas"], a:1, j:"Subtema: Ejemplo hipotético en ingeniería civil." },
+  { tema:7, sub:6, q:"Las recomendaciones en el ejemplo deberían guardar proporción con:", o:["La evidencia disponible","El presupuesto del investigador","Las opiniones de los vecinos","La teoría general"], a:0, j:"Subtema: Ejemplo hipotético en ingeniería civil." },
+  { tema:7, sub:7, q:"Según la tabla comparativa, el proyecto se realiza:", o:["Después de ejecutar el estudio","Antes de ejecutar el estudio","Durante el estudio","Al final del estudio"], a:1, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"Según la tabla, la finalidad del proyecto es:", o:["Comunicar hallazgos","Justificar y planificar","Valorar hallazgos","Presentar resultados"], a:1, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"Según la tabla, la finalidad del informe final es:", o:["Justificar y planificar","Comunicar y valorar hallazgos","Diseñar instrumentos","Establecer el cronograma"], a:1, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"Según la tabla, la evidencia en el proyecto son:", o:["Los datos y análisis del estudio","Antecedentes y plan de recolección","Los resultados","La discusión"], a:1, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"Según la tabla, los productos del informe final son:", o:["Cronograma y presupuesto","Resultados, discusión y conclusiones","Instrumentos previstos","Portada e índice"], a:1, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"Una revisión académica del proyecto debe comprobar que:", o:["El problema esté delimitado, los objetivos sean logrables y los instrumentos útiles","El autor sea famoso","El documento tenga muchas páginas","Se hayan obtenido resultados positivos"], a:0, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"En el informe final se debe verificar que las conclusiones:", o:["Introduzcan datos nuevos","Respondan a los objetivos","Sean más largas que la introducción","Incluyan opiniones personales"], a:1, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"En el informe final se debe verificar que las limitaciones sean:", o:["Ocultas","Explícitas","Mínimas","Inexistentes"], a:1, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"Las referencias y citas deben seguir de manera consistente:", o:["El estilo solicitado por la institución","El estilo del investigador","El estilo APA siempre","El estilo IEEE siempre"], a:0, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"El proyecto convierte una pregunta en:", o:["Una propuesta organizada y viable","Una conclusión","Un informe final","Un experimento"], a:0, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"El informe final permite evaluar:", o:["La ejecución y el conocimiento obtenido","Solo la redacción","Solo el presupuesto","Solo la ética"], a:0, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"La clasificación por enfoque, alcance y diseño ayuda a:", o:["Justificar las decisiones metodológicas","Aumentar las páginas","Evitar la revisión bibliográfica","Saltarse la ética"], a:0, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"La calidad del trabajo depende de su coherencia, de la trazabilidad de la evidencia y de:", o:["La honestidad con la que comunica sus límites","La cantidad de gráficos","El prestigio del autor","La rapidez con la que se hizo"], a:0, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"Según las referencias, ¿quién es el autor de la lámina de tipos de investigación?", o:["USC Libraries","Fidias Arias-Odón","Hernández Sampieri","El docente del curso"], a:1, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"¿Qué institución se cita en las referencias para la escritura de propuestas y resultados?", o:["Universidad Nacional de Ucayali","USC Libraries","CONCYTEC","SUNEDU"], a:1, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"Según la nota de alcance del inicio, los esquemas presentados son:", o:["Obligatorios","Orientativos","Definitivos","Únicos"], a:1, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"Según la nota de alcance, los ejemplos del documento:", o:["Representan una investigación ejecutada","Contienen resultados reales","No representan una investigación ejecutada ni resultados reales","Fueron publicados en una revista"], a:2, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"El proyecto también prevé permisos, recursos y:", o:["Tiempo","Conclusiones","Resultados","Discusión"], a:0, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"¿Qué debe evitar el título del proyecto?", o:["Ser preciso","Anunciar resultados aún desconocidos","Corresponder al problema","Mencionar el lugar"], a:1, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"En el Capítulo I, se incluye la justificación, viabilidad y:", o:["Limitaciones previstas","Resultados","Discusión","Conclusiones"], a:0, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"En el Capítulo II, las hipótesis y variables se incluyen cuando:", o:["El diseño las requiera","El docente lo pida","Siempre","Nunca"], a:0, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"En el Capítulo III, se incluye la operacionalización de variables o:", o:["Definición de categorías","Resultados","Conclusiones","Anexos"], a:0, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"El cronograma debe incluir actividades, responsables y:", o:["Productos","Conclusiones","Resultados","Discusión"], a:0, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"En ética e integridad, se debe prever consentimiento, protección de identidades y:", o:["Manejo de datos y seguridad en campo","Resultados positivos","Publicación en revistas","Solo el presupuesto"], a:0, j:"Subtema: Comparación y calidad académica." },
+  { tema:7, sub:7, q:"El acceso a datos restringidos requiere:", o:["Autorización","Solo la firma del investigador","Pago","Nada"], a:0, j:"Subtema: Comparación y calidad académica." }
+);
+
+/* ═══════════════════════════════════════════════════════════
+   TEMA 8 · GRUPO B III (115 preguntas)
+   ═══════════════════════════════════════════════════════════ */
+QUIZ.push(
+  { tema:8, sub:1, q:"Según Hernández Sampieri et al. (2014, p. 105), ¿cómo se define una variable?", o:["Un dato estadístico fijo","Una propiedad que puede fluctuar y cuya variación es susceptible de medirse u observarse","Un instrumento de recolección de datos","Una hipótesis comprobada"], a:1, j:"Subtema: Concepto e importancia de las variables." },
+  { tema:8, sub:1, q:"¿Cuál de las siguientes NO es una característica de una variable según el PDF?", o:["Es una característica que puede cambiar","Puede medirse, observarse o evaluarse","Solo se aplica a personas","Puede aplicarse a personas, objetos, materiales y procesos"], a:2, j:"Subtema: Concepto e importancia de las variables." },
+  { tema:8, sub:1, q:"¿Cuál es un ejemplo de variable en ingeniería civil mencionado en el documento?", o:["La resistencia del concreto","La opinión de los vecinos","La historia de la ingeniería","El número de docentes"], a:0, j:"Subtema: Concepto e importancia de las variables." },
+  { tema:8, sub:1, q:"Según el PDF, las variables adquieren valor científico cuando:", o:["Se miden con instrumentos costosos","Se relacionan con otras variables, formando parte de una hipótesis o una teoría","Se aplican solo a personas","Se usan en un experimento puro"], a:1, j:"Subtema: Concepto e importancia de las variables." },
+  { tema:8, sub:1, q:"¿Cuál de las siguientes es una importancia de las variables en la investigación?", o:["Permiten describir fenómenos","Aumentan el presupuesto","Reemplazan la metodología","Eliminan la necesidad de hipótesis"], a:0, j:"Subtema: Concepto e importancia de las variables." },
+  { tema:8, sub:1, q:"Las variables ayudan a formular:", o:["Conclusiones","Hipótesis","Presupuestos","Cronogramas"], a:1, j:"Subtema: Concepto e importancia de las variables." },
+  { tema:8, sub:1, q:"¿Qué facilitan las variables en el proceso de investigación?", o:["La medición y el análisis de resultados","La elección del tema","La redacción del informe final","La ética del investigador"], a:0, j:"Subtema: Concepto e importancia de las variables." },
+  { tema:8, sub:1, q:"Las variables permiten determinar relaciones entre:", o:["Causas y efectos","Autores y citas","Población y muestra","Proyecto e informe"], a:0, j:"Subtema: Concepto e importancia de las variables." },
+  { tema:8, sub:1, q:"¿Qué orientan las variables en la investigación?", o:["El diseño de la investigación","El presupuesto","La revisión por pares","El estilo de referencia"], a:0, j:"Subtema: Concepto e importancia de las variables." },
+  { tema:8, sub:2, q:"Según Hernández Sampieri et al. (2014, p. 130), en un experimento, la variable independiente resulta de interés para el investigador porque:", o:["Es el efecto final","Hipotéticamente será una de las causas que producen el efecto supuesto","Es la que se mide","Es la que no se puede controlar"], a:1, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"Para obtener evidencia de una relación causal, el investigador manipula la variable independiente y observa si:", o:["La muestra cambia","La dependiente varía o no","El presupuesto aumenta","La hipótesis es nula"], a:1, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"La variable independiente es considerada la:", o:["Posible causa o factor de influencia","Consecuencia de un fenómeno","Variable que no cambia","Variable de control"], a:0, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"La variable independiente puede ser modificada o controlada por:", o:["El investigador","La población","La muestra","El azar"], a:0, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"¿Cómo se representa normalmente la variable independiente?", o:["Y","Z","X","N"], a:2, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"¿Qué produce o puede producir la variable independiente?", o:["Cambios en la variable dependiente","Cambios en la población","Cambios en el investigador","Cambios en el diseño"], a:0, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"¿Cuál es un ejemplo de variable independiente en ingeniería civil?", o:["La resistencia a la compresión","La cantidad de cemento utilizada en una mezcla","El grado de deterioro","La capacidad portante"], a:1, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"Según Hernández Sampieri et al. (2014, p. 111), a los efectos se les conoce como:", o:["Variables independientes","Variables dependientes","Variables intervinientes","Variables extrañas"], a:1, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"La variable dependiente es:", o:["El efecto o consecuencia de la investigación","La causa del fenómeno","El instrumento de medición","La muestra seleccionada"], a:0, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"¿Para qué se mide la variable dependiente?", o:["Para determinar si fue influida por la variable independiente","Para calcular el presupuesto","Para elegir la muestra","Para definir el tema"], a:0, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"¿Cómo se representa normalmente la variable dependiente?", o:["X","Z","Y","N"], a:2, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"La variable dependiente debe contar con:", o:["Indicadores e instrumentos de medición","Un presupuesto asignado","Un autor de referencia","Un diseño experimental"], a:0, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"¿Cuál es un ejemplo de variable dependiente en ingeniería civil?", o:["El tiempo de curado","La energía de compactación","La resistencia a la compresión del concreto","El porcentaje de fibras"], a:2, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"Según Hernández Sampieri et al. (2014, p. 110), las hipótesis que relacionan variables proponen:", o:["Solo la relación entre variables","Un sentido de entendimiento de las relaciones","El presupuesto del estudio","La muestra representativa"], a:1, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"En la relación causal, la variable independiente representa:", o:["El efecto","La causa","La muestra","La conclusión"], a:1, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"En la relación causal, la variable dependiente representa:", o:["La causa","El efecto","La hipótesis","La población"], a:1, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"Para que la relación causal sea válida, debe ser:", o:["Clara, lógica y medible","Compleja, subjetiva y abstracta","Rápida, barata y sencilla","Experimental, pura y aleatoria"], a:0, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"En el ejemplo del PDF, \"El incremento del tiempo de curado aumenta la resistencia a la compresión del concreto\", ¿cuál es la variable independiente?", o:["El incremento","La resistencia a la compresión","El tiempo de curado","El concreto"], a:2, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:2, q:"En el mismo ejemplo, ¿cuál es la variable dependiente?", o:["El tiempo de curado","La resistencia a la compresión","El concreto","El incremento"], a:1, j:"Subtema: Variable independiente y dependiente." },
+  { tema:8, sub:3, q:"Según Hernández Sampieri et al. (2014, p. 113), la variable interviniente se relaciona con:", o:["Variable independiente y dependiente","Solo la variable independiente","Solo la variable dependiente","La muestra y la población"], a:0, j:"Subtema: Variable interviniente." },
+  { tema:8, sub:3, q:"En el ejemplo del PDF (Influencia de la energía de compactación sobre la capacidad portante del suelo), ¿qué representa la \"Z\"?", o:["Energía de compactación","Densidad seca alcanzada","Capacidad portante","El presupuesto"], a:1, j:"Subtema: Variable interviniente." },
+  { tema:8, sub:3, q:"En el mismo ejemplo, la energía de compactación (X) NO mejora directamente la capacidad portante (Y), sino que primero modifica:", o:["La densidad seca (Z)","El presupuesto","La muestra","El diseño"], a:0, j:"Subtema: Variable interviniente." },
+  { tema:8, sub:3, q:"La variable interviniente se ubica:", o:["Antes de la causa","Entre la causa y el efecto","Después del efecto","Fuera del estudio"], a:1, j:"Subtema: Variable interviniente." },
+  { tema:8, sub:3, q:"¿Qué explica la variable interviniente?", o:["Cómo se produce la relación","Quién hizo el estudio","Cuánto cuesta la investigación","Dónde se realiza"], a:0, j:"Subtema: Variable interviniente." },
+  { tema:8, sub:3, q:"La variable interviniente puede:", o:["Mediar o modificar el efecto","Eliminar la causa","Cambiar la muestra","Anular la hipótesis"], a:0, j:"Subtema: Variable interviniente." },
+  { tema:8, sub:3, q:"¿Cómo se representa la variable interviniente?", o:["X","Y","Z","N"], a:2, j:"Subtema: Variable interviniente." },
+  { tema:8, sub:3, q:"Según el ejemplo, la secuencia de relación es:", o:["Compactación → Densidad seca → Capacidad portante","Capacidad portante → Compactación → Densidad seca","Densidad seca → Capacidad portante → Compactación","Compactación → Capacidad portante → Densidad seca"], a:0, j:"Subtema: Variable interviniente." },
+  { tema:8, sub:3, q:"En el ejemplo de variable interviniente en concreto, ¿cuál es la variable interviniente?", o:["La resistencia a la compresión","La porosidad interna","La relación agua/cemento","El tiempo de curado"], a:1, j:"Subtema: Variable interviniente." },
+  { tema:8, sub:3, q:"En el mismo ejemplo del concreto, ¿cuál es la variable dependiente?", o:["La porosidad interna","La relación agua/cemento","La resistencia a la compresión","El cemento"], a:2, j:"Subtema: Variable interviniente." },
+  { tema:8, sub:3, q:"Según el ejemplo del concreto, una mayor relación agua/cemento puede generar:", o:["Mayor porosidad","Menor porosidad","Mayor resistencia","Menor tiempo de curado"], a:0, j:"Subtema: Variable interviniente." },
+  { tema:8, sub:3, q:"Según el mismo ejemplo, una mayor porosidad puede:", o:["Aumentar la resistencia","Reducir la resistencia","No afectar la resistencia","Eliminar la porosidad"], a:1, j:"Subtema: Variable interviniente." },
+  { tema:8, sub:4, q:"¿Qué es el diseño de investigación según el PDF?", o:["El conjunto de métodos o técnicas que escoge el investigador para realizar un experimento o proyecto","El resultado final del estudio","La bibliografía consultada","El presupuesto asignado"], a:0, j:"Subtema: Diseño de investigación." },
+  { tema:8, sub:4, q:"Los tipos de diseño de investigación se dividen en:", o:["Cuantitativos y cualitativos","Experimentales y No experimentales","Transversales y longitudinales","Exploratorios y descriptivos"], a:1, j:"Subtema: Diseño de investigación." },
+  { tema:8, sub:4, q:"El diseño experimental incluye:", o:["Pre-experimental, cuasi-experimental y experimentos puros","Transversales y longitudinales","Solo experimentos puros","Solo cuasi-experimentales"], a:0, j:"Subtema: Diseño de investigación." },
+  { tema:8, sub:4, q:"El diseño no experimental incluye:", o:["Transversales y longitudinales","Pre-experimental y cuasi-experimental","Experimentos puros","Solo transversales"], a:0, j:"Subtema: Diseño de investigación." },
+  { tema:8, sub:4, q:"Según la tabla comparativa (Pág. 14), el diseño experimental se caracteriza por:", o:["Observación de fenómenos en su ambiente natural","Manipulación de variables y control de variables independientes","No manipulación de variables","Obtención de datos sin control"], a:1, j:"Subtema: Diseño de investigación." },
+  { tema:8, sub:4, q:"Según la misma tabla, el diseño no experimental se caracteriza por:", o:["Construcción del contexto experimental","Manipulación de variables","Observación de fenómenos en su ambiente natural","Evaluación de causas y efectos"], a:2, j:"Subtema: Diseño de investigación." },
+  { tema:8, sub:4, q:"En el diseño experimental se evalúa:", o:["Causas y efectos","Solo la observación","La muestra","La población"], a:0, j:"Subtema: Diseño de investigación." },
+  { tema:8, sub:4, q:"En el diseño no experimental se realiza:", o:["Manipulación de variables","No manipulación de variables","Control estricto","Evaluación de causas"], a:1, j:"Subtema: Diseño de investigación." },
+  { tema:8, sub:4, q:"Según la Pág. 16, los diseños epidemiológicos nacen en las:", o:["Ciencias Sociales","Ciencias de la Salud","Ciencias Naturales","Ciencias del Comportamiento"], a:1, j:"Subtema: Diseño de investigación." },
+  { tema:8, sub:4, q:"Según la Pág. 16, los diseños comunitarios o ecológicos nacen en las:", o:["Ciencias de la Salud","Ciencias Sociales","Ciencias Naturales","Ciencias del Comportamiento"], a:1, j:"Subtema: Diseño de investigación." },
+  { tema:8, sub:4, q:"Según la Pág. 16, los diseños experimentales (también llamados biológicos) nacen en las:", o:["Ciencias de la Salud","Ciencias Sociales","Ciencias Naturales","Ciencias del Comportamiento"], a:2, j:"Subtema: Diseño de investigación." },
+  { tema:8, sub:4, q:"Según la Pág. 16, la validación de instrumentos nace en las:", o:["Ciencias de la Salud","Ciencias Sociales","Ciencias Naturales","Ciencias del Comportamiento"], a:3, j:"Subtema: Diseño de investigación." },
+  { tema:8, sub:5, q:"¿Qué es la población o universo (N)?", o:["Un subconjunto de la muestra","El conjunto total de individuos, objetos o eventos que comparten características comunes y son el objeto central del estudio","El grupo de control","El investigador y su equipo"], a:1, j:"Subtema: Población y muestra." },
+  { tema:8, sub:5, q:"Una población es finita cuando:", o:["No se conoce el número exacto","Se conoce la cantidad exacta de elementos","Es extremadamente elevada","Se usan gotas de agua"], a:1, j:"Subtema: Población y muestra." },
+  { tema:8, sub:5, q:"Una población es infinita cuando:", o:["Se conoce el número exacto","No se conoce el número exacto o es extremadamente elevado","Es menor a 100 elementos","Se pueden contar todos"], a:1, j:"Subtema: Población y muestra." },
+  { tema:8, sub:5, q:"¿Cuál es un ejemplo de población infinita mencionado en el PDF?", o:["1,200 estudiantes de una facultad","El número de gotas de agua en el océano","Los 85 puentes de una región","Las 20 aulas de un pabellón"], a:1, j:"Subtema: Población y muestra." },
+  { tema:8, sub:5, q:"¿Qué es la muestra (n)?", o:["La totalidad de los elementos","Un subconjunto o parte representativa que se extrae de la población objetivo para recolectar datos reales","Un tipo de investigación cualitativa","El instrumento de recolección"], a:1, j:"Subtema: Población y muestra." },
+  { tema:8, sub:5, q:"¿Por qué se usan muestras en lugar de toda la población? (Ahorro de recursos)", o:["Porque es más caro","Porque implica menor costo económico","Porque no se puede medir","Porque la población es infinita"], a:1, j:"Subtema: Población y muestra." },
+  { tema:8, sub:5, q:"¿Por qué se usan muestras? (Optimización del tiempo)", o:["Porque la recolección y procesamiento de datos es más rápida","Porque hay que esperar años","Porque no se tiene acceso","Porque el investigador no quiere trabajar"], a:0, j:"Subtema: Población y muestra." },
+  { tema:8, sub:5, q:"¿Por qué se usan muestras? (Viabilidad)", o:["Porque estudiar a toda la población suele ser imposible o inalcanzable","Porque es más preciso","Porque lo exige la ley","Porque la muestra es más grande"], a:0, j:"Subtema: Población y muestra." },
+  { tema:8, sub:5, q:"Según la tabla comparativa, los datos de la población (N) se llaman:", o:["Estadísticos","Parámetros","Muestras","Variables"], a:1, j:"Subtema: Población y muestra." },
+  { tema:8, sub:5, q:"Según la tabla comparativa, los datos de la muestra (n) se llaman:", o:["Parámetros","Estadísticos","Poblaciones","Variables"], a:1, j:"Subtema: Población y muestra." },
+  { tema:8, sub:5, q:"Según el ejemplo de la tabla comparativa, si la población son todos los médicos de un país (50,000), la muestra serían:", o:["50,000 médicos","500 médicos encuestados al azar","10 médicos","Todos los médicos del mundo"], a:1, j:"Subtema: Población y muestra." },
+  { tema:8, sub:6, q:"¿Qué es el muestreo?", o:["El procedimiento o técnica empleada para seleccionar a los integrantes de la muestra","La definición de la población","El instrumento de recolección","El análisis de datos"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"El muestreo se divide en:", o:["Probabilístico y No probabilístico","Experimental y No experimental","Cuantitativo y Cualitativo","Transversal y Longitudinal"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"El muestreo probabilístico se caracteriza porque:", o:["Todos los miembros de la población tienen la misma probabilidad (conocida) de ser elegidos","Depende del juicio del investigador","Es más económico","No permite generalizar"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"¿Qué permite el muestreo probabilístico?", o:["Generalizar los resultados estadísticos a toda la población","Reducir el presupuesto","Aumentar el sesgo","Elegir a los más accesibles"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"El muestreo aleatorio simple se realiza mediante:", o:["Sorteo o generador numérico al azar","Selección de cada k intervalos","División en grupos","Selección de grupos completos"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"El muestreo sistemático consiste en:", o:["Seleccionar un individuo cada k intervalos","Selección por sorteo","División en estratos","Selección de grupos naturales"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"El muestreo estratificado consiste en:", o:["Dividir la población en grupos (estratos) por género, edad, etc., y muestrear al azar dentro de cada grupo","Seleccionar cada k intervalos","Seleccionar grupos completos","Sorteo directo"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"El muestreo por conglomerados consiste en:", o:["Seleccionar grupos naturales completos (ej. 3 colegios específicos de una ciudad)","Dividir en estratos","Sorteo directo","Seleccionar cada k intervalos"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"Según el PDF, ¿cuándo utilizar el muestreo probabilístico? (1)", o:["Cuando se tiene que reducir el sesgo en el muestreo","Cuando el tiempo es limitado","Cuando el presupuesto es bajo","Cuando la población es accesible"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"Según el PDF, ¿cuándo utilizar el muestreo probabilístico? (2)", o:["Cuando la población es pequeña","Cuando la población es diversa y grande","Cuando no se conoce la población","Cuando se busca un análisis en profundidad"], a:1, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"Según el PDF, ¿cuándo utilizar el muestreo probabilístico? (3)", o:["Para crear una muestra precisa","Para ahorrar dinero","Para hacer estudios piloto","Para investigaciones cualitativas"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"El muestreo no probabilístico se caracteriza porque:", o:["La selección no es aleatoria, depende del juicio, conveniencia o acceso del investigador","Todos tienen la misma probabilidad","Permite generalizar con precisión matemática","Es el más riguroso"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"¿Cuál es una ventaja del muestreo no probabilístico?", o:["Es más económico y rápido","Permite generalizar a toda la población","Elimina el sesgo","Es más riguroso"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"¿Para qué tipo de estudios es útil el muestreo no probabilístico?", o:["Estudios exploratorios o cualitativos","Experimentos puros","Estudios longitudinales","Estudios descriptivos masivos"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"El muestreo por conveniencia se realiza:", o:["Eligiendo a los sujetos disponibles más cercanos (ej. encuestar a quienes caminan por un pasillo)","Por sorteo","Por recomendación","Por cuotas"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"El muestreo intencional o por juicio se basa en:", o:["El criterio de expertos (ej. entrevistar solo a directores de área)","La cercanía","El azar","La recomendación"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"El muestreo por cuotas consiste en:", o:["Fijar cuotas de categorías (ej. 50 hombres y 50 mujeres), pero la elección interna no es al azar","Elegir a los más cercanos","Seleccionar grupos completos","Sorteo directo"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"El muestreo bola de nieve consiste en:", o:["Un participante recluta o sugiere a otros participantes","Elegir a los más accesibles","Dividir en estratos","Seleccionar cada k intervalos"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"Según el PDF, ¿para qué se usa el muestreo no probabilístico?", o:["Para indicar si existe un rasgo o característica particular en una población","Para generalizar resultados","Para eliminar el sesgo","Para hacer experimentos puros"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"El muestreo no probabilístico es ampliamente utilizado cuando los investigadores realizan:", o:["Investigaciones cualitativas, estudios piloto o investigación exploratoria","Experimentos puros","Estudios longitudinales","Censos poblacionales"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"¿En qué caso se usa el muestreo no probabilístico?", o:["Cuando los investigadores tienen tiempo limitado o limitaciones presupuestarias","Cuando se requiere precisión matemática","Cuando la población es infinita","Cuando se busca generalizar"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"El muestreo no probabilístico se realiza para observar si un tema en particular necesita:", o:["Un análisis en profundidad","Un presupuesto mayor","Un diseño experimental","Una muestra más grande"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"En el muestreo probabilístico, la selección es:", o:["Al azar / rigurosa","Por criterio / por conveniencia","Subjetiva","Intencional"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"En el muestreo no probabilístico, la selección es:", o:["Al azar","Por criterio / por conveniencia","Rigurosa","Objetiva"], a:1, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"¿Qué tipo de muestra reduce el sesgo del investigador?", o:["Probabilístico","No probabilístico","Por conveniencia","Bola de nieve"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"¿Qué tipo de muestra NO permite generalizar los datos a toda la población con precisión matemática?", o:["Probabilístico","No probabilístico","Aleatorio simple","Estratificado"], a:1, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"Si un investigador entrevista solo a los directores de área de una empresa, está usando un muestreo:", o:["Por conveniencia","Intencional o por juicio","Por cuotas","Bola de nieve"], a:1, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"Si un investigador encuesta a 50 hombres y 50 mujeres sin importar que sean elegidos al azar, está usando un muestreo:", o:["Por cuotas","Estratificado","Por conveniencia","Intencional"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"Si un investigador pide a un participante que le presente a otro participante, está usando un muestreo:", o:["Bola de nieve","Por cuotas","Por conveniencia","Intencional"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"Si un investigador encuesta a las personas que pasan por un pasillo, está usando un muestreo:", o:["Por conveniencia","Intencional","Bola de nieve","Por cuotas"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"La población (N) se caracteriza por tener un tamaño:", o:["Menor","Mayor","Igual a la muestra","Inexistente"], a:1, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"La muestra (n) se caracteriza por tener un tamaño:", o:["Menor","Mayor","Igual a la población","Infinito"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"¿Cuál es la medida estadística de la población?", o:["Parámetros","Estadísticos","Muestras","Variables"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"¿Cuál es la medida estadística de la muestra?", o:["Parámetros","Estadísticos","Poblaciones","Variables"], a:1, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"En la definición de variable de Hernández Sampieri, se dice que es una propiedad que puede:", o:["Fluctuar","Ser estática","Ser única","No medirse"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"La variable independiente se representa con:", o:["X","Y","Z","N"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"La variable dependiente se representa con:", o:["X","Y","Z","N"], a:1, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"La variable interviniente se representa con:", o:["X","Y","Z","N"], a:2, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"En el ejemplo del concreto, si aumenta la porosidad, la resistencia:", o:["Aumenta","Se reduce","Se mantiene igual","Desaparece"], a:1, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"La relación causal debe ser clara, lógica y:", o:["Medible","Subjetiva","Abstracta","Invisible"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"Los diseños experimentales incluyen los pre-experimentales, cuasi-experimentales y:", o:["Experimentos puros","Transversales","Longitudinales","Documentales"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"Los diseños no experimentales incluyen los transversales y los:", o:["Longitudinales","Puros","Cuasi-experimentales","Pre-experimentales"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"En el diseño no experimental, ¿se manipulan las variables?", o:["Sí","No","Solo la independiente","Solo la dependiente"], a:1, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"En el diseño experimental, ¿se controlan las variables independientes?", o:["Sí","No","A veces","Nunca"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"Según la Pág. 16, los diseños que nacen en las Ciencias de la Salud son los:", o:["Epidemiológicos","Comunitarios","Experimentales","De validación"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"Los diseños comunitarios o ecológicos nacen en las Ciencias:", o:["Sociales","Naturales","de la Salud","del Comportamiento"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"Los diseños experimentales también son llamados:", o:["Biológicos","Sociales","Epidemiológicos","De validación"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"La validación de instrumentos nace en las Ciencias del:", o:["Comportamiento","Salud","Naturaleza","Sociedad"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"En el muestreo sistemático, se selecciona:", o:["Un individuo cada k intervalos","Un grupo completo","Un estrato","Un sujeto por conveniencia"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"El muestreo estratificado divide la población en:", o:["Grupos (estratos)","Conglomerados","Cuotas","Bolas de nieve"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"El muestreo por conglomerados selecciona:", o:["Grupos naturales completos","Individuos al azar","Estratos","Cuotas"], a:0, j:"Subtema: Tipos de muestreo." },
+  { tema:8, sub:6, q:"¿Qué tipo de muestreo permite calcular el error muestral y generalizar los resultados?", o:["El probabilístico","El no probabilístico","El por conveniencia","El bola de nieve"], a:0, j:"Subtema: Tipos de muestreo." }
 );
 
 /* ============================================================
@@ -1490,7 +1820,7 @@ function renderStartScreen() {
   complete.innerHTML = `
     <div class="tc-num">Examen completo</div>
     <div class="tc-title">🎯 Todos los temas · respuesta inmediata</div>
-    <div class="tc-count">${QUIZ.length} preguntas · 5 temas</div>`;
+    <div class="tc-count">${QUIZ.length} preguntas · 8 temas</div>`;
   complete.addEventListener("click", () => openQuantityModal("all"));
   topicGrid.appendChild(complete);
 
@@ -1616,7 +1946,6 @@ function startQuiz(tema, quantity) {
   state.tema = tema;
   state.quantity = quantity;
 
-  // Si la cantidad pedida es menor al total → aleatorizar y tomar subset
   if (quantity < totalAvailable) {
     questions = shuffleArray(questions).slice(0, quantity);
   }
@@ -1767,7 +2096,6 @@ function showResults() {
 }
 
 document.getElementById("retryBtn").addEventListener("click", () => {
-  // Al reintentar, usa la misma configuración (tema y cantidad)
   if (state.tema !== null && state.quantity !== null) {
     startQuiz(state.tema, state.quantity);
   } else {
@@ -1905,31 +2233,25 @@ document.getElementById("balotarioBackBtn").addEventListener("click", backToMenu
    ATAJOS DE TECLADO
    ============================================================ */
 document.addEventListener("keydown", (e) => {
-  // 1) Modal de cantidad (prioridad, permite Enter en el input)
   if (quantityModal.classList.contains("show")) {
     if (e.key === "Escape") { e.preventDefault(); closeQuantityModal(); }
-    // Enter ya se maneja en el propio input (listener específico)
     return;
   }
 
-  // 2) Modal de confirmación
   if (confirmModal.classList.contains("show")) {
     if (e.key === "Escape") { e.preventDefault(); closeConfirmModal(); }
     return;
   }
 
-  // 3) No interferir si el foco está en un campo de texto
   const tag = (e.target.tagName || "").toLowerCase();
   if (tag === "input" || tag === "textarea" || tag === "select") return;
 
-  // 4) Escape: volver
   if (e.key === "Escape") {
     if (state.mode === "quiz") { e.preventDefault(); requestExitQuiz(); }
     else if (state.mode !== "start") { e.preventDefault(); backToMenu(); }
     return;
   }
 
-  // 5) Atajos solo en el quiz
   if (state.mode !== "quiz") return;
   if (quizScreen.style.display === "none") return;
 
