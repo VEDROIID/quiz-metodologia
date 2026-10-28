@@ -727,7 +727,7 @@
 <header>
   <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">🌙</button>
   <h1>📊 Quiz Metodología</h1>
-  <p>770 preguntas · Respuesta inmediata · Balotario con subtemas</p>
+  <p>880 preguntas · Respuesta inmediata · Balotario con subtemas</p>
 </header>
 
 <main>
@@ -841,7 +841,9 @@ const TEMAS = {
   7: { title: "Grupo B II - Proyecto e informe de investigación",
        short: "Grupo B II", icon: "📗" },
   8: { title: "Grupo B III - Variables, diseños y muestreo",
-       short: "Grupo B III", icon: "📙" }
+       short: "Grupo B III", icon: "📙" },
+  9: { title: "Grupo B IV - Proyecto de mecánica de suelos en Pucallpa",
+       short: "Grupo B IV", icon: "📕" }
 };
 
 const SUBTEMAS = {
@@ -907,6 +909,14 @@ const SUBTEMAS = {
     4: "Diseño de investigación",
     5: "Población y muestra",
     6: "Tipos de muestreo"
+  },
+  9: {
+    1: "Portada y planteamiento del problema",
+    2: "Marco teórico",
+    3: "Sistema de hipótesis y variables",
+    4: "Marco metodológico",
+    5: "Aspectos administrativos",
+    6: "Anexos y resultados"
   }
 };
 
@@ -1730,6 +1740,122 @@ QUIZ.push(
   { tema:8, sub:6, q:"¿Qué tipo de muestreo permite calcular el error muestral y generalizar los resultados?", o:["El probabilístico","El no probabilístico","El por conveniencia","El bola de nieve"], a:0, j:"Subtema: Tipos de muestreo." }
 );
 
+/* ═══════════════════════════════════════════════════════════
+   TEMA 9 · GRUPO B IV (110 preguntas)
+   ═══════════════════════════════════════════════════════════ */
+QUIZ.push(
+  { tema:9, sub:1, q:"¿Cuál es el título exacto de la investigación presentada en el PDF?", o:["Estudio de suelos para una vivienda unifamiliar en Pucallpa.","Comparación de las características geotécnicas de los suelos identificados en las calicatas C-01 y C-02 de una vivienda unifamiliar en el Jr. Satipo, Mz. K, Lote 2, A.H. Asociación Pro-Vivienda Virgen de Guadalupe, Callería, Coronel Portillo, Ucayali.","Análisis de la capacidad portante del suelo en Ucayali.","Diseño de cimentaciones en suelos arcillosos de Pucallpa."], a:1, j:"Subtema: Portada y planteamiento del problema." },
+  { tema:9, sub:1, q:"¿A qué grupo pertenece el equipo que realizó esta investigación?", o:["Grupo 01.","Grupo 02.","Grupo 03.","Grupo 04."], a:1, j:"Subtema: Portada y planteamiento del problema." },
+  { tema:9, sub:1, q:"¿Cuál es el objetivo principal de la presente investigación según el planteamiento del problema?", o:["Determinar la capacidad portante del suelo.","Determinar qué tanto varían las características geotécnicas del suelo entre dos puntos de exploración ubicados dentro de una misma área.","Diseñar las zapatas de la vivienda.","Calcular el presupuesto de la obra."], a:1, j:"Subtema: Portada y planteamiento del problema." },
+  { tema:9, sub:1, q:"¿Mediante qué conceptos se justifica teóricamente la investigación?", o:["Mecánica de suelos, estratigrafía, granulometría, plasticidad y clasificación SUCS/AASHTO.","Cálculo estructural y resistencia de materiales.","Hidráulica y mecánica de fluidos.","Topografía y geología general."], a:0, j:"Subtema: Portada y planteamiento del problema." },
+  { tema:9, sub:1, q:"¿Por qué se considera que la investigación es viable?", o:["Porque hay mucho dinero disponible.","Porque se cuenta con los perfiles estratigráficos de las calicatas C-01 y C-02 y los resultados de los ensayos de laboratorio.","Porque el terreno es de fácil acceso.","Porque el docente lo aprobó."], a:1, j:"Subtema: Portada y planteamiento del problema." },
+  { tema:9, sub:1, q:"En la diapositiva 2, ¿cómo se presentan la formulación del problema y los objetivos?", o:["Con respuestas completas.","Solo con los títulos (Problema general, Problemas específicos, Objetivo general, Objetivos específicos) sin el texto desarrollado.","Con gráficos estadísticos.","Con citas de autores."], a:1, j:"Subtema: Portada y planteamiento del problema." },
+  { tema:9, sub:2, q:"¿Cuál es el antecedente inmediato de esta investigación?", o:["Un estudio nacional del SENAMHI.","El estudio de mecánica de suelos correspondiente a una vivienda unifamiliar.","Una tesis de la UNI.","Un informe del Ministerio de Transportes."], a:1, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"Según las bases conceptuales, ¿qué es una \"Calicata\"?", o:["Un tipo de suelo arcilloso.","Una excavación de exploración para observar los estratos del subsuelo y obtener muestras.","Un ensayo de laboratorio para medir la plasticidad.","Un formato de registro."], a:1, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Qué es un \"Estrato\"?", o:["La capa superior del suelo.","Capa de suelo reconocida por sus características y profundidad.","La mezcla de arena y grava.","El nivel freático."], a:1, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Qué es el \"Perfil estratigráfico\"?", o:["Un dibujo del paisaje.","Representación de la secuencia vertical de materiales en una calicata.","Una tabla de granulometría.","Un ensayo de penetración."], a:1, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"La \"Granulometría\" se define como:", o:["La forma de las partículas.","La distribución de tamaños de partículas de una muestra.","La cantidad de agua en el suelo.","La resistencia al corte."], a:1, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Cómo se calcula el Índice de Plasticidad (IP) según el PDF?", o:["LL + LP.","LL menos LP.","LP menos LL.","LL por LP."], a:1, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Qué significa el símbolo SUCS?", o:["Sistema Único de Clasificación de Suelos.","Sistema Unificado de Clasificación de Suelos.","Sociedad de Universidades de Ciencias del Suelo.","Suelos de Ucayali y Clasificación Superior."], a:1, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Para qué se utiliza el sistema AASHTO según el PDF?", o:["Para clasificar suelos en ingeniería vial.","Para medir la plasticidad.","Para calcular la gravedad específica.","Para el ensayo triaxial."], a:0, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Qué representa el símbolo \"CH\" en la clasificación SUCS?", o:["Arcilla de baja plasticidad.","Arcilla de alta plasticidad.","Arena limosa.","Grava arcillosa."], a:1, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Qué representa el símbolo \"PT\" utilizado en el perfil?", o:["Material superficial con presencia de restos orgánicos e inorgánicos.","Piedra triturada.","Arcilla expansiva.","Suelo residual."], a:0, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Qué es la \"Gravedad específica\"?", o:["La densidad del suelo.","La relación entre la densidad de las partículas sólidas del suelo y la densidad del agua.","El peso del suelo seco.","La resistencia a la compresión."], a:1, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Qué es el ensayo \"Triaxial UU\"?", o:["Un ensayo de compresión simple.","Un ensayo triaxial no consolidado-no drenado.","Un ensayo de permeabilidad.","Un ensayo de límites de Atterberg."], a:1, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Qué indica el pH en este contexto?", o:["La cantidad de sales.","El carácter ácido, neutro o alcalino de una solución de ensayo.","La plasticidad del suelo.","La densidad del suelo."], a:1, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Qué es la \"Comparación descriptiva\" según la tabla?", o:["Una prueba estadística avanzada.","Organización y análisis de similitudes y diferencias entre resultados registrados.","Un ensayo de laboratorio.","Un tipo de muestra."], a:1, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Qué enfoque adopta la investigación según la base filosófica?", o:["Enfoque empírico y descriptivo.","Enfoque teórico y deductivo.","Enfoque cualitativo y fenomenológico.","Enfoque experimental puro."], a:0, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Qué norma se utilizó para el ensayo de granulometría?", o:["ASTM D 854.","MTC E 107.","MTC E 110.","ASTM D 2850."], a:1, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Qué norma se utilizó para los límites de Atterberg?", o:["MTC E 107.","MTC E 110 y MTC E 111.","ASTM D 854.","ASTM D 2850."], a:1, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Qué norma se utilizó para la gravedad específica?", o:["MTC E 107.","MTC E 110.","ASTM D 854.","ASTM D 2850."], a:2, j:"Subtema: Marco teórico." },
+  { tema:9, sub:2, q:"¿Qué norma se utilizó para el ensayo triaxial UU?", o:["MTC E 107.","MTC E 110.","ASTM D 854.","ASTM D 2850."], a:3, j:"Subtema: Marco teórico." },
+  { tema:9, sub:3, q:"Según la operacionalización de variables, ¿cuál es la variable de estudio principal?", o:["La capacidad portante.","Las características geotécnicas de los suelos.","El tipo de cimentación.","La profundidad de las calicatas."], a:1, j:"Subtema: Sistema de hipótesis y variables." },
+  { tema:9, sub:3, q:"¿Cuál de las siguientes es una dimensión de la variable de estudio?", o:["El presupuesto.","La estratigrafía.","El tiempo de ejecución.","Los recursos humanos."], a:1, j:"Subtema: Sistema de hipótesis y variables." },
+  { tema:9, sub:3, q:"En la dimensión de Granulometría, ¿qué indicadores se evalúan y en qué unidad?", o:["Límite líquido y límite plástico en %.","Porcentaje de grava, arena y finos en %.","Cohesión y ángulo de fricción en kg/cm² y grados.","Sales, sulfatos y cloruros en ppm."], a:1, j:"Subtema: Sistema de hipótesis y variables." },
+  { tema:9, sub:3, q:"En la dimensión de Plasticidad, ¿qué indicadores se evalúan?", o:["Límite líquido, límite plástico e índice de plasticidad.","Porcentaje de grava, arena y finos.","Tipo de material y profundidad.","Gravedad específica."], a:0, j:"Subtema: Sistema de hipótesis y variables." },
+  { tema:9, sub:3, q:"En la dimensión de Clasificación, ¿qué indicadores se registran?", o:["Símbolo SUCS y grupo AASHTO.","Porcentaje de finos.","Cohesión y ángulo de fricción.","pH y sales solubles."], a:0, j:"Subtema: Sistema de hipótesis y variables." },
+  { tema:9, sub:3, q:"En la dimensión de Propiedades físico-químicas, ¿qué unidad se utiliza para las sales solubles totales, sulfatos y cloruros?", o:["%.","kg/cm².","ppm.","Grados."], a:2, j:"Subtema: Sistema de hipótesis y variables." },
+  { tema:9, sub:3, q:"En la dimensión de Resistencia al corte complementaria, ¿qué unidad se utiliza para la cohesión?", o:["ppm.","%.","kg/cm².","Grados."], a:2, j:"Subtema: Sistema de hipótesis y variables." },
+  { tema:9, sub:3, q:"En la dimensión de Resistencia al corte complementaria, ¿qué unidad se utiliza para el ángulo de fricción?", o:["ppm.","%.","kg/cm².","Grados."], a:3, j:"Subtema: Sistema de hipótesis y variables." },
+  { tema:9, sub:3, q:"Según la definición operacional, para cada parámetro se consignará el valor, la unidad, la calicata, la profundidad o intervalo de muestreo y:", o:["La hoja de procedencia.","El nombre del ingeniero.","El costo del ensayo.","La fecha de ejecución."], a:0, j:"Subtema: Sistema de hipótesis y variables." },
+  { tema:9, sub:4, q:"¿Cuál es el enfoque de la investigación?", o:["Cualitativo descriptivo.","Cuantitativo descriptivo.","Mixto explicativo.","Experimental puro."], a:1, j:"Subtema: Marco metodológico." },
+  { tema:9, sub:4, q:"¿Cuál es el tipo de investigación?", o:["Básica.","Aplicada.","Documental.","Exploratoria."], a:1, j:"Subtema: Marco metodológico." },
+  { tema:9, sub:4, q:"¿Cuál es el diseño de la investigación?", o:["Experimental y longitudinal.","No experimental y transversal.","Cuasiexperimental y transversal.","Documental y longitudinal."], a:1, j:"Subtema: Marco metodológico." },
+  { tema:9, sub:4, q:"¿Cuál es la población de la investigación?", o:["Todos los suelos de Pucallpa.","Los suelos presentes en el terreno destinado a una vivienda unifamiliar.","Las calicatas C-01 y C-02.","Los resultados de laboratorio."], a:1, j:"Subtema: Marco metodológico." },
+  { tema:9, sub:4, q:"¿Cuál es la muestra de la investigación?", o:["Todos los suelos de Pucallpa.","Los suelos explorados mediante las calicatas C-01 y C-02.","El lote de la vivienda.","Los perfiles estratigráficos."], a:1, j:"Subtema: Marco metodológico." },
+  { tema:9, sub:4, q:"¿Cuáles son las unidades de análisis de esta investigación? (Seleccione la opción más completa)", o:["Solo las calicatas.","Los perfiles estratigráficos de C-01 y C-02 y los resultados de laboratorio asociados a las muestras.","El ingeniero y los estudiantes.","El presupuesto y el cronograma."], a:1, j:"Subtema: Marco metodológico." },
+  { tema:9, sub:4, q:"¿Cuál es una de las técnicas de recolección de datos utilizadas?", o:["Encuestas a los vecinos.","Observación directa durante la excavación.","Entrevistas al ingeniero.","Análisis documental de tesis."], a:1, j:"Subtema: Marco metodológico." },
+  { tema:9, sub:4, q:"¿Cuál es uno de los instrumentos de recolección de datos?", o:["Ficha de descripción de calicata y perfil estratigráfico.","Cuestionario de preguntas cerradas.","Guía de entrevista.","Ficha de observación de campo."], a:0, j:"Subtema: Marco metodológico." },
+  { tema:9, sub:4, q:"¿Qué paso NO corresponde al procedimiento de investigación detallado en el PDF?", o:["Identificación del terreno y ejecución de las calicatas.","Obtención e identificación de muestras.","Construcción de tablas comparativas.","Realización de encuestas a los dueños de la vivienda."], a:3, j:"Subtema: Marco metodológico." },
+  { tema:9, sub:4, q:"¿Cómo se procesarán los datos según las técnicas de procesamiento?", o:["Mediante tablas de doble entrada (una columna para cada calicata y otra para la diferencia observada).","Mediante regresión lineal múltiple.","Mediante análisis factorial.","Mediante gráficos de pastel."], a:0, j:"Subtema: Marco metodológico." },
+  { tema:9, sub:5, q:"¿Cuál es el costo total del presupuesto presentado?", o:["180 S/.","200 S/.","215 S/.","250 S/."], a:2, j:"Subtema: Aspectos administrativos." },
+  { tema:9, sub:5, q:"¿Cuánto cuesta la ejecución de las calicatas en total?", o:["90 S/.","180 S/ (90 S/ x calicata).","20 S/.","10 S/."], a:1, j:"Subtema: Aspectos administrativos." },
+  { tema:9, sub:5, q:"¿Cuánto cuesta el rubro de \"Ensayos de laboratorio\"?", o:["10 S/.","20 S/.","90 S/.","180 S/."], a:1, j:"Subtema: Aspectos administrativos." },
+  { tema:9, sub:5, q:"¿Cuánto cuesta el rubro de \"Materiales de oficina\"?", o:["5 S/.","10 S/.","20 S/.","0 S/."], a:1, j:"Subtema: Aspectos administrativos." },
+  { tema:9, sub:5, q:"¿Cuánto cuesta el rubro de \"Empastado o anillado\"?", o:["5 S/.","10 S/.","15 S/.","20 S/."], a:0, j:"Subtema: Aspectos administrativos." },
+  { tema:9, sub:5, q:"¿Cuántos días abarca el cronograma de actividades?", o:["5 días.","7 días.","10 días.","15 días."], a:1, j:"Subtema: Aspectos administrativos." },
+  { tema:9, sub:5, q:"Según el cronograma, ¿en qué día se realiza la \"Ejecución de las calicatas\"?", o:["Día 1.","Día 2.","Día 3.","Día 7."], a:0, j:"Subtema: Aspectos administrativos." },
+  { tema:9, sub:5, q:"Según el cronograma, ¿en qué días se realiza el \"Procesamiento de las muestras en laboratorio\"?", o:["Día 1.","Días 2, 3 y 4.","Días 5 y 6.","Día 7."], a:1, j:"Subtema: Aspectos administrativos." },
+  { tema:9, sub:5, q:"Según el cronograma, ¿en qué día se realiza la \"Entrega de la versión final\"?", o:["Día 5.","Día 6.","Día 7.","Día 1."], a:2, j:"Subtema: Aspectos administrativos." },
+  { tema:9, sub:6, q:"Según la matriz de consistencia, ¿cuál es la hipótesis general de trabajo?", o:["Las calicatas son totalmente diferentes.","Ambas calicatas presentan similitudes en clasificación y plasticidad, con diferencias en la capa superficial y algunos resultados.","Solo la C-01 tiene arcilla.","El suelo no es apto para cimentación."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"Según la matriz de consistencia, ¿qué estratos registran ambas calicatas?", o:["Una capa superficial PT y un estrato CH inferior.","Grava y arena.","Roca madre y suelo residual.","Solo arena."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"Según la hipótesis específica sobre granulometría, plasticidad y clasificación, los valores de ambas muestras son:", o:["Idénticos.","Cercanos, aunque no idénticos.","Completamente diferentes.","Incomparables."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Qué parámetro NO puede compararse directamente entre ambas calicatas según la matriz?", o:["La granulometría.","El ensayo triaxial (solo disponible para C-02).","La gravedad específica.","El pH."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"Según la ficha de registro (Pág. 13), ¿cuál es el porcentaje de grava en ambas calicatas?", o:["13.3% en C-01 y 19.6% en C-02.","0.0% en ambas.","86.7% en C-01 y 80.4% en C-02.","50% en ambas."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"Según la ficha de registro, ¿qué calicata presenta mayor porcentaje de arena?", o:["C-01.","C-02 (19.6% vs 13.3%).","Ambas tienen igual.","No se reporta."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"Según la ficha de registro, ¿qué calicata presenta mayor porcentaje de finos?", o:["C-01 (86.7% vs 80.4%).","C-02.","Ambas tienen igual.","No se reporta."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es el Límite Líquido (LL) de la calicata C-01?", o:["52.3%.","54.6%.","24.9%.","29.7%."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es el Límite Líquido (LL) de la calicata C-02?", o:["52.3%.","54.6%.","23.5%.","28.8%."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es el Índice de Plasticidad (IP) de la calicata C-01?", o:["29.7%.","28.8%.","54.6%.","24.9%."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es el Índice de Plasticidad (IP) de la calicata C-02?", o:["29.7%.","28.8%.","52.3%.","23.5%."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es la clasificación SUCS reportada para ambas calicatas?", o:["CL.","CH.","ML.","SM."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es la clasificación AASHTO para la calicata C-01?", o:["A-7-6(28).","A-7-6(24).","A-4(0).","A-2-4(0)."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es la clasificación AASHTO para la calicata C-02?", o:["A-7-6(28).","A-7-6(24).","A-4(0).","A-2-4(0)."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es la gravedad específica de la calicata C-01?", o:["2.73.","2.75.","2.68.","2.70."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es la gravedad específica de la calicata C-02?", o:["2.73.","2.75.","2.68.","2.70."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Qué calicata tiene mayor cantidad de Sales solubles totales?", o:["C-01 (328 ppm).","C-02 (351 ppm).","Ambas igual.","No se reporta."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Qué calicata tiene mayor cantidad de Sulfatos?", o:["C-01 (137 ppm).","C-02 (131 ppm).","Ambas igual.","No se reporta."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Qué calicata tiene mayor cantidad de Cloruros?", o:["C-01 (86 ppm).","C-02 (90 ppm).","Ambas igual.","No se reporta."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es el pH de la calicata C-01?", o:["4.5.","4.6.","7.0.","8.0."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es el pH de la calicata C-02?", o:["4.5.","4.6.","7.0.","8.0."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es el valor de la cohesión (c) reportado en el ensayo triaxial de la C-02?", o:["21.42 kg/cm².","0.64 kg/cm².","2.75 kg/cm².","351 kg/cm²."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es el valor del ángulo de fricción (φ) reportado en el ensayo triaxial de la C-02?", o:["21.42°.","0.64°.","2.75°.","90°."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"En el perfil estratigráfico de la C-01, ¿qué se encuentra de 0.00 a 0.07 m?", o:["Material arcilloso PT.","Losa de concreto.","Suelo CH.","Arena."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"En el perfil estratigráfico de la C-01, ¿qué se encuentra de 0.07 a 1.00 m?", o:["Losa de concreto.","Material arcilloso con restos inorgánicos y orgánicos (PT).","Suelo arcilloso de alta plasticidad (CH).","Roca."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"En el perfil estratigráfico de la C-01, ¿qué se encuentra de 1.00 a 3.00 m?", o:["Losa de concreto.","Material arcilloso PT.","Suelo arcilloso de alta plasticidad, color rojo, compacto y húmedo (CH).","Grava."], a:2, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"En el perfil estratigráfico de la C-02, ¿qué se encuentra de 0.00 a 0.70 m?", o:["Losa de concreto.","Material arcilloso con restos inorgánicos y orgánicos (PT).","Suelo arcilloso de alta plasticidad (CH).","Roca."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"En el perfil estratigráfico de la C-02, ¿qué se encuentra de 0.70 a 3.00 m?", o:["Losa de concreto.","Material arcilloso PT.","Suelo arcilloso de alta plasticidad, color rojo, compacto y húmedo (CH).","Grava."], a:2, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Qué diferencia de espesor presenta la capa superficial (PT) entre ambas calicatas?", o:["En C-01 tiene 1.00 m y en C-02 tiene 0.70 m.","En C-01 tiene 0.70 m y en C-02 tiene 1.00 m.","Ambas tienen el mismo espesor.","No se reporta."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"Según la matriz de consistencia, ¿cuál es la metodología de la investigación?", o:["Cualitativa descriptiva; básica; experimental y longitudinal.","Cuantitativa descriptiva; aplicada; descriptivo-comparativa; no experimental y transversal.","Mixta explicativa; aplicada; cuasiexperimental.","Documental; básica; transversal."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"En la tabla de operacionalización de variables, la dimensión \"Estratigrafía\" tiene como unidad/registro:", o:["%.","ppm.","m; descripción visual; SUCS reportado.","kg/cm²; grados."], a:2, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"En la tabla de operacionalización de variables, la dimensión \"Propiedad física\" corresponde a:", o:["Gravedad específica de sólidos.","Granulometría.","Plasticidad.","Resistencia al corte."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Qué recurso humano se encarga de la \"Interpretación geotécnica profesional, cálculos de cimentación y formulación de las conclusiones\"?", o:["El equipo investigador / estudiantes.","El ingeniero civil responsable del informe técnico.","El docente del curso.","Los dueños de la vivienda."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"Según la tabla de presupuesto, ¿cuál es el costo de una sola calicata?", o:["90 S/.","180 S/.","20 S/.","10 S/."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Qué se realiza en el Día 5 del cronograma?", o:["Ejecución de calicatas.","Organización de resultados de laboratorio.","Entrega de la versión final.","Redacción de capítulos I y II."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Qué se realiza en el Día 6 del cronograma?", o:["Ejecución de calicatas.","Redacción de hipótesis y metodología.","Entrega de la versión final.","Comparación de perfiles y tablas de parámetros."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"En la matriz de consistencia, el problema general es:", o:["¿Cómo mejorar el suelo?","¿En qué medida se asemejan o diferencian las características geotécnicas de C-01 y C-02?","¿Cuál es la capacidad portante?","¿Qué tipo de cimentación usar?"], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"En la matriz de consistencia, el objetivo general es:", o:["Diseñar la cimentación.","Comparar las características geotécnicas de los suelos identificados en ambas calicatas.","Calcular el presupuesto.","Realizar el estudio de suelos."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"Según la ficha de registro, la diferencia de finos entre ambas calicatas es de:", o:["6.3 puntos porcentuales.","2.3 puntos porcentuales.","0.9 puntos porcentuales.","0.0 puntos porcentuales."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"Según la ficha de registro, la diferencia de Límite Líquido (LL) entre ambas calicatas es de:", o:["6.3 puntos porcentuales.","2.3 puntos porcentuales (C-01 tiene más).","1.4 puntos porcentuales.","0.9 puntos porcentuales."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"Según la ficha de registro, la diferencia de Índice de Plasticidad (IP) entre ambas calicatas es de:", o:["0.9 puntos porcentuales (C-01 tiene más).","2.3 puntos porcentuales.","1.4 puntos porcentuales.","6.3 puntos porcentuales."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"Según la ficha de registro, ¿cuál es la diferencia de gravedad específica entre ambas calicatas?", o:["C-02 presenta 0.02 más.","C-01 presenta 0.02 más.","Son idénticas.","No se reporta."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"Según la ficha de registro, ¿cuál es la diferencia de Sales solubles totales entre ambas calicatas?", o:["C-02 presenta 23 ppm más.","C-01 presenta 23 ppm más.","Son idénticas.","No se reporta."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"Según la ficha de registro, ¿cuál es la diferencia de Sulfatos entre ambas calicatas?", o:["C-02 presenta 6 ppm más.","C-01 presenta 6 ppm más.","Son idénticas.","No se reporta."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"Según la ficha de registro, ¿cuál es la diferencia de Cloruros entre ambas calicatas?", o:["C-02 presenta 4 ppm más.","C-01 presenta 4 ppm más.","Son idénticas.","No se reporta."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"Según la ficha de registro, ¿cuál es la diferencia de pH entre ambas calicatas?", o:["C-02 presenta 0.1 más.","C-01 presenta 0.1 más.","Son idénticas.","No se reporta."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"En el resumen de perfiles estratigráficos, la calicata C-01 en el intervalo de 1.00 a 3.00 m indica:", o:["Permeabilidad alta.","Permeabilidad media.","Permeabilidad baja.","Impermeable."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"En el resumen de perfiles estratigráficos, la capa PT de la C-01 se describe como \"saturado\" y se recomienda:", o:["Construir sobre él.","Removerlo antes de realizar obras.","Compactarlo.","Ignorarlo."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"En el resumen de perfiles estratigráficos, la capa PT de la C-02 se describe como:", o:["Material arcilloso con restos inorgánicos y orgánicos; recomienda removerlo y señala que no se realizarán ensayos en ese material.","Losa de concreto.","Suelo arcilloso de alta plasticidad.","Grava bien gradada."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es el enfoque de la investigación según el Marco Metodológico?", o:["Cualitativo.","Cuantitativo descriptivo.","Mixto.","Experimental."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es el tipo de investigación según el Marco Metodológico?", o:["Básica.","Aplicada.","Documental.","Exploratoria."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es el diseño de la investigación?", o:["Experimental y longitudinal.","No experimental y transversal.","Cuasiexperimental y transversal.","Documental y longitudinal."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Qué instrumento se utiliza para registrar la descripción de las calicatas?", o:["Ficha de descripción de calicata y perfil estratigráfico.","Cuestionario.","Guía de entrevista.","Ficha de observación de laboratorio."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Qué técnica se utilizó para la recolección de datos en campo?", o:["Encuestas.","Observación directa durante la excavación.","Entrevistas.","Análisis documental."], a:1, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Qué técnica se utilizó para procesar los datos?", o:["Tablas de doble entrada.","Regresión lineal.","Análisis de varianza.","Gráficos de dispersión."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es el nombre del ingeniero civil responsable del informe técnico según la tabla de recursos humanos?", o:["No se especifica el nombre.","El docente del curso.","Los estudiantes del grupo.","El dueño de la vivienda."], a:0, j:"Subtema: Anexos y resultados." },
+  { tema:9, sub:6, q:"¿Cuál es el objetivo de la investigación según la matriz de consistencia?", o:["Comparar las características geotécnicas de los suelos identificados en ambas calicatas.","Diseñar la cimentación.","Calcular la capacidad portante.","Realizar el estudio de suelos."], a:0, j:"Subtema: Anexos y resultados." }
+);
+
 /* ============================================================
    REFERENCIAS
    ============================================================ */
@@ -1820,7 +1946,7 @@ function renderStartScreen() {
   complete.innerHTML = `
     <div class="tc-num">Examen completo</div>
     <div class="tc-title">🎯 Todos los temas · respuesta inmediata</div>
-    <div class="tc-count">${QUIZ.length} preguntas · 8 temas</div>`;
+    <div class="tc-count">${QUIZ.length} preguntas · 9 temas</div>`;
   complete.addEventListener("click", () => openQuantityModal("all"));
   topicGrid.appendChild(complete);
 
